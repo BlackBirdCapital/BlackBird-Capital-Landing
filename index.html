@@ -1,1716 +1,495 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlackBird Capital - Administradora de Fondos</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BlackBird Capital">
+    <title>BlackBird Capital  - Wealth Management. Finance Solutions</title>
+    
+    <!-- Critical CSS inline -->
     <style>
-      /* Añadir tipografías locales */
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-Light.ttf") format("truetype");
-        font-weight: 300;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-Regular.ttf") format("truetype");
-        font-weight: 400;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-Medium.ttf") format("truetype");
-        font-weight: 500;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-SemiBold.ttf") format("truetype");
-        font-weight: 600;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-Bold.ttf") format("truetype");
-        font-weight: 700;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Lato";
-        src: url("assets/Tipografías/Lato-Black.ttf") format("truetype");
-        font-weight: 900;
-        font-style: normal;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --negro-corporativo: #000000;
-        --azul-tormenta: #161c28;
-        --gris-nube: #363d49;
-        --gris-claro: #eae9e3;
-        --terracota: #ca7131;
-        --blanco: #ffffff;
-      }
-
-      body {
-        font-family: "Lato", sans-serif;
-        background: var(--blanco);
-        color: var(--negro-corporativo);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header Mejorado */
-      .header {
-        background: var(--negro-corporativo);
-        padding: 20px 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: all 0.3s ease;
-      }
-
-      .header.scrolled {
-        background: var(--negro-corporativo);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo img {
-        height: 40px;
-        width: auto;
-        object-fit: contain;
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 40px;
-        list-style: none;
-      }
-
-      .nav-item a {
-        color: var(--blanco);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .nav-item a:hover {
-        color: var(--terracota);
-      }
-
-      .nav-item a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--terracota);
-        transition: width 0.3s ease;
-      }
-
-      .nav-item a:hover::after {
-        width: 100%;
-      }
-
-      .cta-header {
-        background: linear-gradient(135deg, var(--terracota), #b85c2b);
-        color: var(--blanco);
-        padding: 12px 25px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-size: 14px;
-      }
-
-      .cta-header:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(202, 113, 49, 0.3);
-      }
-
-      /* Mobile Menu */
-      .mobile-menu-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 4px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        padding: 5px;
-      }
-
-      .mobile-menu-toggle span {
-        width: 25px;
-        height: 2px;
-        background: var(--blanco);
-        transition: all 0.3s ease;
-      }
-
-      .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-
-      .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      /* Hero Section Mejorado */
-      .hero {
-        background: url("assets/Imágenes/Untitled-14-05.jpg");
-        background-size: cover;
-        background-position: center;
-        color: var(--blanco);
-        padding: 200px 0 120px;
-        position: relative;
-        overflow: hidden;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        background: linear-gradient(to bottom, transparent, var(--negro-corporativo));
-      }
-
-      .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: start;
-        position: relative;
-        z-index: 2;
-      }
-
-      .hero-text h1 {
-        font-size: clamp(36px, 5vw, 64px);
-        font-weight: 700;
-        line-height: 1.1;
-        margin-bottom: 30px;
-        animation: fadeInUp 0.8s ease;
-      }
-
-      .hero-text h2 {
-        font-size: clamp(18px, 2.5vw, 24px);
-        font-weight: 300;
-        color: #e0e0e0;
-        margin-bottom: 40px;
-        line-height: 1.4;
-        animation: fadeInUp 0.8s ease 0.2s backwards;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-        animation: fadeInUp 0.8s ease 0.4s backwards;
-      }
-
-      .btn-primary {
-        background: #000000;
-        color: var(--blanco);
-        padding: 18px 35px;
-        border: 1px solid #ffffff;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .btn-primary:hover {
-        background: #000000;
-        border: 1px solid #ffffff;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(202, 113, 49, 0.4);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: #ffffff;
-        padding: 18px 35px;
-        border: 1px solid #ffffff;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .btn-secondary:hover {
-        background: #000000;
-        color: #ffffff;
-        border: 1px solid #ffffff;
-        transform: translateY(-3px);
-      }
-
-      .hero-visual {
-        position: relative;
-        height: 500px;
-        animation: fadeIn 1s ease 0.6s backwards;
-      }
-
-      .hero-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Servicios Mejorados */
-      .services {
-        padding: 120px 0;
-        background: var(--gris-claro);
-        position: relative;
-      }
-
-      .services::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 200px;
-        background: linear-gradient(to bottom, var(--blanco), transparent);
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 80px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .section-title h2 {
-        font-size: clamp(32px, 4vw, 48px);
-        color: var(--negro-corporativo);
-        margin-bottom: 20px;
-        font-weight: 700;
-      }
-
-      .section-title p {
-        font-size: 20px;
-        color: var(--gris-nube);
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      /* Carousel de Servicios */
-      .services-carousel {
-        position: relative;
-        overflow: hidden;
-        margin: 0 -20px;
-      }
-
-      .services-track {
-        display: flex;
-        transition: transform 0.5s ease;
-        padding: 20px;
-      }
-
-      .service-card {
-        background: var(--blanco);
-        padding: 50px 40px;
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(202, 113, 49, 0.1);
-        position: relative;
-        overflow: hidden;
-        min-width: 350px;
-        margin: 0 15px;
-        flex-shrink: 0;
-      }
-
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--terracota), #b85c2b);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      .service-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .service-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--terracota), #b85c2b);
-        border-radius: 20px;
-        margin: 0 auto 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        color: var(--blanco);
-      }
-
-      .service-card h3 {
-        font-size: 24px;
-        color: var(--negro-corporativo);
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      .service-card p {
-        color: var(--gris-nube);
-        font-size: 16px;
-        line-height: 1.6;
-      }
-
-      /* Carousel Controls */
-      .carousel-controls {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 40px;
-      }
-
-      .carousel-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--negro-corporativo);
-        color: var(--blanco);
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        font-size: 20px;
-      }
-
-      .carousel-btn:hover {
-        background: var(--terracota);
-        transform: scale(1.1);
-      }
-
-      .carousel-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      /* Estadísticas Animadas */
-      .stats {
-        background: var(--azul-tormenta);
-        color: var(--blanco);
-        padding: 100px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .stats::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(202, 113, 49, 0.1) 0%,
-          transparent 70%
-        );
-        animation: rotate 30s linear infinite;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 60px;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      }
-
-      .stat-item {
-        transform: translateY(50px);
-        opacity: 0;
-        transition: all 0.8s ease;
-      }
-
-      .stat-item.visible {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .stat-item h3 {
-        font-size: clamp(40px, 5vw, 56px);
-        font-weight: 700;
-        color: var(--terracota);
-        margin-bottom: 15px;
-      }
-
-      .stat-item p {
-        font-size: 18px;
-        color: #e0e0e0;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      /* Equipo Section */
-      .team {
-        padding: 120px 0;
-        background: var(--blanco);
-      }
-
-      .team-carousel {
-        position: relative;
-        overflow: hidden;
-        margin-top: 60px;
-      }
-
-      .team-track {
-        display: flex;
-        transition: transform 0.5s ease;
-        gap: 40px;
-        padding: 20px;
-      }
-
-      .team-member {
-        text-align: center;
-        background: var(--gris-claro);
-        padding: 40px 30px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        min-width: 320px;
-        flex-shrink: 0;
-      }
-
-      .team-member:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      .member-photo {
-        width: 150px;
-        height: 150px;
-        background: linear-gradient(
-          135deg,
-          var(--azul-tormenta),
-          var(--gris-nube)
-        );
-        border-radius: 50%;
-        margin: 0 auto 25px;
-        border: 4px solid var(--terracota);
-        overflow: hidden;
-      }
-
-      .member-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .member-name {
-        font-size: 24px;
-        color: var(--negro-corporativo);
-        margin-bottom: 10px;
-        font-weight: 600;
-      }
-
-      .member-role {
-        color: var(--terracota);
-        font-weight: 600;
-        font-size: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-      }
-
-      .member-bio {
-        color: var(--gris-nube);
-        font-size: 15px;
-        line-height: 1.6;
-      }
-
-      /* Metodología Section */
-      .methodology {
-        padding: 120px 0;
-        background: linear-gradient(
-          135deg,
-          var(--negro-corporativo) 0%,
-          var(--azul-tormenta) 100%
-        );
-        color: var(--blanco);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .methodology::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -50%;
-        width: 100%;
-        height: 100%;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,50 Q25,25 50,50 T100,50' stroke='%23ca7131' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E");
-        background-size: 400px 400px;
-        animation: slide 20s linear infinite;
-      }
-
-      .methodology-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-      }
-
-      .methodology-text h2 {
-        font-size: clamp(32px, 4vw, 48px);
-        margin-bottom: 30px;
-        color: var(--terracota);
-      }
-
-      .methodology-text p {
-        font-size: 18px;
-        line-height: 1.8;
-        margin-bottom: 30px;
-        color: #e0e0e0;
-      }
-
-      .methodology-features {
-        display: grid;
-        gap: 25px;
-        margin-top: 40px;
-      }
-
-      .feature-item {
-        display: flex;
-        align-items: start;
-        gap: 20px;
-      }
-
-      .feature-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--terracota);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 24px;
-      }
-
-      .feature-text h4 {
-        font-size: 20px;
-        margin-bottom: 8px;
-        color: var(--blanco);
-      }
-
-      .feature-text p {
-        font-size: 16px;
-        color: #b0b0b0;
-        line-height: 1.6;
-      }
-
-      .methodology-visual {
-        position: relative;
-      }
-
-      .methodology-chart {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        padding: 40px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(202, 113, 49, 0.3);
-      }
-
-      /* Contact Section Mejorado */
-      .contact {
-        background: var(--gris-claro);
-        padding: 120px 0;
-        position: relative;
-      }
-
-      .contact-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: start;
-      }
-
-      .contact-form {
-        background: var(--blanco);
-        padding: 50px;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-      }
-
-      .contact-form h3 {
-        font-size: 32px;
-        margin-bottom: 30px;
-        color: var(--negro-corporativo);
-      }
-
-      .form-group {
-        margin-bottom: 25px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--gris-nube);
-        font-weight: 500;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: 15px 20px;
-        background: var(--gris-claro);
-        border: 1px solid transparent;
-        border-radius: 8px;
-        color: var(--negro-corporativo);
-        font-size: 16px;
-        transition: all 0.3s ease;
-        font-family: "Lato", sans-serif;
-      }
-
-      .form-group input:focus,
-      .form-group select:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--terracota);
-        background: var(--blanco);
-        box-shadow: 0 0 20px rgba(202, 113, 49, 0.1);
-      }
-
-      .form-group textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-
-      .contact-info {
-        padding-left: 40px;
-      }
-
-      .contact-info h3 {
-        font-size: 32px;
-        margin-bottom: 30px;
-        color: var(--negro-corporativo);
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 30px;
-        padding: 20px;
-        background: var(--blanco);
-        border-radius: 12px;
-        transition: all 0.3s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateX(10px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      }
-
-      .contact-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--terracota);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: var(--blanco);
-        flex-shrink: 0;
-      }
-
-      .contact-text {
-        flex: 1;
-      }
-
-      .contact-text h4 {
-        font-size: 14px;
-        color: var(--gris-nube);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 5px;
-      }
-
-      .contact-text p {
-        font-size: 18px;
-        color: var(--negro-corporativo);
-        font-weight: 500;
-      }
-
-      /* Footer Mejorado */
-      .footer {
-        background: var(--negro-corporativo);
-        color: var(--blanco);
-        padding: 80px 0 40px;
-        position: relative;
-      }
-
-      .footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--terracota),
-          transparent
-        );
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 60px;
-        margin-bottom: 60px;
-      }
-
-      .footer-brand h3 {
-        font-size: 32px;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, var(--terracota), #b85c2b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .footer-brand p {
-        color: #b0b0b0;
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 30px;
-      }
-
-      .footer-social {
-        display: flex;
-        gap: 15px;
-      }
-
-      .social-link {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--blanco);
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover {
-        background: var(--terracota);
-        transform: translateY(-3px);
-      }
-
-      .footer-column h4 {
-        font-size: 18px;
-        margin-bottom: 25px;
-        color: var(--terracota);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .footer-column ul {
-        list-style: none;
-      }
-
-      .footer-column ul li {
-        margin-bottom: 15px;
-      }
-
-      .footer-column ul li a {
-        color: #b0b0b0;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        position: relative;
-        padding-left: 0;
-      }
-
-      .footer-column ul li a:hover {
-        color: var(--terracota);
-        padding-left: 10px;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 30px;
-        text-align: center;
-        color: #b0b0b0;
-        font-size: 14px;
-      }
-
-      /* Animaciones */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
+        :root {
+            --color-negro-noche: #000000;
+            --color-azul-tormenta: #161c28;
+            --color-gris-nube: #363d49;
+            --color-gris-claro: #eae9e3;
+            --color-terracota: #ca7131;
+            --color-blanco-pulcro: #ffffff;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        body { 
+            margin: 0; 
+            background: var(--color-negro-noche); 
+            color: var(--color-blanco-pulcro);
         }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes slide {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-100%);
-        }
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1024px) {
-        .hero-content,
-        .methodology-content {
-          grid-template-columns: 1fr;
-          gap: 60px;
-        }
-
-        .hero-visual {
-          height: 400px;
-        }
-
-        .footer-content {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .mobile-menu-toggle {
-          display: flex;
-        }
-
-        .nav-menu {
-          position: fixed;
-          top: 80px;
-          left: -100%;
-          width: 100%;
-          height: calc(100vh - 80px);
-          background: var(--negro-corporativo);
-          flex-direction: column;
-          padding: 40px 20px;
-          transition: left 0.3s ease;
-          gap: 30px;
-        }
-
-        .nav-menu.active {
-          left: 0;
-        }
-
-        .cta-header {
-          display: none;
-        }
-
-        .hero {
-          padding: 150px 0 80px;
-          min-height: auto;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          width: 100%;
-        }
-
-        .btn-primary,
-        .btn-secondary {
-          width: 100%;
-          text-align: center;
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 40px;
-        }
-
-        .contact-content {
-          grid-template-columns: 1fr;
-          gap: 60px;
-        }
-
-        .contact-info {
-          padding-left: 0;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 40px;
-          text-align: center;
-        }
-
-        .footer-social {
-          justify-content: center;
-        }
-
-        .services-track,
-        .team-track {
-          padding: 20px 0;
-        }
-
-        .service-card,
-        .team-member {
-          min-width: 280px;
-          margin: 0 10px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero-text h1 {
-          font-size: 32px;
-        }
-
-        .section-title h2 {
-          font-size: 28px;
-        }
-
-        .stat-item h3 {
-          font-size: 36px;
-        }
-
-        .contact-form {
-          padding: 30px 20px;
-        }
-      }
     </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header" id="header">
-      <div class="container">
-        <nav class="nav">
-          <div class="logo">
-            <img
-              src="assets/Logo Principal/SVG/blanco con bajada.svg"
-              alt="Logo"
-            />
-          </div>
-          <ul class="nav-menu" id="navMenu">
-            <li class="nav-item"><a href="#fondos">Fondos</a></li>
-            <li class="nav-item"><a href="#metodologia">Metodología</a></li>
-            <li class="nav-item"><a href="#rentabilidad">Rentabilidad</a></li>
-            <li class="nav-item"><a href="#equipo">Equipo</a></li>
-            <li class="nav-item"><a href="#contacto">Contacto</a></li>
-          </ul>
-          <button class="cta-header">Invertir Ahora</button>
-          <button class="mobile-menu-toggle" id="mobileMenuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </nav>
-      </div>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="header" role="banner">
+        <div class="header__container">
+            <a href="/" class="header__logo" aria-label="BlackBird Capital - Inicio">
+                <img src="/assets/logo-blanco.svg" alt="BlackBird Capital" class="logo">
+            </a>
+
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menú">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a href="#Expertise" class="nav__link">Expertise</a></li>
+                    <li><a href="#fondos" class="nav__link">Fondos</a></li>
+                    <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+                    <li><a href="#equipo" class="nav__link">Equipo</a></li>
+                    <li><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+
+                <div class="header__cta">
+                    <a href="/portal" class="btn btn--ghost">Portal Cliente</a>
+                    <a href="#contacto" class="btn btn--primary">Contactar</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1>Wealth Management.<br />Finance Solutions.</h1>
-            <!-- <h2>Administradora de fondos boutique especializada en optimizar el capital empresarial con estrategias innovadoras y atención personalizada.</h2> -->
-            <div class="hero-buttons">
-              <a href="#fondos" class="btn-primary">Ver Nuestros Fondos</a>
-              <!-- <a href="#simulador" class="btn-secondary">Simulador de Rentabilidad</a> -->
-            </div>
-          </div>
-          <div class="hero-visual">
-            <!-- Se elimina el SVG inline para mostrar la imagen de fondo difuminada -->
-          </div>
-        </div>
-      </div>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__container">
+            <!-- H1 solo para accesibilidad/SEO -->
+            <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
 
-    <!-- Servicios -->
-    <section class="services" id="fondos">
-      <div class="container">
-        <div class="section-title">
-          <h2>Fondos de Inversión Especializados</h2>
-          <p>
-            Administramos fondos diseñados específicamente para el cash flow
-            management empresarial con estrategias diversificadas y alto
-            rendimiento
-          </p>
+            <!-- Logo SVG (archivo externo) -->
+            <div class="hero__logo" role="img" aria-label="BlackBird Capital">
+                <img src="/assets/logo-blanco.svg" alt="BlackBird Capital" />
+            </div>
+            <!-- <span class="hero__subtitle">Wealth Management. Finance Solutions.</span> -->
+            <div class="hero__cta-group">
+            <a href="#Expertise" class="btn btn--primary">Comenzar ahora</a>
+            <a href="#nosotros" class="btn btn--ghost">Conocer más</a>
+            </div>
         </div>
-        <div class="services-carousel">
-          <div class="services-track" id="servicesTrack">
-            <div class="service-card">
-              <div class="service-icon">💰</div>
-              <h3>Fondo Liquidez Corporativa</h3>
-              <p>
-                Gestión de excedentes de caja con alta liquidez y rentabilidad
-                superior a depósitos tradicionales. Rescates en 24-48 horas.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">📈</div>
-              <h3>Fondo Crecimiento Empresarial</h3>
-              <p>
-                Inversiones de mediano plazo para empresas que buscan
-                rentabilidad superior manteniendo flexibilidad de rescate
-                trimestral.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">🏦</div>
-              <h3>Fondo Renta Corporativa</h3>
-              <p>
-                Cartera diversificada de instrumentos de renta fija para
-                preservación de capital con rendimientos estables y predecibles.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">🌍</div>
-              <h3>Fondo Internacional</h3>
-              <p>
-                Acceso a mercados globales con diversificación geográfica y
-                sectorial para optimizar el perfil riesgo-retorno.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">🛡️</div>
-              <h3>Fondo Conservador Plus</h3>
-              <p>
-                Estrategia defensiva con foco en preservación de capital y
-                generación de ingresos recurrentes.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" id="servPrev">‹</button>
-            <button class="carousel-btn" id="servNext">›</button>
-          </div>
-        </div>
-      </div>
-    </section>
+        <a class="hero__scroll" href="#Expertise" aria-label="Scroll">
+            <span></span>
+        </a>
+        </section>
 
-    <!-- Estadísticas -->
-    <section class="stats" id="rentabilidad">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <h3 data-target="850">0</h3>
-            <p>Millones USD Administrados</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-target="8.4" data-decimal="true">0</h3>
-            <p>% Rentabilidad Promedio Anual</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-target="340">0</h3>
-            <p>Empresas Inversionistas</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-target="24">0</h3>
-            <p>Horas Procesamiento</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Metodología -->
-    <section class="methodology" id="metodologia">
-      <div class="container">
-        <div class="methodology-content">
-          <div class="methodology-text">
-            <h2>Nuestra Metodología</h2>
-            <p>
-              En BlackBird Capital combinamos análisis técnico avanzado con un
-              profundo conocimiento del mercado para diseñar estrategias de
-              inversión que maximicen el retorno ajustado por riesgo.
-            </p>
-            <p>
-              Nuestro enfoque privilegia la seguridad, la eficiencia y la
-              adaptabilidad, permitiendo a nuestros clientes gestionar su
-              capital con precisión.
-            </p>
-
-            <div class="methodology-features">
-              <div class="feature-item">
-                <div class="feature-icon">🎯</div>
-                <div class="feature-text">
-                  <h4>Análisis Cuantitativo</h4>
-                  <p>Modelos propietarios de valoración y gestión de riesgo</p>
+        <!-- Servicios -->
+        <section class="Expertise" id="Expertise" aria-labelledby="services-title">
+            <div class="container">
+                <h2 id="services-title" class="section-title">Nuestro Expertise</h2>
+                <div class="services__grid">
+                    <article class="card">
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Gestión Patrimonial</h3>
+                        <p>Protegemos y potenciamos su patrimonio con estrategias a medida. Siempre Co-invertiremos</p>
+                        <a href="#patrimonio" class="card__link">Ver más →</a>
+                    </article>
+                    <article class="card">
+                        <span class="card__badge">Popular</span>
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Fondos de Inversión</h3>
+                        <p>Portafolios diversificados con gestión activa y transparente.</p>
+                        <a href="#fondos" class="card__link">Ver más →</a>
+                    </article>
+                    <article class="card">
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Fundraising Services</h3>
+                        <p>Capital y estrategia para impulsar su crecimiento.</p>
+                        <a href="#asesoria" class="card__link">Ver más →</a>
+                    </article>
+                    <article class="card">
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Private Equity</h3>
+                        <p>Inversiones privadas de alto potencial y retorno.</p>
+                        <a href="#capital" class="card__link">Ver más →</a>
+                    </article>
+                    <article class="card">
+                        <span class="card__badge">Nuevo</span>
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Real Estate Business</h3>
+                        <p>Estrategias inmobiliarias para maximizar valor.</p>
+                        <a href="#fiscal" class="card__link">Ver más →</a>
+                    </article>
+                    <article class="card">
+                        <div class="card__icon"><img src="/assets/iso.svg" alt="BlackBird Capital" /></div>
+                        <h3>Mercados Internacionales</h3>
+                        <p>Acceso a oportunidades globales de inversión.</p>
+                        <a href="#internacional" class="card__link">Ver más →</a>
+                    </article>
                 </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">🔍</div>
-                <div class="feature-text">
-                  <h4>Due Diligence Riguroso</h4>
-                  <p>Evaluación exhaustiva de cada oportunidad de inversión</p>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-text">
-                  <h4>Gestión Activa</h4>
-                  <p>Monitoreo constante y ajustes estratégicos oportunos</p>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="methodology-visual">
-            <div class="methodology-chart">
-              <canvas id="methodologyChart" width="400" height="300"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Equipo -->
-    <section class="team" id="equipo">
-      <div class="container">
-        <div class="section-title">
-          <h2>Equipo de Gestión</h2>
-          <p>
-            Profesionales con amplia experiencia en administración de fondos y
-            mercados financieros
-          </p>
-        </div>
-        <div class="team-carousel">
-          <div class="team-track" id="teamTrack">
-            <div class="team-member">
-              <div class="member-photo"></div>
-              <h4 class="member-name">Ricardo Mendoza</h4>
-              <p class="member-role">Gerente General</p>
-              <p class="member-bio">
-                Más de 20 años de experiencia en gestión de activos y banca de
-                inversión.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-photo"></div>
-              <h4 class="member-name">María Elena Vásquez</h4>
-              <p class="member-role">Gerente de Inversiones</p>
-              <p class="member-bio">
-                Especialista en renta fija con 15 años en mercados de capitales.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-photo"></div>
-              <h4 class="member-name">Andrés Silva</h4>
-              <p class="member-role">Gerente de Riesgos</p>
-              <p class="member-bio">
-                Experto en modelación cuantitativa y gestión de riesgos
-                financieros.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-photo"></div>
-              <h4 class="member-name">Carolina Martínez</h4>
-              <p class="member-role">Gerente Comercial</p>
-              <p class="member-bio">
-                Líder en desarrollo de negocios con foco en clientes
-                corporativos.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-photo"></div>
-              <h4 class="member-name">Jorge Ramírez</h4>
-              <p class="member-role">Analista Senior</p>
-              <p class="member-bio">
-                Especialista en análisis fundamental y valoración de activos.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" id="teamPrev">‹</button>
-            <button class="carousel-btn" id="teamNext">›</button>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Fondos de Inversión -->
+        <section class="funds" id="fondos" aria-labelledby="funds-title">
+            <div class="container">
+                <h2 id="funds-title" class="section-title">Nuestros Fondos de Inversión</h2>
+                <p class="section-subtitle">Soluciones diseñadas para diferentes perfiles de riesgo</p>
+                
+                <div class="funds__carousel">
+                    <div class="funds__track" id="funds-track">
+                        <!-- Fund Card 1 -->
+                        <article class="fund-card">
+                            <div class="fund-card__header">
+                                <span class="fund-card__category">Money Market</span>
+                                <h3>BlackBird Cashflow Solutions</h3>
+                            </div>
+                            <div class="fund-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">8.42%</span>
+                                    <span class="metric__label">Retorno Anual</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">&lt; 30d</span>
+                                    <span class="metric__label">Duration</span>
+                                </div>
+                            </div>
+                            <p>Fondo de alta liquidez diseñado para optimizar el manejo de caja libre.</p>
+                            <div class="fund-card__footer">
+                                <a href="/fondos/cashflow" class="fund-card__link">Ver detalles →</a>
+                                <div class="risk-level" data-level="1">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </article>
 
-    <!-- Contacto -->
-    <section class="contact" id="contacto">
-      <div class="container">
-        <div class="contact-content">
-          <div class="contact-form">
-            <h3>Solicite Información de Inversión</h3>
-            <form id="contactForm">
-              <div class="form-group">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" name="nombre" required />
-              </div>
-              <div class="form-group">
-                <label for="empresa">Empresa</label>
-                <input type="text" id="empresa" name="empresa" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Corporativo</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" required />
-              </div>
-              <div class="form-group">
-                <label for="fondo">Fondo de Interés</label>
-                <select id="fondo" name="fondo" required>
-                  <option value="">Seleccione un fondo</option>
-                  <option value="liquidez">Fondo Liquidez Corporativa</option>
-                  <option value="crecimiento">
-                    Fondo Crecimiento Empresarial
-                  </option>
-                  <option value="renta">Fondo Renta Corporativa</option>
-                  <option value="internacional">Fondo Internacional</option>
-                  <option value="conservador">Fondo Conservador Plus</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="monto">Monto Aproximado a Invertir (USD)</label>
-                <input
-                  type="text"
-                  id="monto"
-                  name="monto"
-                  placeholder="Ej: 1,000,000"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="mensaje">Mensaje (Opcional)</label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  placeholder="Cuéntenos sobre sus objetivos de inversión"
-                ></textarea>
-              </div>
-              <button type="submit" class="btn-primary" style="width: 100%">
-                Solicitar Información
-              </button>
-            </form>
-          </div>
-          <div class="contact-info">
-            <h3>Información para Inversionistas</h3>
-            <div class="contact-item">
-              <div class="contact-icon">📍</div>
-              <div class="contact-text">
-                <h4>Oficina Principal</h4>
-                <p>Av. El Golf 40, Piso 12<br />Las Condes, Santiago</p>
-              </div>
+                        <!-- Fund Card 2 -->
+                        <article class="fund-card">
+                            <div class="fund-card__header">
+                                <span class="fund-card__category">Renta Fija CP</span>
+                                <h3>BlackBird Shortterm Debt</h3>
+                            </div>
+                            <div class="fund-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">7.8%</span>
+                                    <span class="metric__label">Retorno Anual</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">&lt; 1 año</span>
+                                    <span class="metric__label">Duración</span>
+                                </div>
+                            </div>
+                            <p>Inversiones en instrumentos de deuda corporativa y gubernamental.</p>
+                            <div class="fund-card__footer">
+                                <a href="/fondos/shortterm" class="fund-card__link">Ver detalles →</a>
+                                <div class="risk-level" data-level="2">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Fund Card 3 -->
+                        <article class="fund-card">
+                            <div class="fund-card__header">
+                                <span class="fund-card__category">Renta Fija MP</span>
+                                <h3>BlackBird Midterm Debt</h3>
+                            </div>
+                            <div class="fund-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">10.5%</span>
+                                    <span class="metric__label">Retorno Anual</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">1-5 años</span>
+                                    <span class="metric__label">Duración</span>
+                                </div>
+                            </div>
+                            <p>Portafolio diversificado de bonos corporativos y soberanos.</p>
+                            <div class="fund-card__footer">
+                                <a href="/fondos/midterm" class="fund-card__link">Ver detalles →</a>
+                                <div class="risk-level" data-level="3">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Fund Card 4 -->
+                        <article class="fund-card">
+                            <div class="fund-card__header">
+                                <span class="fund-card__category">Alternative</span>
+                                <h3>BlackBird Real Estate</h3>
+                            </div>
+                            <div class="fund-card__metrics">
+                                <div class="metric">
+                                    <span class="metric__value">18%+</span>
+                                    <span class="metric__label">TIR Objetivo</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric__value">3-7 años</span>
+                                    <span class="metric__label">Horizonte</span>
+                                </div>
+                            </div>
+                            <p>Inversiones en activos inmobiliarios Distress.</p>
+                            <div class="fund-card__footer">
+                                <a href="/fondos/realestate" class="fund-card__link">Ver detalles →</a>
+                                <div class="risk-level" data-level="4">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="funds__controls">
+                        <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
+                        <div class="carousel-dots"></div>
+                        <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">→</button>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">📞</div>
-              <div class="contact-text">
-                <h4>Teléfono</h4>
-                <p>+56 2 2234 5678</p>
-              </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="stats" aria-labelledby="stats-title">
+            <div class="container">
+                <h2 id="stats-title" class="sr-only">Estadísticas</h2>
+                <div class="stats__grid">
+                    <div class="stat-item">
+                        <h3 data-target="20" data-suffix=" M">0</h3>
+                        <p>Millones USD Administrados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-target="8.4" data-decimal="true" data-suffix="%">0</h3>
+                        <p>Rentabilidad Promedio</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-target="100">0</h3>
+                        <p>Empresas Inversionistas</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-target="24">0</h3>
+                        <p>Horas Procesamiento</p>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">✉️</div>
-              <div class="contact-text">
-                <h4>Email</h4>
-                <p>inversiones@blackbirdcapital.cl</p>
-              </div>
+        </section>
+
+        <!-- Nosotros -->
+        <section class="about" id="nosotros" aria-labelledby="about-title">
+            <div class="container">
+                <h2 id="about-title" class="section-title">Lo que nos mueve</h2>
+                <div class="values__grid">
+                    <article class="value-card">
+                        <div class="value-card__icon"><img src="/assets/iso2.svg" alt="BlackBird Capital" /></div>
+                        <h3>Excelencia</h3>
+                        <p>Combinamos experiencia global con conocimiento local para ofrecer soluciones financieras excepcionales.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-card__icon"><img src="/assets/iso2.svg" alt="BlackBird Capital" /></div>
+                        <h3>Confianza</h3>
+                        <p>Relaciones de largo plazo basadas en transparencia absoluta y compromiso inquebrantable.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-card__icon"><img src="/assets/iso2.svg" alt="BlackBird Capital" /></div>
+                        <h3>Innovación</h3>
+                        <p>Adoptamos tecnologías emergentes para mantener a nuestros clientes adelante en mercados dinámicos.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-card__icon"><img src="/assets/iso2.svg" alt="BlackBird Capital" /></div>
+                        <h3>Integridad</h3>
+                        <p>Operamos con los más altos estándares éticos, priorizando siempre los intereses de nuestros clientes.</p>
+                    </article>
+                </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">🕒</div>
-              <div class="contact-text">
-                <h4>Horario de Atención</h4>
-                <p>Lunes a Viernes: 9:00 - 18:00</p>
-              </div>
+        </section>
+
+        <!-- Equipo -->
+        <section class="team" id="equipo" aria-labelledby="team-title">
+            <div class="container">
+                <h2 id="team-title" class="section-title">Nuestro Equipo</h2>
+                <p class="section-subtitle">Líderes visionarios con décadas de experiencia</p>
+                
+                <div class="team__carousel">
+                    <div class="team__track" id="teamTrack">
+                        <article class="team-member active">
+                            <figure class="team-member__image">
+                                <img src="/assets/team/maria-gonzalez.jpg" alt="Jorge Ramírez P." loading="lazy">
+                            </figure>
+                            <h3>Jorge Ramírez P.</h3>
+                            <p class="team-member__role">Partner & CEO</p>
+                            <p class="team-member__bio">20+ años de experiencia en Wall Street y Londres. Fundó BlackBird Capital con la visión de democratizar estrategias institucionales.</p>
+                        </article>
+
+                        <article class="team-member">
+                            <figure class="team-member__image">
+                                <img src="/assets/team/carlos-rodriguez.jpg" alt="Joaquín Espíldora M." loading="lazy">
+                            </figure>
+                            <h3>Joaquín Espildora M.</h3>
+                            <p class="team-member__role">Partner & Portfolio Manager</p>
+                            <p class="team-member__bio">Ex-director en Goldman Sachs y BlackRock. Especialista en preservación de capital.</p>
+                        </article>
+
+                        <article class="team-member">
+                            <figure class="team-member__image">
+                                <img src="/assets/team/ana-martinez.jpg" alt="Ana Martínez" loading="lazy">
+                            </figure>
+                            <h3>Ana Martínez</h3>
+                            <p class="team-member__role">Directora de Operaciones</p>
+                            <p class="team-member__bio">MBA del MIT. Revolucionó procesos con blockchain y AI. Ex J.P. Morgan AM.</p>
+                        </article>
+
+                        <article class="team-member">
+                            <figure class="team-member__image">
+                                <img src="/assets/team/diego-silva.jpg" alt="Diego Silva" loading="lazy">
+                            </figure>
+                            <h3>Diego Silva</h3>
+                            <p class="team-member__role">Head of Research</p>
+                            <p class="team-member__bio">PhD Harvard. Lidera research macro y modelos cuantitativos. 25+ papers publicados.</p>
+                        </article>
+
+                        <article class="team-member">
+                            <figure class="team-member__image">
+                                <img src="/assets/team/patricia-wong.jpg" alt="Patricia Wong" loading="lazy">
+                            </figure>
+                            <h3>Patricia Wong</h3>
+                            <p class="team-member__role">Directora de Riesgos</p>
+                            <p class="team-member__bio">CFA y FRM. Desarrolló modelos propietarios que protegieron portafolios en 2008 y 2020.</p>
+                        </article>
+                    </div>
+                    
+                    <div class="team__controls">
+                        <button class="carousel-btn" id="teamPrevBtn" aria-label="Anterior">←</button>
+                        <div class="carousel-dots"></div>
+                        <button class="carousel-btn" id="teamNextBtn" aria-label="Siguiente">→</button>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">🌐</div>
-              <div class="contact-text">
-                <h4>Portal Inversionistas</h4>
-                <p>portal.blackbirdcapital.cl</p>
-              </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 id="faq-title" class="section-title">Preguntas Frecuentes</h2>
+                <div class="accordion">
+                    <div class="accordion__item">
+                        <button class="accordion__trigger" aria-expanded="false">
+                            <span>¿Cuál es el monto mínimo de inversión?</span>
+                            <span class="accordion__icon"></span>
+                        </button>
+                        <div class="accordion__content" hidden>
+                            <p>Nuestros servicios están diseñados para diferentes perfiles. Contáctenos para conocer las opciones disponibles.</p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <button class="accordion__trigger" aria-expanded="false">
+                            <span>¿Cómo se estructura la comisión?</span>
+                            <span class="accordion__icon"></span>
+                        </button>
+                        <div class="accordion__content" hidden>
+                            <p>Nuestra estructura de comisiones es transparente y competitiva, basada en el tipo de servicio y volumen.</p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <button class="accordion__trigger" aria-expanded="false">
+                            <span>¿Ofrecen asesoría internacional?</span>
+                            <span class="accordion__icon"></span>
+                        </button>
+                        <div class="accordion__content" hidden>
+                            <p>Sí, contamos con especialistas en mercados internacionales y alianzas en 8 países.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta" id="contacto" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta__content">
+                    <div class="cta__text">
+                        <h2 id="cta-title" class="cta-final__title">
+                        ¿Listo para hacer
+                        <span class="cta-final__title-highlight"><span>crecer</span></span>
+                        su patrimonio?
+                        </h2>
+                        <p>Únase a más de 500 inversionistas que confían en BlackBird Capital.</p>
+                        <ul class="cta__benefits">
+                            <li>✓ Asesoría personalizada sin costo inicial</li>
+                            <li>✓ Análisis completo de su portafolio</li>
+                            <li>✓ Propuesta en 48 horas</li>
+                            <li>✓ Acceso a oportunidades exclusivas</li>
+                        </ul>
+                    </div>
+                    <div class="cta__form">
+                        <h3>Solicite su consulta gratuita</h3>
+                        <div class="cta__actions">
+                            <a href="#contacto" class="btn btn--primary-dark" >Agendar reunión</a>
+                            
+                            <a href="/assets/brochure.pdf" class="btn btn--secondary" download>Descargar brochure</a>
+                        </div>
+                        <div class="cta__contact">
+                            <p> +56 2 2345 6789</p>
+                            <p> invest@blackbirdcapital.cl</p>
+                            <p> Santiago, Chile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <h3>BLACKBIRD CAPITAL</h3>
-            <p>
-              Administradora de Fondos especializada en cash flow management
-              empresarial con más de 15 años de experiencia en el mercado
-              financiero chileno.
-            </p>
-            <div class="footer-social">
-              <a href="#" class="social-link">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
-                  />
-                </svg>
-              </a>
-              <a href="#" class="social-link">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                  />
-                </svg>
-              </a>
-              <a href="#" class="social-link">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"
-                  />
-                </svg>
-              </a>
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <img src="/assets/logo-blanco.svg" alt="BlackBird Capital" class="logo">
+                    <p>Expert Management. Tailored Funds.</p>
+                </div>
+                <nav class="footer__nav">
+                    <div>
+                        <h3>Fondos</h3>
+                        <ul>
+                            <li><a href="/fondos/money-market">Money Market</a></li>
+                            <li><a href="/fondos/shortterm">Deuda CP</a></li>
+                            <li><a href="/fondos/midterm">Deuda MP</a></li>
+                            <li><a href="/fondos/realestate">Real Estate</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Servicios</h3>
+                        <ul>
+                            <li><a href="#patrimonio">Gestión Patrimonial</a></li>
+                            <li><a href="#asesoria">Fondos de Inversión</a></li>
+                            <li><a href="#capital">Private Equity</a></li>
+                            <li><a href="#fiscal">Real Estate</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Recursos</h3>
+                        <ul>
+                            <li><a href="/blog">Blog & Insights</a></li>
+                            <li><a href="/research">Research</a></li>
+                            <li><a href="/calculadoras">Calculadoras</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="footer__newsletter">
+                    <h3>Newsletter</h3>
+                    <form class="newsletter__form">
+                        <input type="email" placeholder="Su email" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="footer-column">
-            <h4>Fondos</h4>
-            <ul>
-              <li><a href="#">Fondo Liquidez Corporativa</a></li>
-              <li><a href="#">Fondo Crecimiento Empresarial</a></li>
-              <li><a href="#">Fondo Renta Corporativa</a></li>
-              <li><a href="#">Rentabilidades Históricas</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Inversionistas</h4>
-            <ul>
-              <li><a href="#">Portal Inversionistas</a></li>
-              <li><a href="#">Informes de Gestión</a></li>
-              <li><a href="#">Proceso de Inversión</a></li>
-              <li><a href="#">Simulador de Inversión</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Reglamentos de Fondos</a></li>
-              <li><a href="#">Estados Financieros</a></li>
-              <li><a href="#">Compliance</a></li>
-              <li><a href="#">Regulación CMF</a></li>
-            </ul>
-          </div>
+        <div class="footer__bottom">
+        <p class="footer__copyright">© 2024 BlackBird Capital. Todos los derechos reservados. | RUT: 76.XXX.XXX-X</p>
+        <nav class="footer__legal" aria-label="Enlaces legales">
+            <a href="/privacidad" class="footer__legal-link">Privacidad</a>
+            <a href="/terminos" class="footer__legal-link">Términos</a>
+            <a href="/compliance" class="footer__legal-link">Compliance</a>
+            <a href="/sitemap" class="footer__legal-link">Mapa del sitio</a>
+        </nav>
+        <div class="footer__certifications">
+            <img src="/assets/cert-cmf.svg" alt="Regulado por CMF" class="certification-badge">
+            <img src="/assets/cert-uaf.png" alt="UAF" class="certification-badge">
         </div>
-        <div class="footer-bottom">
-          <p>
-            &copy; 2025 BlackBird Capital AGF. Todos los derechos reservados. |
-            Regulado por CMF | RUT: 76.XXX.XXX-X
-          </p>
         </div>
-      </div>
     </footer>
 
-    <script>
-      // Mobile Menu Toggle
-      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-      const navMenu = document.getElementById("navMenu");
-
-      mobileMenuToggle.addEventListener("click", function () {
-        this.classList.toggle("active");
-        navMenu.classList.toggle("active");
-      });
-
-      // Header Scroll Effect
-      window.addEventListener("scroll", function () {
-        const header = document.getElementById("header");
-        if (window.scrollY > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // Smooth Scrolling
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            // Close mobile menu if open
-            navMenu.classList.remove("active");
-            mobileMenuToggle.classList.remove("active");
-          }
-        });
-      });
-
-      // Carousel Functionality
-      function setupCarousel(trackId, prevBtnId, nextBtnId) {
-        const track = document.getElementById(trackId);
-        const prevBtn = document.getElementById(prevBtnId);
-        const nextBtn = document.getElementById(nextBtnId);
-        let currentIndex = 0;
-
-        const items = track.children;
-        const itemWidth = items[0].offsetWidth + 30; // width + margin
-        const visibleItems = Math.floor(
-          track.parentElement.offsetWidth / itemWidth
-        );
-        const maxIndex = Math.max(0, items.length - visibleItems);
-
-        function updateCarousel() {
-          track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-          prevBtn.disabled = currentIndex === 0;
-          nextBtn.disabled = currentIndex >= maxIndex;
-        }
-
-        prevBtn.addEventListener("click", () => {
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-          }
-        });
-
-        nextBtn.addEventListener("click", () => {
-          if (currentIndex < maxIndex) {
-            currentIndex++;
-            updateCarousel();
-          }
-        });
-
-        // Reset on window resize
-        window.addEventListener("resize", () => {
-          currentIndex = 0;
-          updateCarousel();
-        });
-
-        updateCarousel();
-      }
-
-      // Initialize carousels
-      setupCarousel("servicesTrack", "servPrev", "servNext");
-      setupCarousel("teamTrack", "teamPrev", "teamNext");
-
-      // Animated Counter
-      const observerOptions = {
-        threshold: 0.7,
-        rootMargin: "0px 0px -100px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const statItems = entry.target.querySelectorAll(".stat-item");
-            statItems.forEach((item, index) => {
-              setTimeout(() => {
-                item.classList.add("visible");
-                const counter = item.querySelector("h3");
-                const target = parseFloat(counter.getAttribute("data-target"));
-                const isDecimal =
-                  counter.getAttribute("data-decimal") === "true";
-                let current = 0;
-                const increment = target / 60;
-
-                const updateCounter = () => {
-                  current += increment;
-                  if (current < target) {
-                    counter.textContent = isDecimal
-                      ? current.toFixed(1)
-                      : Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                  } else {
-                    counter.textContent = isDecimal
-                      ? target.toFixed(1)
-                      : target;
-                  }
-                };
-
-                updateCounter();
-              }, index * 200);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      const statsSection = document.querySelector(".stats");
-      if (statsSection) {
-        observer.observe(statsSection);
-      }
-
-      // Form Submission
-      const contactForm = document.getElementById("contactForm");
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-
-        // Simulate form submission
-        alert(
-          "Gracias por su interés. Un ejecutivo se contactará con usted en las próximas 24 horas."
-        );
-        this.reset();
-      });
-
-      // Simple Chart for Methodology (using Canvas)
-      const canvas = document.getElementById("methodologyChart");
-      if (canvas) {
-        const ctx = canvas.getContext("2d");
-        const width = canvas.width;
-        const height = canvas.height;
-
-        // Clear canvas
-        ctx.clearRect(0, 0, width, height);
-
-        // Draw axes
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(40, height - 40);
-        ctx.lineTo(width - 20, height - 40);
-        ctx.moveTo(40, height - 40);
-        ctx.lineTo(40, 20);
-        ctx.stroke();
-
-        // Draw data points
-        const data = [
-          { x: 80, y: height - 100 },
-          { x: 150, y: height - 150 },
-          { x: 220, y: height - 120 },
-          { x: 290, y: height - 180 },
-          { x: 360, y: height - 200 },
-        ];
-
-        // Draw line
-        ctx.strokeStyle = "#ca7131";
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        data.forEach((point, index) => {
-          if (index === 0) {
-            ctx.moveTo(point.x, point.y);
-          } else {
-            ctx.lineTo(point.x, point.y);
-          }
-        });
-        ctx.stroke();
-
-        // Draw points
-        ctx.fillStyle = "#ca7131";
-        data.forEach((point) => {
-          ctx.beginPath();
-          ctx.arc(point.x, point.y, 5, 0, 2 * Math.PI);
-          ctx.fill();
-        });
-
-        // Labels
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "12px Lato";
-        ctx.fillText("Riesgo", width / 2 - 20, height - 10);
-        ctx.save();
-        ctx.translate(15, height / 2);
-        ctx.rotate(-Math.PI / 2);
-        ctx.fillText("Retorno", 0, 0);
-        ctx.restore();
-      }
-    </script>
-  </body>
+    <script src="app.js"></script>
+</body>
 </html>
