@@ -346,6 +346,7 @@ ul {
   justify-content: center;
   padding-top: 80px;
   position: relative;
+  isolation: isolate;
 }
 
 .hero__container {
@@ -411,6 +412,20 @@ ul {
   border-radius: 2px;
   transform: translateX(-50%);
   animation: scrollDot 2s ease infinite;
+}
+
+/* La imagen va por debajo del contenido y del estilo actual */
+.hero::before, #hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/Im%C3%A1genes/Untitled-14-04.jpg"); /* o "/assets/Imágenes/2.jpg" */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.28;             /* mantiene el look profesional; ajusta 0.2–0.4 si quieres */
+  z-index: -1;               /* queda detrás del contenido del hero */
+  transform: scale(1.02);    /* evita bordes en algunos tamaños */
 }
 
 @keyframes fadeInUp {
