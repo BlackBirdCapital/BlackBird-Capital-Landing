@@ -72,6 +72,7 @@ body::before {
     linear-gradient(180deg, var(--color-negro-noche) 0%, var(--color-azul-tormenta) 50%, var(--color-negro-noche) 100%);
   z-index: -2;
   animation: backgroundShift 30s ease infinite;
+  will-change: transform;
 }
 
 @keyframes backgroundShift {
@@ -143,7 +144,6 @@ ul {
 .logo {
   height: 2.5rem;
   width: auto;
-  /* filter: brightness(-1) invert(1); */
 }
 
 .sr-only {
@@ -360,7 +360,6 @@ ul {
   font-weight: 400;
 }
 
-
 .hero__title-line {
   display: block;
   opacity: 0;
@@ -488,6 +487,7 @@ section {
   position: relative;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  will-change: transform;
 }
 
 .card::before {
@@ -1199,13 +1199,13 @@ section {
     filter: grayscale(0%);
 }
 
-/* Responsive */
+/* Responsive Optimizado */
 @media (max-width: 1024px) {
   .services__grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .funds__track {
+  .funds__carousel {
     padding: 0 var(--space-4);
   }
   
@@ -1215,6 +1215,11 @@ section {
   
   .team-member {
     flex: 0 0 280px;
+  }
+  
+  .cta__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
   
   .footer__main {
@@ -1227,6 +1232,10 @@ section {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
   .header__container {
     padding: var(--space-3) var(--container-padding);
   }
@@ -1295,34 +1304,98 @@ section {
     width: 100%;
     padding: var(--space-4) var(--space-6);
   }
+
+  .hero__container {
+    padding: var(--space-4);
+  }
+
+  .hero__cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__cta-group .btn {
+    width: 100%;
+  }
+
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .funds__carousel {
+    padding: 0 var(--space-3);
+  }
+
+  .fund-card {
+    flex: 0 0 280px;
+  }
+
+  .team-member {
+    flex: 0 0 260px;
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta__form {
+    padding: var(--space-4);
+  }
+
+  .footer__nav {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__bottom nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
   :root {
     --container-padding: 1rem;
+    --space-8: 3rem;
+    --space-7: 2.5rem;
+    --space-6: 1.75rem;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .logo {
+    height: 2rem;
   }
   
   .hero__title {
     font-size: 2rem;
   }
   
-  .hero__cta-group {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .hero__cta-group .btn {
-    width: 100%;
-  }
-  
   .fund-card {
     flex: 0 0 100%;
-    margin: 0 var(--space-4);
+    margin: 0 var(--space-3);
+  }
+  
+  .fund-card__metrics {
+    grid-template-columns: 1fr;
   }
   
   .team-member {
     flex: 0 0 100%;
-    margin: 0 var(--space-4);
+    margin: 0 var(--space-3);
   }
   
   .stats__grid {
@@ -1332,6 +1405,16 @@ section {
   .carousel-btn {
     width: 40px;
     height: 40px;
+    font-size: 1rem;
+  }
+
+  .accordion__trigger {
+    font-size: 1rem;
+    padding: var(--space-4) 0;
+  }
+
+  .cta__benefits {
+    font-size: 0.875rem;
   }
 }
 
@@ -1392,4 +1475,3 @@ section {
     page-break-inside: avoid;
   }
 }
-
