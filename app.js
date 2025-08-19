@@ -20,8 +20,9 @@
   const initHeader = () => {
     const header = document.querySelector('.header');
     const toggle = document.querySelector('.nav__toggle');
-    const menu = document.querySelector('.nav__menu');
+    const navWrapper = document.querySelector('.nav__wrapper');
     const links = document.querySelectorAll('.nav__link');
+    const ctaButtons = document.querySelectorAll('.header__cta .btn');
     
     if (!header) return;
 
@@ -30,99 +31,94 @@
     let ticking = false;
     
     const handleScroll = () => {
-      const currentScroll = window.pageYOffset;
-      
-      // Add scrolled class
-      if (currentScroll > 100) {
-        header.classList.add('header--scrolled');
-      } else {
-        header.classList.remove('header--scrolled');
-      }
-      
-      // Hide/show on scroll direction
-      if (currentScroll > lastScroll && currentScroll > 300) {
-        header.classList.add('header--hidden');
-      } else {
-        header.classList.remove('header--hidden');
-      }
-      
-      lastScroll = currentScroll;
-      ticking = false;
+        const currentScroll = window.pageYOffset;
+        
+        // Add scrolled class
+        if (currentScroll > 100) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
+        }
+        
+        // Hide/show on scroll direction
+        if (currentScroll > lastScroll && currentScroll > 300 && !state.menuOpen) {
+            header.classList.add('header--hidden');
+        } else {
+            header.classList.remove('header--hidden');
+        }
+        
+        lastScroll = currentScroll;
+        ticking = false;
     };
     
     const requestScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(handleScroll);
-        ticking = true;
-      }
+        if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
     };
     
     window.addEventListener('scroll', requestScroll, { passive: true });
     
     // Mobile menu toggle
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        state.menuOpen = !state.menuOpen;
-        toggle.setAttribute('aria-expanded', state.menuOpen);
-        menu.classList.toggle('is-active', state.menuOpen);
-      });
-      
-      // Close on link click
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-          if (state.menuOpen) {
-            state.menuOpen = false;
-            toggle.setAttribute('aria-expanded', false);
-            menu.classList.remove('is-active');
-          }
+    if (toggle && navWrapper) {
+        toggle.addEventListener('click', () => {
+            state.menuOpen = !state.menuOpen;
+            toggle.setAttribute('aria-expanded', state.menuOpen);
+            navWrapper.classList.toggle('is-active', state.menuOpen);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = state.menuOpen ? 'hidden' : '';
         });
-      });
-      
-      // Close on outside click
-      document.addEventListener('click', (e) => {
-        if (state.menuOpen && !menu.contains(e.target) && !toggle.contains(e.target)) {
-          state.menuOpen = false;
-          toggle.setAttribute('aria-expanded', false);
-          menu.classList.remove('is-active');
-        }
-      });
-      
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (state.menuOpen && e.key === 'Escape') {
-          state.menuOpen = false;
-          toggle.setAttribute('aria-expanded', false);
-          menu.classList.remove('is-active');
-          toggle.focus();
-        }
-      });
-    }
-    
-    // Active link highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -60% 0px',
-      threshold: 0.2
-    };
-    
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          links.forEach(link => {
-            link.classList.remove('nav__link--active');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('nav__link--active');
+        
+        // Close on link click
+        const closeMenu = () => {
+            if (state.menuOpen) {
+                state.menuOpen = false;
+                toggle.setAttribute('aria-expanded', false);
+                navWrapper.classList.remove('is-active');
+                document.body.style.overflow = '';
             }
-          });
-        }
-      });
-    };
-    
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    sections.forEach(section => observer.observe(section));
-  };
+        };
+
+        links.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close on CTA button click
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', closeMenu);
+        });
+        
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (state.menuOpen && 
+                !navWrapper.contains(e.target) && 
+                !toggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+        
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (state.menuOpen && e.key === 'Escape') {
+                closeMenu();
+                toggle.focus();
+            }
+        });
+
+        // Handle resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768 && state.menuOpen) {
+                    closeMenu();
+                }
+            }, 250);
+        });
+    }
+};
 
   /**
    * Smooth scroll for anchor links
