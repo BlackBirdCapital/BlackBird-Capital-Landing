@@ -423,7 +423,7 @@ ul {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.28;             /* mantiene el look profesional; ajusta 0.2–0.4 si quieres */
+  opacity: 0.1;             /* mantiene el look profesional; ajusta 0.2–0.4 si quieres */
   z-index: -1;               /* queda detrás del contenido del hero */
   transform: scale(1.02);    /* evita bordes en algunos tamaños */
 }
