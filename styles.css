@@ -419,7 +419,7 @@ ul {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/Im%C3%A1genes/Untitled-14-04.jpg"); /* o "/assets/Imágenes/2.jpg" */
+  background-image: url("/assets/Imágenes/Untitled-14-04.jpg"); /* o "/assets/Imágenes/2.jpg" */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
