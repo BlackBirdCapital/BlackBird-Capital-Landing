@@ -578,6 +578,56 @@ section {
   border-radius: var(--radius-xl);
 }
 
+/* Disclaimer Banner */
+.disclaimer-banner {
+  background: linear-gradient(135deg, rgba(202, 113, 49, 0.15) 0%, rgba(202, 113, 49, 0.08) 100%);
+  border: 1px solid rgba(202, 113, 49, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.disclaimer-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-terracota), transparent);
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.disclaimer-banner p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-gris-claro);
+  letter-spacing: 0.02em;
+}
+
+.disclaimer-banner strong {
+  color: var(--color-terracota);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin-right: var(--space-2);
+}
+
+.disclaimer-banner--stats {
+  margin-top: var(--space-5);
+}
+
+
 /* Fondos de inversión */
 .funds__carousel {
   position: relative;
@@ -1249,6 +1299,21 @@ section {
 @media (max-width: 768px) {
   :root {
     --container-padding: 1rem;
+  }
+
+    .disclaimer-banner {
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .disclaimer-banner p {
+    font-size: 0.85rem;
+  }
+
+  .disclaimer-banner strong {
+    display: block;
+    margin-bottom: var(--space-1);
+    margin-right: 0;
   }
 
   .header__container {
