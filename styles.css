@@ -8,7 +8,7 @@
   --color-azul-tormenta: #161c28;
   --color-gris-nube: #363d49;
   --color-gris-claro: #eae9e3;
-  --color-terracota: #ca7131;
+  --color-terracota: #C68346;
   --color-blanco-pulcro: #ffffff;
   
   --space-1: 0.25rem;
@@ -176,7 +176,7 @@ ul {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-terracota) 0%, #b85f26 100%);
+  background: linear-gradient(135deg, var(--color-terracota) 0%, rgba(202, 113, 49, 0.458) 100%);
   color: var(--color-blanco-pulcro);
   border: 1px solid transparent;
 }
@@ -534,7 +534,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-terracota), #b85f26);
+  background: linear-gradient(135deg, var(--color-terracota), rgba(202, 113, 49, 0.458));
   border-radius: var(--radius-md);
   margin-bottom: var(--space-4);
   font-size: 1.5rem;
@@ -993,7 +993,7 @@ section {
 /* CTA Final */
 .cta {
   padding: var(--space-8) 0;
-  background: linear-gradient(135deg, var(--color-terracota) 0%, #b85f26 100%);
+  background: linear-gradient(135deg, var(--color-terracota) 0%, rgba(202, 113, 49, 0.458) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1162,7 +1162,7 @@ section {
 }
 
 .newsletter__form button:hover {
-  background: #b85f26;
+  background: rgba(202, 113, 49, 0.458);
 }
 
 .footer__bottom {
