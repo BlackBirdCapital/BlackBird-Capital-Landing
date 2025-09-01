@@ -53,6 +53,57 @@
     <script src="app.js" defer></script>
 </head>
 <body>
+<!-- Popup de Mantenimiento -->
+    <div class="maintenance-overlay" id="maintenanceOverlay">
+        <div class="maintenance-popup" role="dialog" aria-labelledby="maintenance-title" aria-describedby="maintenance-desc">
+            
+            <!-- Header -->
+            <div class="maintenance-header">
+                <img src="/assets/logo-blanco-bajada.svg" alt="BlackBird Capital" class="maintenance-logo">
+                
+                <div class="maintenance-icon">
+                    <img src="/assets/iso3.svg" alt="" width="48" height="48" loading="lazy" />
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="maintenance-content">
+                <h2 id="maintenance-title" class="maintenance-title">Sitio en Mantenimiento</h2>
+                <p class="maintenance-subtitle">Estamos mejorando su experiencia</p>
+                <p class="maintenance-description">
+                    Nuestro equipo está trabajando en importantes actualizaciones para brindarle un mejor servicio. 
+                    El sitio estará disponible proximamente.
+                </p>
+
+                <!-- Features -->
+                <div class="maintenance-features">
+                    <div class="maintenance-features-title">Próximamente:</div>
+                    <ul>
+                        <li>Nueva plataforma de inversión digital</li>
+                        <li>Portal de clientes mejorado</li>
+                        <li>Herramientas de análisis en tiempo real</li>
+                        <li>Integración con mercados internacionales</li>
+                    </ul>
+                </div>
+
+                <!-- Footer -->
+                <div class="maintenance-footer">
+                    <a href="mailto:invest@blackbirdcapital.cl" class="btn btn--primary">
+                        Contáctanos
+                    </a>
+                    <button class="btn btn--ghost maintenance-close" id="closeBtn" onclick="closeMaintenancePopup()">
+                        Continuar al Sitio
+                    </button>
+                </div>
+
+                <!-- Timer -->
+                <div class="maintenance-timer" id="timer">
+                    El botón para continuar aparecerá en <span id="countdown">5</span> segundos
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Principal -->
     <header class="header" role="banner">
         <div class="header__container">
