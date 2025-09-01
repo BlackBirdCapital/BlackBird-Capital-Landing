@@ -1,5 +1,5 @@
 /**
- * BlackBird Capital - JavaScript Optimizado
+ * BlackBird Capital - JavaScript Optimizado con Popup de Mantenimiento
  * Progressive Enhancement con funcionalidad unificada
  */
 
@@ -11,7 +11,8 @@
     menuOpen: false,
     currentFundIndex: 0,
     currentTeamIndex: 0,
-    prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    maintenanceShown: false
   };
 
   /**
@@ -41,6 +42,61 @@
         setTimeout(() => inThrottle = false, limit);
       }
     }
+  };
+
+  /**
+   * Popup de Mantenimiento
+   */
+  const initMaintenancePopup = () => {
+    const overlay = document.getElementById('maintenanceOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const timerElement = document.getElementById('countdown');
+    const timer = document.getElementById('timer');
+    
+    if (!overlay) return;
+
+    // Mostrar el popup al cargar
+    state.maintenanceShown = true;
+    document.body.style.overflow = 'hidden';
+
+    // Countdown para mostrar el botón de cerrar
+    let countdown = 2
+    
+    const interval = setInterval(() => {
+      countdown--;
+      if (timerElement) {
+        timerElement.textContent = countdown;
+      }
+      
+      if (countdown <= 0) {
+        clearInterval(interval);
+        if (closeBtn) {
+          closeBtn.classList.add('show');
+        }
+        if (timer) {
+          timer.style.display = 'none';
+        }
+      }
+    }, 1000);
+
+    // Función global para cerrar el popup
+    window.closeMaintenancePopup = function() {
+      if (overlay) {
+        overlay.style.animation = 'fadeOut 0.3s ease forwards';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          document.body.style.overflow = '';
+          state.maintenanceShown = false;
+        }, 300);
+      }
+    };
+
+    // Cerrar con ESC después del countdown
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && countdown <= 0 && state.maintenanceShown) {
+        window.closeMaintenancePopup();
+      }
+    });
   };
 
   /**
@@ -467,6 +523,9 @@
     
     console.log('BlackBird Capital - Initializing');
     
+    // Popup de mantenimiento (primero)
+    initMaintenancePopup();
+    
     // Core functionality
     initHeader();
     initSmoothScroll();
@@ -507,6 +566,7 @@
   // Public API
   window.BlackBirdCapital = {
     state,
-    reinit: init
+    reinit: init,
+    closeMaintenancePopup: window.closeMaintenancePopup
   };
 })();

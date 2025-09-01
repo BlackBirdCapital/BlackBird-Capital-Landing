@@ -1555,3 +1555,297 @@ section {
     page-break-inside: avoid;
   }
 }
+
+/* Overlay del popup */
+.maintenance-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Container del popup */
+.maintenance-popup {
+    background: rgba(54, 61, 73, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-7);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* Borde superior con gradiente */
+.maintenance-popup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--color-terracota), 
+        rgba(202, 113, 49, 0.458),
+        var(--color-terracota),
+        transparent
+    );
+    animation: shimmer 3s ease infinite;
+}
+
+/* Pattern de fondo sutil */
+.maintenance-popup::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at top right, rgba(202, 113, 49, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(22, 28, 40, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Header del popup */
+.maintenance-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+}
+
+.maintenance-logo {
+    height: 3rem;
+    margin: 0 auto var(--space-5);
+    opacity: 0.9;
+    filter: brightness(1.1);
+}
+
+.maintenance-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-5);
+    background: linear-gradient(135deg, var(--color-terracota) 0%, rgba(202, 113, 49, 0.458) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: pulse 2s ease infinite;
+}
+
+.maintenance-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--color-blanco-pulcro);
+}
+
+/* Contenido del popup */
+.maintenance-content {
+    text-align: center;
+}
+
+.maintenance-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: var(--space-4);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-blanco-pulcro);
+}
+
+.maintenance-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-gris-claro);
+    margin-bottom: var(--space-3);
+    opacity: 0.9;
+}
+
+.maintenance-description {
+    font-size: 0.95rem;
+    color: var(--color-gris-claro);
+    opacity: 0.75;
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+}
+
+/* Lista de características */
+.maintenance-features {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    text-align: left;
+}
+
+.maintenance-features-title {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracota);
+    margin-bottom: var(--space-3);
+    font-weight: 600;
+}
+
+.maintenance-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.maintenance-features li {
+    padding: var(--space-2) 0;
+    padding-left: var(--space-5);
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--color-gris-claro);
+    opacity: 0.85;
+}
+
+.maintenance-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-terracota);
+    font-weight: bold;
+}
+
+/* Footer del popup */
+.maintenance-footer {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.maintenance-close {
+    display: none; /* Se mostrará con JS después de 5 segundos */
+}
+
+.maintenance-close.show {
+    display: inline-flex;
+}
+
+/* Contador */
+.maintenance-timer {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracota);
+    margin-top: var(--space-4);
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.5s forwards;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(202, 113, 49, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(202, 113, 49, 0);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .maintenance-popup {
+        padding: var(--space-5);
+        margin: var(--space-3);
+    }
+
+    .maintenance-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .maintenance-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .maintenance-title {
+        font-size: 1.5rem;
+    }
+
+    .maintenance-subtitle {
+        font-size: 1rem;
+    }
+
+    .maintenance-features {
+        padding: var(--space-3);
+    }
+}
+
+@media (max-width: 480px) {
+    .maintenance-popup {
+        padding: var(--space-4);
+    }
+
+    .maintenance-footer {
+        flex-direction: column;
+    }
+
+    .maintenance-footer .btn {
+        width: 100%;
+    }
+}
+
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+    .maintenance-popup {
+        border: 2px solid var(--color-blanco-pulcro);
+    }
+}
+
+/* Animaciones reducidas */
+@media (prefers-reduced-motion: reduce) {
+    .maintenance-overlay,
+    .maintenance-popup,
+    .maintenance-icon,
+    .maintenance-popup::before,
+    .maintenance-timer {
+        animation: none !important;
+    }
+}
