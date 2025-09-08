@@ -258,13 +258,29 @@
     const dots = dotsContainer?.querySelectorAll('button');
     
     const getMetrics = () => {
-      const cardWidth = cards[0]?.getBoundingClientRect().width || 0;
+      // Si estamos en centerMode, medimos la tarjeta activa (si existe)
+      const activeIndex = centerMode ? (state[stateKey] ?? 0) : 0;
+      const sampleCard = cards[activeIndex] || cards[0];
+
+      // offsetWidth ignora transforms (scale), así evitamos “saltos” de centrado
+      const cardWidth = sampleCard?.offsetWidth || 0;
+
       const gap = parseFloat(getComputedStyle(track).gap) || 32;
       const containerWidth = track.parentElement?.clientWidth || 0;
-      const visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
-      const maxIndex = Math.max(0, cards.length - visible);
+
+      // En centerMode “mostramos” 1 a efectos de cálculo
+      const visible = centerMode
+        ? 1
+        : Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+
+      // En centerMode podemos llegar a la última tarjeta
+      const maxIndex = centerMode
+        ? Math.max(0, cards.length - 1)
+        : Math.max(0, cards.length - visible);
+
       return { cardWidth, gap, visible, maxIndex, containerWidth };
     };
+
     
     const updateCarousel = () => {
       const metrics = getMetrics();

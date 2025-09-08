@@ -628,16 +628,25 @@ section {
 }
 
 
-/* Fondos de inversión */
+/* ========================================================================== 
+   FONDOS DE INVERSIÓN - CORREGIDO
+   ========================================================================== */
 .funds__carousel {
   position: relative;
   overflow: hidden;
-  padding: 0 var(--space-8);
+  width: 100%;
+}
+
+/* Wrapper para mejor control del overflow */
+.funds__track-wrapper {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .funds__track {
   display: flex;
-  gap: var(--space-5);
+  gap: 1.5rem;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   padding: var(--space-4) 0;
 }
@@ -744,7 +753,7 @@ section {
   background: var(--color-terracota);
 }
 
-/* Controles de carrusel */
+/* Controles compartidos de carrusel */
 .funds__controls,
 .team__controls {
   display: flex;
@@ -840,6 +849,8 @@ section {
   padding: var(--space-5);
   transition: all 0.4s ease;
   text-align: center;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 .value-card:hover {
@@ -853,7 +864,7 @@ section {
   height: 48px;
   margin: 0 auto var(--space-4);
   display: flex;
-  align-items: center;
+  align-items: center 20%;
   justify-content: center;
   background: linear-gradient(135deg, var(--color-terracota), #b85f26);
   border-radius: var(--radius-md);
@@ -870,15 +881,25 @@ section {
   margin: 0;
 }
 
-/* Equipo */
+/* ========================================================================== 
+   EQUIPO - CORREGIDO
+   ========================================================================== */
 .team__carousel {
   position: relative;
   overflow: hidden;
+  width: 100%;
+}
+
+/* Wrapper para mejor control del overflow */
+.team__track-wrapper {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .team__track {
   display: flex;
-  gap: var(--space-5);
+  gap: 1.5rem;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   padding: var(--space-4) 0;
 }
@@ -893,12 +914,11 @@ section {
   text-align: center;
   transition: all 0.5s ease;
   opacity: 0.6;
-  transform: scale(0.9);
+  cursor: pointer;
 }
 
 .team-member.active {
   opacity: 1;
-  transform: scale(1);
   background: rgba(54, 61, 73, 0.6);
   box-shadow: var(--shadow-xl);
 }
@@ -923,15 +943,18 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%; /* CORREGIDO: Posiciona la imagen arriba-centro */
   filter: grayscale(50%);
   transition: filter 0.5s ease;
 }
 
-.team-member.active .team-member__image img {
+.team-member__image img {
   filter: grayscale(0%);
 }
 
 .team-member h3 {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
   margin-bottom: var(--space-2);
 }
 
@@ -1264,12 +1287,10 @@ section {
     filter: grayscale(0%);
 }
 
-/* Responsive Optimizado */
+/* ========================================================================== 
+   RESPONSIVE MEJORADO PARA CARRUSELES
+   ========================================================================== */
 @media (max-width: 1024px) {
-  .services__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
   .funds__carousel {
     padding: 0 var(--space-4);
   }
@@ -1279,207 +1300,47 @@ section {
   }
   
   .team-member {
-    flex: 0 0 280px;
-  }
-  
-  .cta__content {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-  
-  .footer__main {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer__nav {
-    grid-template-columns: repeat(2, 1fr);
+    flex: 0 0 320px;
   }
 }
 
 @media (max-width: 768px) {
-  :root {
-    --container-padding: 1rem;
-  }
-
-    .disclaimer-banner {
-    padding: var(--space-2) var(--space-3);
-    margin-bottom: var(--space-4);
-  }
-
-  .disclaimer-banner p {
-    font-size: 0.85rem;
-  }
-
-  .disclaimer-banner strong {
-    display: block;
-    margin-bottom: var(--space-1);
-    margin-right: 0;
-  }
-
-  .header__container {
-    padding: var(--space-3) var(--container-padding);
-  }
-
-  .nav__toggle {
-    display: flex;
-  }
-
-  .nav__wrapper {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: var(--space-5);
-    gap: var(--space-4);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    max-height: calc(100vh - 60px);
-    overflow-y: auto;
-  }
-
-  .nav__wrapper.is-active {
-    transform: translateX(0);
-  }
-
-  .nav__menu {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-2);
-    width: 100%;
-  }
-
-  .nav__menu li {
-    width: 100%;
-  }
-
-  .nav__link {
-    display: block;
-    padding: var(--space-3) 0;
-    font-size: 1.125rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .nav__link::after {
-    display: none;
-  }
-
-  .nav__link:active {
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .header__cta {
-    flex-direction: column;
-    width: 100%;
-    gap: var(--space-3);
-    margin-top: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .header__cta .btn {
-    width: 100%;
-    padding: var(--space-4) var(--space-6);
-  }
-
-  .hero__container {
-    padding: var(--space-4);
-  }
-
-  .hero__cta-group {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero__cta-group .btn {
-    width: 100%;
-  }
-
-  .services__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
   .funds__carousel {
     padding: 0 var(--space-3);
   }
-
+  
   .fund-card {
     flex: 0 0 280px;
   }
-
-  .team-member {
-    flex: 0 0 260px;
-  }
-
-  .stats__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
-  }
-
-  .values__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cta__form {
-    padding: var(--space-4);
-  }
-
-  .footer__nav {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
-  .footer__bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer__bottom nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --container-padding: 1rem;
-    --space-8: 3rem;
-    --space-7: 2.5rem;
-    --space-6: 1.75rem;
-  }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.25rem; }
-  
-  .logo {
-    height: 2rem;
-  }
-  
-  .hero__title {
-    font-size: 2rem;
-  }
-  
-  .fund-card {
-    flex: 0 0 100%;
-    margin: 0 var(--space-3);
-  }
   
   .fund-card__metrics {
-    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .metric__value {
+    font-size: 1.25rem;
   }
   
   .team-member {
-    flex: 0 0 100%;
-    margin: 0 var(--space-3);
+    flex: 0 0 280px;
   }
   
-  .stats__grid {
-    grid-template-columns: 1fr;
+  .team-member__image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .team-member.active .team-member__image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.1rem;
+  }
+  
+  .team-member__bio {
+    font-size: 0.875rem;
   }
   
   .carousel-btn {
@@ -1487,14 +1348,84 @@ section {
     height: 40px;
     font-size: 1rem;
   }
+}
 
-  .accordion__trigger {
-    font-size: 1rem;
-    padding: var(--space-4) 0;
+@media (max-width: 480px) {
+  .funds__track,
+  .team__track {
+    gap: 1rem;
   }
+  
+  .fund-card {
+    flex: 0 0 calc(100vw - 3rem);
+    max-width: 320px;
+    padding: var(--space-5);
+  }
+  
+  .fund-card__metrics {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  
+  .fund-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .metric__value {
+    font-size: 1.125rem;
+  }
+  
+  .team-member {
+    flex: 0 0 calc(100vw - 3rem);
+    max-width: 320px;
+    padding: var(--space-4);
+  }
+  
+  .team-member__image {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .team-member.active .team-member__image {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .team-member h3 {
+    font-size: 1rem;
+  }
+  
+  .team-member__role {
+    font-size: 0.7rem;
+  }
+  
+  .team-member__bio {
+    font-size: 0.8rem;
+  }
+}
 
-  .cta__benefits {
-    font-size: 0.875rem;
+@media (max-width: 360px) {
+  .fund-card,
+  .team-member {
+    flex: 0 0 calc(100vw - 2rem);
+  }
+  
+  .fund-card {
+    padding: var(--space-4);
+  }
+  
+  .team-member {
+    padding: var(--space-3);
+  }
+  
+  .team-member__image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .team-member.active .team-member__image {
+    width: 100px;
+    height: 100px;
   }
 }
 
