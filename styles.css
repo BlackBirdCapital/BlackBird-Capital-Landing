@@ -989,6 +989,7 @@ section {
   object-fit: cover;
   object-position: center 20%;
   transition: filter 0.5s ease;
+  padding-bottom: var(--space-2);
 }
 
 .team-member h3 {
@@ -1037,7 +1038,8 @@ section {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 1800;
+  
 }
 
 .team-modal.active {
@@ -1686,6 +1688,7 @@ section {
     width: 150px;
     height: 150px;
     margin-bottom: var(--space-4);
+    border-radius: 50%;
   }
   
   .team-modal__left h3 {
@@ -1829,4 +1832,9 @@ section {
   section {
     page-break-inside: avoid;
   }
+}
+
+.team-modal__image {
+  border-radius: 50%;
+  margin-bottom: var(--space-3);
 }
