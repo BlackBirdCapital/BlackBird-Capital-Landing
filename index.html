@@ -14,13 +14,13 @@
     <title>BlackBird Capital - Wealth Management. Finance Solutions</title>
     <link
       rel="icon"
-      href="assets\iso3.svg"
+      href="assets/iso3.svg"
       type="image/svg+xml"
       media="(prefers-color-scheme: light)"
     />
     <link
       rel="icon"
-      href="assets\iso.svg"
+      href="assets/iso.svg"
       type="image/svg+xml"
       media="(prefers-color-scheme: dark)"
     />
@@ -59,7 +59,7 @@
     <link rel="preload" href="styles.css" as="style" />
     <link rel="preload" href="app.js" as="script" />
     <link rel="preload" href="/assets/logo-blanco-bajada.svg" as="image" />
-    <link rel="preload" href="/assets\imagenes\fondo_hero.jpg" as="image" />
+    <link rel="preload" href="/assets/imagenes/fondo_hero.jpg" as="image" />
 
     <!-- Cargar CSS -->
     <link rel="stylesheet" href="styles.css" />
@@ -68,65 +68,16 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <!-- Popup de Mantenimiento -->
-    <!-- <div class="maintenance-overlay" id="maintenanceOverlay">
-        <div class="maintenance-popup" role="dialog" aria-labelledby="maintenance-title" aria-describedby="maintenance-desc"> -->
-
-    <!-- Header -->
-    <!-- <div class="maintenance-header">
-                <img src="assets/logo-blanco-bajada.svg" alt="BlackBird Capital"> class="maintenance-logo">
-                
-                <div class="maintenance-icon">
-                    <img src="assets/iso3.svg" alt="" width="48" height="48" loading="lazy">
-                </div>
-            </div> -->
-
-    <!-- Content -->
-    <!-- <div class="maintenance-content">
-                <h2 id="maintenance-title" class="maintenance-title">Sitio en Mantenimiento</h2>
-                <p class="maintenance-subtitle">Estamos mejorando su experiencia</p>
-                <p class="maintenance-description">
-                    Nuestro equipo está trabajando en importantes actualizaciones para brindarle un mejor servicio. 
-                    El sitio estará disponible proximamente.
-                </p> -->
-
-    <!-- Features -->
-    <!-- <div class="maintenance-features">
-                    <div class="maintenance-features-title">Próximamente:</div>
-                    <ul>
-                        <li>Nueva plataforma de inversión digital</li>
-                        <li>Portal de clientes mejorado</li>
-                        <li>Herramientas de análisis en tiempo real</li>
-                        <li>Integración con mercados internacionales</li>
-                    </ul>
-                </div> -->
-
-    <!-- Footer -->
-    <!-- <div class="maintenance-footer">
-                    <a href="mailto:invest@blackbirdcapital.cl" class="btn btn--primary">
-                        Contáctanos
-                    </a>
-                    <button class="btn btn--ghost maintenance-close" id="closeBtn" onclick="closeMaintenancePopup()">
-                        Continuar al Sitio
-                    </button>
-                </div> -->
-
-    <!-- Timer -->
-    <!-- <div class="maintenance-timer" id="timer">
-                    El botón para continuar aparecerá en <span id="countdown">5</span> segundos
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <!-- Header Principal -->
     <header class="header" role="banner">
+      <div class="header__announcement">
+        <div class="header__announcement-content">
+          Estamos trabajando en la remodelación del sitio. ¡Pronto volveremos con una experiencia renovada!
+        </div>
+      </div>
+      
       <div class="header__container">
-        <a
-          href="/"
-          class="header__logo"
-          aria-label="BlackBird Capital - Inicio"
-        >
+        <a href="/" class="header__logo" aria-label="BlackBird Capital - Inicio">
           <img
             src="./assets/logo-blanco-bajada.svg"
             alt="BlackBird Capital"
@@ -164,27 +115,14 @@
           </div>
         </nav>
       </div>
-      <div
-          style="
-            background: var(--color-terracota);
-            color: var(--color-blanco-pulcro);
-            text-align: center;
-            padding: 10px;
-          "
-        >
-          Estamos trabajando en la remodelación del sitio. ¡Pronto volveremos
-          con una experiencia renovada!
-        </div>
     </header>
 
     <main>
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__container">
-          <!-- H1 solo para accesibilidad/SEO -->
           <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
 
-          <!-- Logo SVG (archivo externo) -->
           <div class="hero__logo" role="img" aria-label="BlackBird Capital">
             <img
               src="/assets/logo-blanco-bajada.svg"
@@ -202,23 +140,13 @@
       </section>
 
       <!-- Servicios -->
-      <section
-        class="expertise"
-        id="expertise"
-        aria-labelledby="services-title"
-      >
+      <section class="expertise" id="expertise" aria-labelledby="services-title">
         <div class="container">
           <h2 id="services-title" class="section-title">Nuestro Expertise</h2>
           <div class="services__grid">
             <article class="card">
               <div class="card__icon">
-                <img
-                  src="/assets/iso.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Gestión Patrimonial</h3>
               <p>
@@ -227,16 +155,11 @@
               </p>
               <a href="#patrimonio" class="card__link">Ver más →</a>
             </article>
+            
             <article class="card">
               <span class="card__badge">Popular</span>
               <div class="card__icon">
-                <img
-                  src="/assets/iso.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Fondos de Inversión</h3>
               <p>
@@ -244,39 +167,16 @@
               </p>
               <a href="#fondos" class="card__link">Ver más →</a>
             </article>
-            <!-- <article class="card">
-                        <div class="card__icon"><img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" /></div>
-                        <h3>Fundraising Services</h3>
-                        <p>Capital y estrategia para impulsar su crecimiento.</p>
-                        <a href="#asesoria" class="card__link">Ver más →</a>
-                    </article> -->
-            <!-- <article class="card">
-                        <div class="card__icon"><img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" /></div>
-                        <h3>Private Equity</h3>
-                        <p>Inversiones privadas de alto potencial y retorno.</p>
-                        <a href="#capital" class="card__link">Ver más →</a>
-                    </article> -->
+            
             <article class="card">
               <span class="card__badge">Nuevo</span>
               <div class="card__icon">
-                <img
-                  src="/assets/iso.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Real Estate Business</h3>
               <p>Estrategias inmobiliarias para maximizar valor.</p>
               <a href="#fiscal" class="card__link">Ver más →</a>
             </article>
-            <!-- <article class="card">
-                        <div class="card__icon"><img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" /></div>
-                        <h3>Mercados Internacionales</h3>
-                        <p>Acceso a oportunidades globales de inversión.</p>
-                        <a href="#internacional" class="card__link">Ver más →</a>
-                    </article> -->
           </div>
         </div>
       </section>
@@ -284,7 +184,6 @@
       <!-- Fondos de Inversión -->
       <section class="funds" id="fondos" aria-labelledby="funds-title">
         <div class="container">
-          <!-- Aviso de valores referenciales -->
           <div class="disclaimer-banner">
             <p>
               <strong>Nota:</strong> Los valores mostrados son referenciales.
@@ -292,18 +191,15 @@
             </p>
           </div>
 
-          <h2 id="funds-title" class="section-title">
-            Nuestros Fondos de Inversión
-          </h2>
+          <h2 id="funds-title" class="section-title">Nuestros Fondos de Inversión</h2>
           <p class="section-subtitle">
             Soluciones diseñadas para diferentes perfiles de riesgo
           </p>
 
           <div class="funds__carousel">
-            <!-- Agregamos wrapper para mejor control -->
             <div class="funds__track-wrapper">
               <div class="funds__track" id="funds-track">
-                <!-- Fund Card 1 -->
+                <!-- Fund Card 1 - Activo -->
                 <article class="fund-card">
                   <div class="fund-card__header">
                     <span class="fund-card__category">Money Market</span>
@@ -324,28 +220,24 @@
                     caja libre.
                   </p>
                   <div class="fund-card__footer">
-                    <a href="/fondos/cashflow" class="fund-card__link"
-                      >Ver detalles →</a
-                    >
+                    <a href="/fondos/cashflow" class="fund-card__link">Ver detalles →</a>
                     <div class="risk-level" data-level="1">
-                      <span></span><span></span><span></span><span></span
-                      ><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
                     </div>
                   </div>
                 </article>
 
-                <!-- Fund Card 2 -->
-                <article class="fund-card">
+                <!-- Fund Card 2 - En estructuración -->
+                <article class="fund-card fund-card--upcoming">
+                  <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
-                    <span class="fund-card__category"
-                      >Distress Inmobiliario</span
-                    >
+                    <span class="fund-card__category">Distress Inmobiliario</span>
                     <h3>BlackBird Shortterm Debt</h3>
                   </div>
                   <div class="fund-card__metrics">
                     <div class="metric">
-                      <span class="metric__value">7.8%</span>
-                      <span class="metric__label">Retorno Anual</span>
+                      <span class="metric__value">7.8%*</span>
+                      <span class="metric__label">Retorno Objetivo</span>
                     </div>
                     <div class="metric">
                       <span class="metric__value">&lt; 1 año</span>
@@ -357,26 +249,24 @@
                     gubernamental.
                   </p>
                   <div class="fund-card__footer">
-                    <a href="/fondos/shortterm" class="fund-card__link"
-                      >Ver detalles →</a
-                    >
+                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
                     <div class="risk-level" data-level="2">
-                      <span></span><span></span><span></span><span></span
-                      ><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
                     </div>
                   </div>
                 </article>
 
-                <!-- Fund Card 3 -->
-                <article class="fund-card">
+                <!-- Fund Card 3 - En estructuración -->
+                <article class="fund-card fund-card--upcoming">
+                  <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
                     <span class="fund-card__category">Renta Fija MP</span>
                     <h3>BlackBird Midterm Debt</h3>
                   </div>
                   <div class="fund-card__metrics">
                     <div class="metric">
-                      <span class="metric__value">10.5%</span>
-                      <span class="metric__label">Retorno Anual</span>
+                      <span class="metric__value">10.5%*</span>
+                      <span class="metric__label">Retorno Objetivo</span>
                     </div>
                     <div class="metric">
                       <span class="metric__value">1-5 años</span>
@@ -387,25 +277,23 @@
                     Portafolio diversificado de bonos corporativos y soberanos.
                   </p>
                   <div class="fund-card__footer">
-                    <a href="/fondos/midterm" class="fund-card__link"
-                      >Ver detalles →</a
-                    >
+                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
                     <div class="risk-level" data-level="3">
-                      <span></span><span></span><span></span><span></span
-                      ><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
                     </div>
                   </div>
                 </article>
 
-                <!-- Fund Card 4 -->
-                <article class="fund-card">
+                <!-- Fund Card 4 - En estructuración -->
+                <article class="fund-card fund-card--upcoming">
+                  <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
                     <span class="fund-card__category">Alternative</span>
                     <h3>BlackBird Real Estate</h3>
                   </div>
                   <div class="fund-card__metrics">
                     <div class="metric">
-                      <span class="metric__value">18%+</span>
+                      <span class="metric__value">18%+*</span>
                       <span class="metric__label">TIR Objetivo</span>
                     </div>
                     <div class="metric">
@@ -415,12 +303,9 @@
                   </div>
                   <p>Inversiones en activos inmobiliarios Distress.</p>
                   <div class="fund-card__footer">
-                    <a href="/fondos/realestate" class="fund-card__link"
-                      >Ver detalles →</a
-                    >
+                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
                     <div class="risk-level" data-level="4">
-                      <span></span><span></span><span></span><span></span
-                      ><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
                     </div>
                   </div>
                 </article>
@@ -428,26 +313,20 @@
             </div>
 
             <div class="funds__controls">
-              <button class="carousel-btn" id="prevBtn" aria-label="Anterior">
-                ←
-              </button>
+              <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
               <div class="carousel-dots"></div>
-              <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">
-                →
-              </button>
+              <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">→</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Estadísticas -->
-      <section class="stats" aria-labelledby="stats-title">
+      <!-- Estadísticas (Comentado temporalmente) -->
+      <!-- <section class="stats" aria-labelledby="stats-title">
         <div class="container">
-          <!-- Aviso de valores referenciales -->
           <div class="disclaimer-banner disclaimer-banner--stats">
             <p>
-              <strong>Importante:</strong> Estadísticas de referencia - Sitio en
-              desarrollo
+              <strong>Importante:</strong> Estadísticas de referencia - Sitio en desarrollo
             </p>
           </div>
 
@@ -471,7 +350,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Nosotros -->
       <section class="about" id="nosotros" aria-labelledby="about-title">
@@ -481,13 +360,7 @@
           <div class="values__grid">
             <article class="value-card">
               <div class="value-card__icon">
-                <img
-                  src="/assets/iso2.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Excelencia</h3>
               <p>
@@ -498,13 +371,7 @@
 
             <article class="value-card">
               <div class="value-card__icon">
-                <img
-                  src="/assets/iso2.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Confianza</h3>
               <p>
@@ -515,13 +382,7 @@
 
             <article class="value-card">
               <div class="value-card__icon">
-                <img
-                  src="/assets/iso2.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  loading="lazy"
-                />
+                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Integridad</h3>
               <p>
@@ -542,7 +403,6 @@
           </p>
 
           <div class="team__carousel">
-            <!-- Agregamos wrapper para mejor control -->
             <div class="team__track-wrapper">
               <div class="team__track" id="teamTrack">
                 <article class="team-member active">
@@ -562,6 +422,9 @@
                     40+ años de experiencia en capital privado, finanzas
                     corporativas y derivados financieros.
                   </p>
+                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrg">
+                    Ver más detalles
+                  </button>
                 </article>
 
                 <article class="team-member">
@@ -582,30 +445,37 @@
                     Anteriormente CFO & Investment Manager en Grupo Bancard, CFO
                     en Houm Group Inc.
                   </p>
+                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrp">
+                    Ver más detalles
+                  </button>
                 </article>
               </div>
             </div>
 
             <div class="team__controls">
-              <button
-                class="carousel-btn"
-                id="teamPrevBtn"
-                aria-label="Anterior"
-              >
-                ←
-              </button>
+              <button class="carousel-btn" id="teamPrevBtn" aria-label="Anterior">←</button>
               <div class="carousel-dots"></div>
-              <button
-                class="carousel-btn"
-                id="teamNextBtn"
-                aria-label="Siguiente"
-              >
-                →
-              </button>
+              <button class="carousel-btn" id="teamNextBtn" aria-label="Siguiente">→</button>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Modal para detalles del equipo -->
+      <div class="team-modal" id="teamModal">
+        <div class="team-modal__overlay"></div>
+        <div class="team-modal__content">
+          <button class="team-modal__close" aria-label="Cerrar">×</button>
+          <div class="team-modal__header">
+            <h3 id="modalTitle"></h3>
+            <p id="modalRole"></p>
+          </div>
+          <div class="team-modal__body" id="modalBody">
+            <!-- Contenido dinámico -->
+          </div>
+        </div>
+      </div>
+
       <!-- FAQ -->
       <section class="faq" aria-labelledby="faq-title">
         <div class="container">
@@ -660,8 +530,7 @@
                 ¿Listo para hacer <span>crecer</span> su patrimonio?
               </h2>
               <p>
-                Únase a más de 500 inversionistas que confían en BlackBird
-                Capital.
+                Únase a más de 500 inversionistas que confían en BlackBird Capital.
               </p>
               <ul class="cta__benefits">
                 <li>✓ Asesoría personalizada sin costo inicial</li>
@@ -673,15 +542,10 @@
             <div class="cta__form">
               <h3>Solicite su consulta gratuita</h3>
               <div class="cta__actions">
-                <a href="#contacto" class="btn btn--primary-dark"
-                  >Agendar reunión</a
-                >
-                <a
-                  href="/assets/brochure.pdf"
-                  class="btn btn--secondary"
-                  download
-                  >Descargar brochure</a
-                >
+                <a href="#contacto" class="btn btn--primary-dark">Agendar reunión</a>
+                <a href="/assets/brochure.pdf" class="btn btn--secondary" download>
+                  Descargar brochure
+                </a>
               </div>
               <div class="cta__contact">
                 <p>+56 2 2345 6789</p>
@@ -709,8 +573,9 @@
             />
             <p>Expert Management. Tailored Funds.</p>
           </div>
+          
           <nav class="footer__nav">
-            <div>
+            <div class="footer__nav-column">
               <h3>Fondos</h3>
               <ul>
                 <li><a href="/fondos/money-market">Money Market</a></li>
@@ -719,7 +584,7 @@
                 <li><a href="/fondos/realestate">Real Estate</a></li>
               </ul>
             </div>
-            <div>
+            <div class="footer__nav-column">
               <h3>Servicios</h3>
               <ul>
                 <li><a href="#patrimonio">Gestión Patrimonial</a></li>
@@ -728,7 +593,7 @@
                 <li><a href="#fiscal">Real Estate</a></li>
               </ul>
             </div>
-            <div>
+            <div class="footer__nav-column">
               <h3>Recursos</h3>
               <ul>
                 <li><a href="/blog">Blog & Insights</a></li>
@@ -738,6 +603,7 @@
               </ul>
             </div>
           </nav>
+          
           <div class="footer__newsletter">
             <h3>Newsletter</h3>
             <form class="newsletter__form">
@@ -746,10 +612,10 @@
             </form>
           </div>
         </div>
+        
         <div class="footer__bottom">
           <p class="footer__copyright">
-            © 2024 BlackBird Capital. Todos los derechos reservados. | RUT:
-            76.XXX.XXX-X
+            © 2024 BlackBird Capital. Todos los derechos reservados. | RUT: 76.XXX.XXX-X
           </p>
           <nav class="footer__legal" aria-label="Enlaces legales">
             <a href="/privacidad">Privacidad</a>
@@ -762,16 +628,16 @@
               src="/assets/cert-cmf.svg"
               alt="Regulado por CMF"
               class="certification-badge"
-              width="60"
-              height="40"
+              width="80"
+              height="50"
               loading="lazy"
             />
             <img
               src="/assets/cert-uaf.png"
               alt="UAF"
               class="certification-badge"
-              width="60"
-              height="40"
+              width="80"
+              height="50"
               loading="lazy"
             />
           </div>

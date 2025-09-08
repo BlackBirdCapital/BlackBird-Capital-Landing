@@ -1,22 +1,29 @@
 /**
- * BlackBird Capital - JavaScript Optimizado con Popup de Mantenimiento
- * Progressive Enhancement con funcionalidad unificada
+ * BlackBird Capital - JavaScript Optimizado y Corregido
+ * Versión: 2.0
+ * Funcionalidad completa con mejoras de UX/UI
  */
 
 (function() {
   'use strict';
 
-  // Estado global de la aplicación
+  // ==========================================================================
+  // 1. ESTADO GLOBAL DE LA APLICACIÓN
+  // ==========================================================================
   const state = {
     menuOpen: false,
     currentFundIndex: 0,
     currentTeamIndex: 0,
     prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-    maintenanceShown: false
+    modalOpen: false
   };
 
+  // ==========================================================================
+  // 2. UTILIDADES
+  // ==========================================================================
+  
   /**
-   * Debounce para optimizar eventos
+   * Debounce para optimizar eventos de resize
    */
   const debounce = (func, wait) => {
     let timeout;
@@ -31,7 +38,7 @@
   };
 
   /**
-   * Throttle para scroll
+   * Throttle para eventos de scroll
    */
   const throttle = (func, limit) => {
     let inThrottle;
@@ -44,87 +51,31 @@
     }
   };
 
-  /**
-   * Popup de Mantenimiento
-   */
-  const initMaintenancePopup = () => {
-    const overlay = document.getElementById('maintenanceOverlay');
-    const closeBtn = document.getElementById('closeBtn');
-    const timerElement = document.getElementById('countdown');
-    const timer = document.getElementById('timer');
-    
-    if (!overlay) return;
-
-    // Mostrar el popup al cargar
-    state.maintenanceShown = true;
-    document.body.style.overflow = 'hidden';
-
-    // Countdown para mostrar el botón de cerrar
-    let countdown = 2
-    
-    const interval = setInterval(() => {
-      countdown--;
-      if (timerElement) {
-        timerElement.textContent = countdown;
-      }
-      
-      if (countdown <= 0) {
-        clearInterval(interval);
-        if (closeBtn) {
-          closeBtn.classList.add('show');
-        }
-        if (timer) {
-          timer.style.display = 'none';
-        }
-      }
-    }, 1000);
-
-    // Función global para cerrar el popup
-    window.closeMaintenancePopup = function() {
-      if (overlay) {
-        overlay.style.animation = 'fadeOut 0.3s ease forwards';
-        setTimeout(() => {
-          overlay.style.display = 'none';
-          document.body.style.overflow = '';
-          state.maintenanceShown = false;
-        }, 300);
-      }
-    };
-
-    // Cerrar con ESC después del countdown
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && countdown <= 0 && state.maintenanceShown) {
-        window.closeMaintenancePopup();
-      }
-    });
-  };
-
-  /**
-   * Header sticky y navegación
-   */
+  // ==========================================================================
+  // 3. HEADER Y NAVEGACIÓN MEJORADA
+  // ==========================================================================
   const initHeader = () => {
     const header = document.querySelector('.header');
     const toggle = document.querySelector('.nav__toggle');
     const navWrapper = document.querySelector('.nav__wrapper');
-    const links = document.querySelectorAll('.nav__link');
-    const ctaButtons = document.querySelectorAll('.header__cta .btn');
+    const navLinks = document.querySelectorAll('.nav__link');
     
     if (!header) return;
 
-    // Scroll handling optimizado
+    // Manejo del scroll con throttle
     let lastScroll = 0;
     
     const handleScroll = throttle(() => {
       const currentScroll = window.pageYOffset;
       
-      // Add scrolled class
+      // Añadir clase cuando se hace scroll
       if (currentScroll > 100) {
         header.classList.add('header--scrolled');
       } else {
         header.classList.remove('header--scrolled');
       }
       
-      // Hide/show on scroll direction
+      // Ocultar/mostrar header según dirección del scroll
       if (currentScroll > lastScroll && currentScroll > 300 && !state.menuOpen) {
         header.classList.add('header--hidden');
       } else {
@@ -136,32 +87,52 @@
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // Mobile menu toggle
+    // Toggle del menú móvil - CORREGIDO
     if (toggle && navWrapper) {
-      const closeMenu = () => {
-        if (state.menuOpen) {
-          state.menuOpen = false;
-          toggle.setAttribute('aria-expanded', false);
-          navWrapper.classList.remove('is-active');
-          document.body.style.overflow = '';
-        }
+      const openMenu = () => {
+        state.menuOpen = true;
+        toggle.setAttribute('aria-expanded', 'true');
+        navWrapper.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
       };
 
-      toggle.addEventListener('click', () => {
-        state.menuOpen = !state.menuOpen;
-        toggle.setAttribute('aria-expanded', state.menuOpen);
-        navWrapper.classList.toggle('is-active', state.menuOpen);
-        document.body.style.overflow = state.menuOpen ? 'hidden' : '';
-      });
-      
-      // Event delegation para links
-      navWrapper.addEventListener('click', (e) => {
-        if (e.target.matches('.nav__link, .btn')) {
+      const closeMenu = () => {
+        state.menuOpen = false;
+        toggle.setAttribute('aria-expanded', 'false');
+        navWrapper.classList.remove('is-active');
+        document.body.style.overflow = '';
+      };
+
+      // Click en el botón toggle
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state.menuOpen) {
           closeMenu();
+        } else {
+          openMenu();
         }
       });
       
-      // Close on outside click
+      // Cerrar al hacer click en los links
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (state.menuOpen) {
+            closeMenu();
+          }
+        });
+      });
+
+      // Cerrar al hacer click en los botones CTA
+      const ctaButtons = document.querySelectorAll('.header__cta .btn');
+      ctaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (state.menuOpen) {
+            closeMenu();
+          }
+        });
+      });
+      
+      // Cerrar al hacer click fuera
       document.addEventListener('click', (e) => {
         if (state.menuOpen && 
             !navWrapper.contains(e.target) && 
@@ -170,7 +141,7 @@
         }
       });
       
-      // Close on Escape
+      // Cerrar con ESC
       document.addEventListener('keydown', (e) => {
         if (state.menuOpen && e.key === 'Escape') {
           closeMenu();
@@ -178,9 +149,9 @@
         }
       });
 
-      // Handle resize con debounce
+      // Manejar resize
       const handleResize = debounce(() => {
-        if (window.innerWidth > 768 && state.menuOpen) {
+        if (window.innerWidth > 1023 && state.menuOpen) {
           closeMenu();
         }
       }, 250);
@@ -189,13 +160,12 @@
     }
   };
 
-  /**
-   * Smooth scroll for anchor links
-   */
+  // ==========================================================================
+  // 4. SMOOTH SCROLL MEJORADO
+  // ==========================================================================
   const initSmoothScroll = () => {
     if (state.prefersReducedMotion) return;
     
-    // Event delegation para mejor performance
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="#"]');
       if (!link) return;
@@ -216,14 +186,14 @@
         behavior: 'smooth'
       });
       
-      // Update URL sin trigger scroll
+      // Actualizar URL sin hacer scroll
       history.replaceState(null, '', targetId);
     });
   };
 
-  /**
-   * Carrusel optimizado con touch support
-   */
+  // ==========================================================================
+  // 5. CARRUSEL UNIVERSAL MEJORADO
+  // ==========================================================================
   const initCarousel = (config) => {
     const { 
       trackId, 
@@ -244,7 +214,7 @@
     const cards = track.querySelectorAll(cardSelector);
     const dotsContainer = document.querySelector(dotsSelector);
     
-    // Create dots
+    // Crear dots si no existen
     if (dotsContainer && !dotsContainer.children.length) {
       cards.forEach((_, index) => {
         const dot = document.createElement('button');
@@ -257,66 +227,70 @@
     
     const dots = dotsContainer?.querySelectorAll('button');
     
+    // Calcular métricas del carrusel
     const getMetrics = () => {
-      // Si estamos en centerMode, medimos la tarjeta activa (si existe)
-      const activeIndex = centerMode ? (state[stateKey] ?? 0) : 0;
+      const activeIndex = state[stateKey] || 0;
       const sampleCard = cards[activeIndex] || cards[0];
-
-      // offsetWidth ignora transforms (scale), así evitamos “saltos” de centrado
-      const cardWidth = sampleCard?.offsetWidth || 0;
-
+      
+      if (!sampleCard) return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
+      
+      const cardWidth = sampleCard.offsetWidth;
       const gap = parseFloat(getComputedStyle(track).gap) || 32;
       const containerWidth = track.parentElement?.clientWidth || 0;
-
-      // En centerMode “mostramos” 1 a efectos de cálculo
-      const visible = centerMode
-        ? 1
-        : Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
-
-      // En centerMode podemos llegar a la última tarjeta
-      const maxIndex = centerMode
+      
+      // Calcular tarjetas visibles
+      let visible = 1;
+      if (!centerMode) {
+        visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+      }
+      
+      // Índice máximo
+      const maxIndex = centerMode 
         ? Math.max(0, cards.length - 1)
         : Math.max(0, cards.length - visible);
-
+      
       return { cardWidth, gap, visible, maxIndex, containerWidth };
     };
-
     
+    // Actualizar el carrusel
     const updateCarousel = () => {
       const metrics = getMetrics();
       state[stateKey] = Math.max(0, Math.min(state[stateKey], metrics.maxIndex));
       
       if (centerMode) {
-        // Centro para team carousel
+        // Centrar la tarjeta activa
         const centerOffset = (metrics.containerWidth - metrics.cardWidth) / 2;
         const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap) + centerOffset;
         track.style.transform = `translateX(${translateX}px)`;
         
+        // Actualizar clase activa
         cards.forEach((card, i) => {
           card.classList.toggle('active', i === state[stateKey]);
         });
       } else {
-        // Normal para funds carousel
+        // Carrusel normal
         const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap);
         track.style.transform = `translateX(${translateX}px)`;
       }
       
-      // Update dots
+      // Actualizar dots
       dots?.forEach((dot, i) => {
         dot.classList.toggle('active', i === state[stateKey]);
       });
       
-      // Update buttons
+      // Actualizar botones
       if (prevBtn) prevBtn.disabled = state[stateKey] === 0;
-      if (nextBtn) nextBtn.disabled = state[stateKey] >= (centerMode ? cards.length - 1 : metrics.maxIndex);
+      if (nextBtn) nextBtn.disabled = state[stateKey] >= metrics.maxIndex;
     };
     
+    // Ir a una tarjeta específica
     const goToSlide = (index) => {
-      state[stateKey] = index;
+      const { maxIndex } = getMetrics();
+      state[stateKey] = Math.max(0, Math.min(index, maxIndex));
       updateCarousel();
     };
     
-    // Event listeners
+    // Event listeners para los botones
     prevBtn?.addEventListener('click', () => {
       if (state[stateKey] > 0) {
         state[stateKey]--;
@@ -325,14 +299,14 @@
     });
     
     nextBtn?.addEventListener('click', () => {
-      const maxIndex = centerMode ? cards.length - 1 : getMetrics().maxIndex;
+      const { maxIndex } = getMetrics();
       if (state[stateKey] < maxIndex) {
         state[stateKey]++;
         updateCarousel();
       }
     });
     
-    // Touch support mejorado
+    // Soporte táctil mejorado
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
@@ -340,6 +314,7 @@
     const handleTouchStart = (e) => {
       startX = e.touches[0].clientX;
       isDragging = true;
+      track.style.cursor = 'grabbing';
     };
     
     const handleTouchMove = (e) => {
@@ -353,8 +328,8 @@
       const diff = startX - currentX;
       const threshold = 50;
       
+      const { maxIndex } = getMetrics();
       if (Math.abs(diff) > threshold) {
-        const maxIndex = centerMode ? cards.length - 1 : getMetrics().maxIndex;
         if (diff > 0 && state[stateKey] < maxIndex) {
           state[stateKey]++;
         } else if (diff < 0 && state[stateKey] > 0) {
@@ -364,13 +339,53 @@
       }
       
       isDragging = false;
+      track.style.cursor = '';
     };
     
+    // Eventos táctiles
     track.addEventListener('touchstart', handleTouchStart, { passive: true });
     track.addEventListener('touchmove', handleTouchMove, { passive: true });
     track.addEventListener('touchend', handleTouchEnd, { passive: true });
     
-    // Click on member to select (solo para team)
+    // Soporte para mouse (drag)
+    track.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      isDragging = true;
+      track.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+    
+    track.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      currentX = e.clientX;
+    });
+    
+    track.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      const { maxIndex } = getMetrics();
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0 && state[stateKey] < maxIndex) {
+          state[stateKey]++;
+        } else if (diff < 0 && state[stateKey] > 0) {
+          state[stateKey]--;
+        }
+        updateCarousel();
+      }
+      
+      isDragging = false;
+      track.style.cursor = '';
+    });
+    
+    track.addEventListener('mouseleave', () => {
+      isDragging = false;
+      track.style.cursor = '';
+    });
+    
+    // Click en tarjetas para modo centro
     if (centerMode) {
       cards.forEach((card, index) => {
         card.addEventListener('click', () => {
@@ -381,17 +396,110 @@
       });
     }
     
-    // Resize handler con debounce
+    // Manejar resize
     const handleResize = debounce(updateCarousel, 150);
     window.addEventListener('resize', handleResize, { passive: true });
     
-    // Initialize
+    // Inicializar
     updateCarousel();
   };
 
-  /**
-   * Animated counter for stats con Intersection Observer
-   */
+  // ==========================================================================
+  // 6. MODAL DEL EQUIPO
+  // ==========================================================================
+  const initTeamModal = () => {
+    const modal = document.getElementById('teamModal');
+    if (!modal) return;
+    
+    const overlay = modal.querySelector('.team-modal__overlay');
+    const closeBtn = modal.querySelector('.team-modal__close');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalRole = document.getElementById('modalRole');
+    const modalBody = document.getElementById('modalBody');
+    
+    // Datos del equipo
+    const teamData = {
+      jrg: {
+        name: 'Jorge Ramírez G.',
+        role: 'Socio & Presidente',
+        content: `
+          <ul>
+            <li><strong>Socio & Presidente</strong> – BlackBird Capital S.A.</li>
+            <li><strong>Presidente</strong> – Strategic Metals BV</li>
+            <li><strong>Director</strong> – MolyNor, MolymetNos, Molymex, Molymet Belgium, Molymet Germany, Carbomet Industrial</li>
+            <li><strong>CFO</strong> – Molymet S.A.</li>
+            <li>40+ años de experiencia en capital privado, finanzas corporativas y derivados financieros.</li>
+            <li><strong>Universidad Diego Portales</strong> – Ingeniero Comercial</li>
+          </ul>
+        `
+      },
+      jrp: {
+        name: 'Jorge Ramírez P.',
+        role: 'Socio & CEO',
+        content: `
+          <ul>
+            <li><strong>Socio & CEO</strong> – BlackBird Capital S.A.</li>
+            <li>16+ años de experiencia en finanzas corporativas e inversiones</li>
+            <li><strong>Pontificia Universidad Católica de Chile</strong> – Ingeniero Civil Industrial</li>
+            <li><strong>Columbia University</strong> – MBA</li>
+            <li>Anteriormente <strong>CFO & Investment Manager</strong> en Grupo Bancard</li>
+            <li>Anteriormente <strong>CFO</strong> en Houm Group Inc.</li>
+          </ul>
+        `
+      }
+    };
+    
+    // Función para abrir el modal
+    const openModal = (memberId) => {
+      const data = teamData[memberId];
+      if (!data) return;
+      
+      modalTitle.textContent = data.name;
+      modalRole.textContent = data.role;
+      modalBody.innerHTML = data.content;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      state.modalOpen = true;
+      
+      // Focus trap
+      closeBtn.focus();
+    };
+    
+    // Función para cerrar el modal
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      state.modalOpen = false;
+    };
+    
+    // Event listeners para botones de detalles
+    const detailButtons = document.querySelectorAll('.team-member__details-btn');
+    detailButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const memberId = btn.getAttribute('data-member');
+        openModal(memberId);
+      });
+    });
+    
+    // Cerrar con el botón X
+    closeBtn?.addEventListener('click', closeModal);
+    
+    // Cerrar al hacer click en el overlay
+    overlay?.addEventListener('click', closeModal);
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if (state.modalOpen && e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  };
+
+  // ==========================================================================
+  // 7. CONTADOR ANIMADO (PARA ESTADÍSTICAS - COMENTADO)
+  // ==========================================================================
+  /*
   const initStats = () => {
     if (state.prefersReducedMotion) return;
     
@@ -411,7 +519,7 @@
       const step = (currentTime) => {
         if (!startTime) startTime = currentTime;
         const progress = Math.min((currentTime - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3);
         const current = startValue + (target - startValue) * eased;
         
         let display;
@@ -450,10 +558,11 @@
     
     statItems.forEach(item => observer.observe(item));
   };
+  */
 
-  /**
-   * Accordion for FAQ con event delegation
-   */
+  // ==========================================================================
+  // 8. ACCORDION FAQ
+  // ==========================================================================
   const initAccordion = () => {
     const accordion = document.querySelector('.accordion');
     if (!accordion) return;
@@ -465,23 +574,28 @@
       const content = trigger.nextElementSibling;
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
       
-      // Close all others
+      // Cerrar todos los demás
       accordion.querySelectorAll('.accordion__trigger').forEach(otherTrigger => {
         if (otherTrigger !== trigger) {
           otherTrigger.setAttribute('aria-expanded', 'false');
-          otherTrigger.nextElementSibling.hidden = true;
+          const otherContent = otherTrigger.nextElementSibling;
+          if (otherContent) {
+            otherContent.hidden = true;
+          }
         }
       });
       
-      // Toggle current
+      // Toggle el actual
       trigger.setAttribute('aria-expanded', !isExpanded);
-      content.hidden = isExpanded;
+      if (content) {
+        content.hidden = isExpanded;
+      }
     });
   };
 
-  /**
-   * Newsletter form
-   */
+  // ==========================================================================
+  // 9. FORMULARIO NEWSLETTER
+  // ==========================================================================
   const initNewsletter = () => {
     const form = document.querySelector('.newsletter__form');
     if (!form) return;
@@ -490,63 +604,77 @@
       e.preventDefault();
       
       const button = form.querySelector('button');
+      const input = form.querySelector('input');
       const originalText = button.textContent;
       
+      // Validación básica
+      if (!input.value || !input.value.includes('@')) {
+        input.focus();
+        return;
+      }
+      
+      // Feedback visual
       button.textContent = '✓ Suscrito';
       button.disabled = true;
+      button.style.background = 'var(--color-terracota)';
       
+      // Reset después de 3 segundos
       setTimeout(() => {
         button.textContent = originalText;
         button.disabled = false;
+        button.style.background = '';
         form.reset();
       }, 3000);
     });
   };
 
-  /**
-   * Lazy loading para imágenes no críticas
-   */
+  // ==========================================================================
+  // 10. LAZY LOADING DE IMÁGENES
+  // ==========================================================================
   const initLazyLoading = () => {
     if ('loading' in HTMLImageElement.prototype) {
-      // Browser soporta lazy loading nativo
+      // El navegador soporta lazy loading nativo
       return;
     }
     
     // Fallback con Intersection Observer
     const images = document.querySelectorAll('img[loading="lazy"]');
+    
     const imageObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          img.src = img.dataset.src || img.src;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+          }
           imageObserver.unobserve(img);
         }
       });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
     });
     
     images.forEach(img => imageObserver.observe(img));
   };
 
-  /**
-   * Initialize all components
-   */
+  // ==========================================================================
+  // 11. INICIALIZACIÓN PRINCIPAL
+  // ==========================================================================
   const init = () => {
-    // Esperar a que el DOM esté listo
+    // Verificar si el DOM está listo
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
       return;
     }
     
-    console.log('BlackBird Capital - Initializing');
+    console.log('🚀 BlackBird Capital - Inicializando v2.0');
     
-    // Popup de mantenimiento (primero)
-    initMaintenancePopup();
-    
-    // Core functionality
+    // Inicializar componentes principales
     initHeader();
     initSmoothScroll();
     
-    // Carousels
+    // Inicializar carrusel de fondos
     initCarousel({
       trackId: 'funds-track',
       prevBtnId: 'prevBtn',
@@ -557,6 +685,7 @@
       centerMode: false
     });
     
+    // Inicializar carrusel del equipo
     initCarousel({
       trackId: 'teamTrack',
       prevBtnId: 'teamPrevBtn',
@@ -567,22 +696,33 @@
       centerMode: true
     });
     
-    // Interactive elements
-    initStats();
+    // Inicializar modal del equipo
+    initTeamModal();
+    
+    // Inicializar elementos interactivos
+    // initStats(); // Comentado temporalmente
     initAccordion();
     initNewsletter();
     initLazyLoading();
     
+    // Marcar como inicializado
     document.body.classList.add('js-initialized');
+    
+    console.log('✅ BlackBird Capital - Inicialización completa');
   };
   
-  // Start the application
+  // ==========================================================================
+  // 12. ARRANQUE DE LA APLICACIÓN
+  // ==========================================================================
   init();
   
-  // Public API
+  // ==========================================================================
+  // 13. API PÚBLICA (OPCIONAL)
+  // ==========================================================================
   window.BlackBirdCapital = {
     state,
     reinit: init,
-    closeMaintenancePopup: window.closeMaintenancePopup
+    version: '2.0.0'
   };
+  
 })();
