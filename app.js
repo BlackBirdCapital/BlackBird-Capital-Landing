@@ -405,7 +405,7 @@
   };
 
   // ==========================================================================
-  // 6. MODAL DEL EQUIPO
+  // 6. MODAL DEL EQUIPO - MEJORADO CON IMAGEN
   // ==========================================================================
   const initTeamModal = () => {
     const modal = document.getElementById('teamModal');
@@ -416,12 +416,14 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalRole = document.getElementById('modalRole');
     const modalBody = document.getElementById('modalBody');
+    const modalImage = document.getElementById('modalImage');
     
-    // Datos del equipo
+    // Datos completos del equipo con imágenes
     const teamData = {
       jrg: {
         name: 'Jorge Ramírez G.',
         role: 'Socio & Presidente',
+        image: 'assets/imagenes/Foto JRG Web.jpg',
         content: `
           <ul>
             <li><strong>Socio & Presidente</strong> – BlackBird Capital S.A.</li>
@@ -436,6 +438,7 @@
       jrp: {
         name: 'Jorge Ramírez P.',
         role: 'Socio & CEO',
+        image: 'assets/imagenes/Foto JRP Web.jpg',
         content: `
           <ul>
             <li><strong>Socio & CEO</strong> – BlackBird Capital S.A.</li>
@@ -454,16 +457,24 @@
       const data = teamData[memberId];
       if (!data) return;
       
+      // Actualizar contenido del modal
       modalTitle.textContent = data.name;
       modalRole.textContent = data.role;
       modalBody.innerHTML = data.content;
       
+      // Actualizar imagen
+      if (modalImage) {
+        modalImage.src = data.image;
+        modalImage.alt = data.name;
+      }
+      
+      // Mostrar modal
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
       state.modalOpen = true;
       
       // Focus trap
-      closeBtn.focus();
+      setTimeout(() => closeBtn.focus(), 100);
     };
     
     // Función para cerrar el modal
@@ -476,7 +487,8 @@
     // Event listeners para botones de detalles
     const detailButtons = document.querySelectorAll('.team-member__details-btn');
     detailButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const memberId = btn.getAttribute('data-member');
         openModal(memberId);
       });

@@ -1662,12 +1662,51 @@ section {
     font-size: 1.1rem;
   }
   
-  /* Modal mobile */
+/* Responsive para modal del equipo */
+@media (max-width: 768px) {
   .team-modal__content {
     width: 95%;
-    padding: var(--space-5);
     max-height: 90vh;
   }
+  
+  /* Cambiar a diseño vertical en móvil */
+  .team-modal__inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    max-height: 90vh;
+  }
+  
+  .team-modal__left {
+    padding: var(--space-5) var(--space-4);
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .team-modal__image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: var(--space-4);
+  }
+  
+  .team-modal__left h3 {
+    font-size: 1.5rem;
+  }
+  
+  .team-modal__right {
+    padding: var(--space-4);
+    max-height: 50vh;
+  }
+  
+  .team-modal__right h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-3);
+  }
+  
+  .team-modal__body li {
+    padding: var(--space-2) 0;
+    font-size: 0.9rem;
+  }
+}
   
   /* CTA mobile */
   .cta__text h2 {
