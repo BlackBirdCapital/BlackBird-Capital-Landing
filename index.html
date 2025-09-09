@@ -142,7 +142,7 @@
       <!-- Servicios -->
       <section class="expertise" id="expertise" aria-labelledby="services-title">
         <div class="container">
-          <h2 id="services-title" class="section-title">Nuestro Expertise</h2>
+          <h2 id="services-title" class="section-title">Nuestra Experiencia</h2>
           <div class="services__grid">
             <article class="card">
               <div class="card__icon">
@@ -320,37 +320,6 @@
         </div>
       </section>
 
-      <!-- Estadísticas (Comentado temporalmente) -->
-      <!-- <section class="stats" aria-labelledby="stats-title">
-        <div class="container">
-          <div class="disclaimer-banner disclaimer-banner--stats">
-            <p>
-              <strong>Importante:</strong> Estadísticas de referencia - Sitio en desarrollo
-            </p>
-          </div>
-
-          <h2 id="stats-title" class="sr-only">Estadísticas</h2>
-          <div class="stats__grid">
-            <div class="stat-item">
-              <h3 data-target="20" data-suffix=" M">0</h3>
-              <p>Millones USD Administrados</p>
-            </div>
-            <div class="stat-item">
-              <h3 data-target="8.4" data-decimal="true" data-suffix="%">0</h3>
-              <p>Rentabilidad Promedio</p>
-            </div>
-            <div class="stat-item">
-              <h3 data-target="100">0</h3>
-              <p>Empresas Inversionistas</p>
-            </div>
-            <div class="stat-item">
-              <h3 data-target="24">0</h3>
-              <p>Horas Procesamiento</p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
       <!-- Nosotros -->
       <section class="about" id="nosotros" aria-labelledby="about-title">
         <div class="container">
@@ -460,29 +429,18 @@
         </div>
       </section>
 
-      <!-- Modal para detalles del equipo -->
+      <!-- Modal para detalles del equipo - ESTRUCTURA SIMPLIFICADA -->
       <div class="team-modal" id="teamModal">
         <div class="team-modal__overlay"></div>
         <div class="team-modal__content">
           <button class="team-modal__close" aria-label="Cerrar">×</button>
-          <div class="team-modal__inner">
-            <!-- Lado izquierdo: Imagen + Info -->
-            <div class="team-modal__left">
-              <figure class="team-modal__image">
-                <img id="modalImage" src="" alt="" />
-              </figure>
-              <div class="team-modal__info">
-                <h3 id="modalTitle"></h3>
-                <p id="modalRole"></p>
-              </div>
-            </div>
-            <!-- Lado derecho: CV -->
-            <div class="team-modal__right">
-              <h4>Trayectoria Profesional</h4>
-              <div class="team-modal__body" id="modalBody">
-                <!-- Contenido dinámico -->
-              </div>
-            </div>
+          <div class="team-modal__header">
+            <img id="modalImage" src="" alt="" class="team-modal__image" />
+            <h3 id="modalTitle"></h3>
+            <p id="modalRole"></p>
+          </div>
+          <div class="team-modal__body" id="modalBody">
+            <!-- Contenido dinámico -->
           </div>
         </div>
       </div>

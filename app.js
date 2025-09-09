@@ -405,7 +405,7 @@
   };
 
   // ==========================================================================
-  // 6. MODAL DEL EQUIPO - MEJORADO CON IMAGEN
+  // 6. MODAL DEL EQUIPO - CORREGIDO Y SIMPLIFICADO
   // ==========================================================================
   const initTeamModal = () => {
     const modal = document.getElementById('teamModal');
