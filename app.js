@@ -427,11 +427,7 @@
         content: `
           <ul>
             <li><strong>Socio & Presidente</strong> – BlackBird Capital S.A.</li>
-            <li><strong>Presidente</strong> – Strategic Metals BV</li>
-            <li><strong>Director</strong> – MolyNor, MolymetNos, Molymex, Molymet Belgium, Molymet Germany, Carbomet Industrial</li>
-            <li><strong>CFO</strong> – Molymet S.A.</li>
             <li>40+ años de experiencia en capital privado, finanzas corporativas y derivados financieros.</li>
-            <li><strong>Universidad Diego Portales</strong> – Ingeniero Comercial</li>
           </ul>
         `
       },
