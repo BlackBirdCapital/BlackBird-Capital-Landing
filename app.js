@@ -194,6 +194,9 @@
   // ==========================================================================
   // 5. CARRUSEL UNIVERSAL MEJORADO
   // ==========================================================================
+
+    // 5. CARRUSEL UNIVERSAL MEJORADO
+  // ==========================================================================
   const initCarousel = (config) => {
     const { 
       trackId, 
@@ -227,8 +230,27 @@
     
     const dots = dotsContainer?.querySelectorAll('button');
     
+    // --- NUEVO: modo estático cuando hay pocos ítems (por ejemplo < 4 fondos) ---
+    const minSlidesForCarousel = centerMode ? 1 : 4; // para fondos: mínimo 4
+    const isStaticLayout = !centerMode && cards.length < minSlidesForCarousel;
+
+    if (isStaticLayout) {
+      // centramos las cards y apagamos cualquier transform
+      track.style.justifyContent = 'center';
+      track.style.transform = 'none';
+
+      // ocultamos controles
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+      if (dotsContainer) dotsContainer.style.display = 'none';
+    }
+    
     // Calcular métricas del carrusel
     const getMetrics = () => {
+      if (isStaticLayout) {
+        return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
+      }
+
       const activeIndex = state[stateKey] || 0;
       const sampleCard = cards[activeIndex] || cards[0];
       
@@ -254,6 +276,8 @@
     
     // Actualizar el carrusel
     const updateCarousel = () => {
+      if (isStaticLayout) return;
+
       const metrics = getMetrics();
       state[stateKey] = Math.max(0, Math.min(state[stateKey], metrics.maxIndex));
       
@@ -285,26 +309,29 @@
     
     // Ir a una tarjeta específica
     const goToSlide = (index) => {
+      if (isStaticLayout) return;
       const { maxIndex } = getMetrics();
       state[stateKey] = Math.max(0, Math.min(index, maxIndex));
       updateCarousel();
     };
     
     // Event listeners para los botones
-    prevBtn?.addEventListener('click', () => {
-      if (state[stateKey] > 0) {
-        state[stateKey]--;
-        updateCarousel();
-      }
-    });
-    
-    nextBtn?.addEventListener('click', () => {
-      const { maxIndex } = getMetrics();
-      if (state[stateKey] < maxIndex) {
-        state[stateKey]++;
-        updateCarousel();
-      }
-    });
+    if (!isStaticLayout) {
+      prevBtn?.addEventListener('click', () => {
+        if (state[stateKey] > 0) {
+          state[stateKey]--;
+          updateCarousel();
+        }
+      });
+      
+      nextBtn?.addEventListener('click', () => {
+        const { maxIndex } = getMetrics();
+        if (state[stateKey] < maxIndex) {
+          state[stateKey]++;
+          updateCarousel();
+        }
+      });
+    }
     
     // Soporte táctil mejorado
     let startX = 0;
@@ -312,18 +339,19 @@
     let isDragging = false;
     
     const handleTouchStart = (e) => {
+      if (isStaticLayout) return;
       startX = e.touches[0].clientX;
       isDragging = true;
       track.style.cursor = 'grabbing';
     };
     
     const handleTouchMove = (e) => {
-      if (!isDragging) return;
+      if (!isDragging || isStaticLayout) return;
       currentX = e.touches[0].clientX;
     };
     
     const handleTouchEnd = () => {
-      if (!isDragging) return;
+      if (!isDragging || isStaticLayout) return;
       
       const diff = startX - currentX;
       const threshold = 50;
@@ -343,12 +371,15 @@
     };
     
     // Eventos táctiles
-    track.addEventListener('touchstart', handleTouchStart, { passive: true });
-    track.addEventListener('touchmove', handleTouchMove, { passive: true });
-    track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    if (!isStaticLayout) {
+      track.addEventListener('touchstart', handleTouchStart, { passive: true });
+      track.addEventListener('touchmove', handleTouchMove, { passive: true });
+      track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
     
     // Soporte para mouse (drag)
     track.addEventListener('mousedown', (e) => {
+      if (isStaticLayout) return;
       startX = e.clientX;
       isDragging = true;
       track.style.cursor = 'grabbing';
@@ -356,12 +387,12 @@
     });
     
     track.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
+      if (!isDragging || isStaticLayout) return;
       currentX = e.clientX;
     });
     
     track.addEventListener('mouseup', () => {
-      if (!isDragging) return;
+      if (!isDragging || isStaticLayout) return;
       
       const diff = startX - currentX;
       const threshold = 50;
@@ -401,8 +432,221 @@
     window.addEventListener('resize', handleResize, { passive: true });
     
     // Inicializar
-    updateCarousel();
+    if (!isStaticLayout) {
+      updateCarousel();
+    }
   };
+  
+
+  // const initCarousel = (config) => {
+  //   const { 
+  //     trackId, 
+  //     prevBtnId, 
+  //     nextBtnId, 
+  //     dotsSelector,
+  //     cardSelector,
+  //     stateKey,
+  //     centerMode = false
+  //   } = config;
+    
+  //   const track = document.getElementById(trackId);
+  //   const prevBtn = document.getElementById(prevBtnId);
+  //   const nextBtn = document.getElementById(nextBtnId);
+    
+  //   if (!track) return;
+    
+  //   const cards = track.querySelectorAll(cardSelector);
+  //   const dotsContainer = document.querySelector(dotsSelector);
+    
+  //   // Crear dots si no existen
+  //   if (dotsContainer && !dotsContainer.children.length) {
+  //     cards.forEach((_, index) => {
+  //       const dot = document.createElement('button');
+  //       dot.setAttribute('aria-label', `Ir a elemento ${index + 1}`);
+  //       if (index === 0) dot.classList.add('active');
+  //       dot.addEventListener('click', () => goToSlide(index));
+  //       dotsContainer.appendChild(dot);
+  //     });
+  //   }
+    
+  //   const dots = dotsContainer?.querySelectorAll('button');
+    
+  //   // Calcular métricas del carrusel
+  //   const getMetrics = () => {
+  //     const activeIndex = state[stateKey] || 0;
+  //     const sampleCard = cards[activeIndex] || cards[0];
+      
+  //     if (!sampleCard) return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
+      
+  //     const cardWidth = sampleCard.offsetWidth;
+  //     const gap = parseFloat(getComputedStyle(track).gap) || 32;
+  //     const containerWidth = track.parentElement?.clientWidth || 0;
+      
+  //     // Calcular tarjetas visibles
+  //     let visible = 1;
+  //     if (!centerMode) {
+  //       visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+  //     }
+      
+  //     // Índice máximo
+  //     const maxIndex = centerMode 
+  //       ? Math.max(0, cards.length - 1)
+  //       : Math.max(0, cards.length - visible);
+      
+  //     return { cardWidth, gap, visible, maxIndex, containerWidth };
+  //   };
+    
+  //   // Actualizar el carrusel
+  //   const updateCarousel = () => {
+  //     const metrics = getMetrics();
+  //     state[stateKey] = Math.max(0, Math.min(state[stateKey], metrics.maxIndex));
+      
+  //     if (centerMode) {
+  //       // Centrar la tarjeta activa
+  //       const centerOffset = (metrics.containerWidth - metrics.cardWidth) / 2;
+  //       const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap) + centerOffset;
+  //       track.style.transform = `translateX(${translateX}px)`;
+        
+  //       // Actualizar clase activa
+  //       cards.forEach((card, i) => {
+  //         card.classList.toggle('active', i === state[stateKey]);
+  //       });
+  //     } else {
+  //       // Carrusel normal
+  //       const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap);
+  //       track.style.transform = `translateX(${translateX}px)`;
+  //     }
+      
+  //     // Actualizar dots
+  //     dots?.forEach((dot, i) => {
+  //       dot.classList.toggle('active', i === state[stateKey]);
+  //     });
+      
+  //     // Actualizar botones
+  //     if (prevBtn) prevBtn.disabled = state[stateKey] === 0;
+  //     if (nextBtn) nextBtn.disabled = state[stateKey] >= metrics.maxIndex;
+  //   };
+    
+  //   // Ir a una tarjeta específica
+  //   const goToSlide = (index) => {
+  //     const { maxIndex } = getMetrics();
+  //     state[stateKey] = Math.max(0, Math.min(index, maxIndex));
+  //     updateCarousel();
+  //   };
+    
+  //   // Event listeners para los botones
+  //   prevBtn?.addEventListener('click', () => {
+  //     if (state[stateKey] > 0) {
+  //       state[stateKey]--;
+  //       updateCarousel();
+  //     }
+  //   });
+    
+  //   nextBtn?.addEventListener('click', () => {
+  //     const { maxIndex } = getMetrics();
+  //     if (state[stateKey] < maxIndex) {
+  //       state[stateKey]++;
+  //       updateCarousel();
+  //     }
+  //   });
+    
+  //   // Soporte táctil mejorado
+  //   let startX = 0;
+  //   let currentX = 0;
+  //   let isDragging = false;
+    
+  //   const handleTouchStart = (e) => {
+  //     startX = e.touches[0].clientX;
+  //     isDragging = true;
+  //     track.style.cursor = 'grabbing';
+  //   };
+    
+  //   const handleTouchMove = (e) => {
+  //     if (!isDragging) return;
+  //     currentX = e.touches[0].clientX;
+  //   };
+    
+  //   const handleTouchEnd = () => {
+  //     if (!isDragging) return;
+      
+  //     const diff = startX - currentX;
+  //     const threshold = 50;
+      
+  //     const { maxIndex } = getMetrics();
+  //     if (Math.abs(diff) > threshold) {
+  //       if (diff > 0 && state[stateKey] < maxIndex) {
+  //         state[stateKey]++;
+  //       } else if (diff < 0 && state[stateKey] > 0) {
+  //         state[stateKey]--;
+  //       }
+  //       updateCarousel();
+  //     }
+      
+  //     isDragging = false;
+  //     track.style.cursor = '';
+  //   };
+    
+  //   // Eventos táctiles
+  //   track.addEventListener('touchstart', handleTouchStart, { passive: true });
+  //   track.addEventListener('touchmove', handleTouchMove, { passive: true });
+  //   track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+  //   // Soporte para mouse (drag)
+  //   track.addEventListener('mousedown', (e) => {
+  //     startX = e.clientX;
+  //     isDragging = true;
+  //     track.style.cursor = 'grabbing';
+  //     e.preventDefault();
+  //   });
+    
+  //   track.addEventListener('mousemove', (e) => {
+  //     if (!isDragging) return;
+  //     currentX = e.clientX;
+  //   });
+    
+  //   track.addEventListener('mouseup', () => {
+  //     if (!isDragging) return;
+      
+  //     const diff = startX - currentX;
+  //     const threshold = 50;
+      
+  //     const { maxIndex } = getMetrics();
+  //     if (Math.abs(diff) > threshold) {
+  //       if (diff > 0 && state[stateKey] < maxIndex) {
+  //         state[stateKey]++;
+  //       } else if (diff < 0 && state[stateKey] > 0) {
+  //         state[stateKey]--;
+  //       }
+  //       updateCarousel();
+  //     }
+      
+  //     isDragging = false;
+  //     track.style.cursor = '';
+  //   });
+    
+  //   track.addEventListener('mouseleave', () => {
+  //     isDragging = false;
+  //     track.style.cursor = '';
+  //   });
+    
+  //   // Click en tarjetas para modo centro
+  //   if (centerMode) {
+  //     cards.forEach((card, index) => {
+  //       card.addEventListener('click', () => {
+  //         if (state[stateKey] !== index) {
+  //           goToSlide(index);
+  //         }
+  //       });
+  //     });
+  //   }
+    
+  //   // Manejar resize
+  //   const handleResize = debounce(updateCarousel, 150);
+  //   window.addEventListener('resize', handleResize, { passive: true });
+    
+  //   // Inicializar
+  //   updateCarousel();
+  // };
 
   // ==========================================================================
   // 6. MODAL DEL EQUIPO - CORREGIDO Y SIMPLIFICADO
