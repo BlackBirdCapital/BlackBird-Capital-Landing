@@ -685,7 +685,7 @@ section {
 }
 
 .fund-card {
-  flex: 0 0 min(380px, calc(100vw - 4rem));
+  flex: 0 0 min(400px, calc(100vw - 4rem));
   background: rgba(54, 61, 73, 0.4);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1848,5 +1848,181 @@ section {
   
   section {
     page-break-inside: avoid;
+  }
+}
+
+
+/* ==========================================================================
+   21. Agregado por CCM - Mapa y Form contacto
+   ========================================================================== */
+   /* Layout contacto (reutiliza la sección .cta) */
+/* Layout contacto (reutiliza la sección .cta) */
+#contacto {
+  background: var(--color-negro-noche) !important; /* igual tono que el resto */
+  padding: var(--space-8) 0;
+}
+
+/* Layout general: dos columnas amplias */
+#contacto .cta__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: stretch;
+}
+
+/* TARJETA DEL FORMULARIO */
+#contacto .cta__form {
+  background: rgba(54, 61, 73, 0.9);                  /* mismo “glass” que arriba */
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-xl);
+  padding: var(--space-7);
+  box-shadow: var(--shadow-lg);
+}
+
+#contacto h2 {
+  margin-bottom: var(--space-3);
+}
+
+#contacto .cta__form > p {
+  margin-bottom: var(--space-5);
+  opacity: 0.9;
+}
+
+/* Campos del formulario */
+#contacto .contact-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+#contacto label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+#contacto input,
+#contacto textarea {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font: inherit;
+}
+
+#contacto input::placeholder,
+#contacto textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#contacto input:focus,
+#contacto textarea:focus {
+  outline: none;
+  border-color: var(--color-terracota);
+  box-shadow: 0 0 0 1px rgba(198, 131, 70, 0.4);
+}
+
+#contacto .contact-form button.btn {
+  margin-top: var(--space-3);
+  width: 100%;
+}
+
+/* COLUMNA DEL MAPA */
+#contacto .cta__map {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+#contacto .cta__map iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 0;
+}
+
+#contacto .cta__map-info {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Colores de texto en la sección */
+#contacto h2,
+#contacto p,
+#contacto label,
+#contacto strong {
+  color: #ffffff;
+}
+
+/* RESPONSIVE: en tablet/móvil se apila */
+@media (max-width: 1023px) {
+  #contacto .cta__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  #contacto .cta__map {
+    min-height: 260px;
+  }
+}
+
+/* Botón "Enviar mensaje" con estilo propio en contacto */
+#contacto .contact-form button.btn {
+  background: var(--color-blanco-pulcro);
+  color: var(--color-terracota);
+  border: 1px solid transparent;
+  font-weight: 700;
+}
+
+#contacto .contact-form button.btn:hover {
+  background: transparent;
+  color: var(--color-blanco-pulcro);
+  border-color: var(--color-terracota);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ===============================
+   22. Hero – Statement más grande
+   =============================== */
+
+.hero__text {
+  max-width: 60rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+/* "Somos especialistas en Gestión Patrimonial" */
+.hero__headline {
+  font-size: clamp(3rem, 5vw, 4.2rem);  /* antes era más chico */
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+/* "Nos enfocamos en oportunidades..." */
+.hero__subtitle {
+  font-size: clamp(1.3rem, 2.1vw, 1.6rem);  /* antes ~1.1–1.2rem */
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto;
+  max-width: 52rem;
+}
+
+/* En móvil también más grande, pero controlado */
+@media (max-width: 767px) {
+  .hero__headline {
+    font-size: 2.4rem;
+  }
+  .hero__subtitle {
+    font-size: 1.2rem;
   }
 }

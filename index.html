@@ -110,7 +110,7 @@
 
             <div class="header__cta">
               <a href="/portal" class="btn btn--ghost">Portal Cliente</a>
-              <a href="#contacto" class="btn btn--primary">Contactar</a>
+              <a href="#contacto" class="btn btn--primary">Contacto</a>
             </div>
           </div>
         </nav>
@@ -119,10 +119,12 @@
 
     <main>
       <!-- Hero Section -->
-      <section class="hero" aria-labelledby="hero-title">
+      <!-- <section class="hero" aria-labelledby="hero-title">
         <div class="hero__container">
           <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
 
+
+          
           <div class="hero__logo" role="img" aria-label="BlackBird Capital">
             <img
               src="/assets/logo-blanco-bajada.svg"
@@ -137,7 +139,27 @@
             <a href="#nosotros" class="btn btn--ghost">Conocer más</a>
           </div>
         </div>
+      </section> -->
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__container">
+
+          <!-- H1 para accesibilidad -->
+          <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
+
+          <!-- STATEMENT -->
+          <div class="hero__text">
+            <h2 class="hero__headline">Somos especialistas en Gestión Patrimonial</h2>
+            <p class="hero__subtitle">
+              <!-- Buscamos e invertimos en oportunidades con convicción, bajo los más altos
+              estándares de análisis, responsabilidad e integridad de nuestro equipo. -->
+              Nos enfocamos en oportunidades que cumplen con estándares exigentes de análisis y consistencia, siempre bajo una cultura de responsabilidad e integridad.
+            </p>
+          </div>
+
+        </div>
       </section>
+
 
       <!-- Servicios -->
       <section class="expertise" id="expertise" aria-labelledby="services-title">
@@ -151,13 +173,13 @@
               <h3>Gestión Patrimonial</h3>
               <p>
                 Protegemos y potenciamos su patrimonio con estrategias a medida.
-                Siempre Co-invertiremos
+                Siempre co-invertiremos
               </p>
               <a href="#patrimonio" class="card__link"></a>
             </article>
             
             <article class="card">
-              <span class="card__badge">Popular</span>
+              <!-- <span class="card__badge">Popular</span> -->
               <div class="card__icon">
                 <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
@@ -169,7 +191,7 @@
             </article>
             
             <article class="card">
-              <span class="card__badge">Nuevo</span>
+              <!-- <span class="card__badge">Nuevo</span> -->
               <div class="card__icon">
                 <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
@@ -203,7 +225,7 @@
                 <article class="fund-card">
                   <div class="fund-card__header">
                     <span class="fund-card__category">Money Market</span>
-                    <h3>BlackBird Cash Solutions</h3>
+                    <h3>Cash Solutions</h3>
                   </div>
                   <div class="fund-card__metrics">
                     <div class="metric">
@@ -217,10 +239,11 @@
                   </div>
                   <p>
                     Fondo de alta liquidez diseñado para optimizar el manejo de
-                    caja libre.
+                    excedentes de caja.
                   </p>
                   <div class="fund-card__footer">
-                    <a href="/fondos/cashflow" class="fund-card__link">Ver detalles →</a>
+                    <!-- <a href="/fondos/cashflow" class="fund-card__link">Ver detalles →</a> -->
+                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
                     <div class="risk-level" data-level="1">
                       <span></span><span></span><span></span><span></span><span></span>
                     </div>
@@ -231,8 +254,8 @@
                 <article class="fund-card fund-card--upcoming">
                   <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
-                    <span class="fund-card__category">Distress Inmobiliario</span>
-                    <h3>BlackBird Real Estate</h3>
+                    <span class="fund-card__category">Inmobiliario</span>
+                    <h3>Renta Habitacional I</h3>
                   </div>
                   <div class="fund-card__metrics">
                     <div class="metric">
@@ -245,7 +268,35 @@
                     </div>
                   </div>
                   <p>
-                    Inversiones en activos inmobiliarios Distress.
+                    Fondo habitacional que busca ingresos estables a través de activos multifamily.
+                  </p>
+                  <div class="fund-card__footer">
+                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
+                    <div class="risk-level" data-level="2">
+                      <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Fund Card 3 - En estructuración -->
+                <article class="fund-card fund-card--upcoming">
+                  <div class="fund-card__status">En estructuración</div>
+                  <div class="fund-card__header">
+                    <span class="fund-card__category">Inmobiliario</span>
+                    <h3>Oportunidades Inmobiliarias I</h3>
+                  </div>
+                  <div class="fund-card__metrics">
+                    <div class="metric">
+                      <span class="metric__value">12%*</span>
+                      <span class="metric__label">Retorno Objetivo</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric__value">&lt; 5 años</span>
+                      <span class="metric__label">Duración</span>
+                    </div>
+                  </div>
+                  <p>
+                    Fondo inmobiliario que genera valor mediante la recuperación y estabilización de activos.
                   </p>
                   <div class="fund-card__footer">
                     <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
@@ -489,7 +540,7 @@
       </section>
 
       <!-- CTA Final -->
-      <section class="cta" id="contacto" aria-labelledby="cta-title">
+      <!-- <section class="cta" id="contacto" aria-labelledby="cta-title">
         <div class="container">
           <div class="cta__content">
             <div class="cta__text">
@@ -523,7 +574,66 @@
             </div>
           </div>
         </div>
+      </section> -->
+
+      <!-- Contacto -->
+      <section class="cta" id="contacto" aria-labelledby="cta-title">
+        <div class="container">
+          <div class="cta__content">
+            
+            <!-- IZQUIERDA: FORMULARIO -->
+            <div class="cta__form">
+              <h2 id="cta-title">Contáctanos</h2>
+              <!-- <p>
+                Déjanos tus datos y un breve mensaje. Te responderemos a la brevedad.
+              </p> -->
+
+              <form class="contact-form" action="#" method="post">
+                <div class="form-row">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" required />
+                </div>
+
+                <div class="form-row">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-row">
+                  <label for="telefono">Teléfono</label>
+                  <input type="tel" id="telefono" name="telefono" />
+                </div>
+
+                <div class="form-row">
+                  <label for="mensaje">Mensaje</label>
+                  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Enviar mensaje</button>
+              </form>
+            </div>
+
+            <!-- DERECHA: MAPA -->
+            <div class="cta__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.354124377034!2d-70.5997534873809!3d-33.414010795538324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf3f8c4d05c3%3A0x81070efd99ab2b7!2sIsidora%20Goyenechea%203162%2C%207550083%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1763159093607!5m2!1ses!2scl"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <div class="cta__map-info">
+                <strong>Oficina BlackBird Capital</strong>
+                <p>Santiago, Chile</p>
+                <!-- acá después puedes poner la dirección exacta -->
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
+
+
     </main>
 
     <!-- Footer -->
