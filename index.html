@@ -495,7 +495,7 @@
       </div>
 
       <!-- FAQ -->
-      <section class="faq" aria-labelledby="faq-title">
+      <!-- <section class="faq" aria-labelledby="faq-title">
         <div class="container">
           <h2 id="faq-title" class="section-title">Preguntas Frecuentes</h2>
           <div class="accordion">
@@ -537,7 +537,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- CTA Final -->
       <!-- <section class="cta" id="contacto" aria-labelledby="cta-title">
@@ -588,7 +588,79 @@
                 Déjanos tus datos y un breve mensaje. Te responderemos a la brevedad.
               </p> -->
 
-              <form class="contact-form" action="#" method="post">
+              <script>
+                (function () {
+
+                  const form = document.querySelector(".contact-form");
+                  if (!form) return;
+
+                  const ENDPOINT = "https://script.google.com/a/macros/blackbirdcapital.cl/s/AKfycbwMft4_OGsYbQiMWHp-JwBh58Ez2842qjevELAUJ5kDco4p6FuoXj2UWH8CjzUivsfEEQ/exec";
+
+                  form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+
+                    try {
+                      const res = await fetch(ENDPOINT, {
+                        method: "POST",
+                        body: formData
+                      });
+
+                      if (!res.ok) throw new Error("Fetch error");
+
+                      showToast("Gracias, hemos recibido tu mensaje. Te contactaremos pronto.");
+                      form.reset();
+
+                    } catch (error) {
+                      console.error(error);
+                      alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
+                    }
+                  });
+
+                })();
+              </script>
+              
+              <script>
+              function showToast(message) {
+                const toast = document.getElementById("toast");
+                const text = document.getElementById("toast-message");
+
+                text.textContent = message;
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                  toast.classList.remove("show");
+                }, 3500);
+              }
+              </script>
+
+              
+              <!-- <form class="contact-form" action="#" method="post">
+                <div class="form-row">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" required />
+                </div>
+
+                <div class="form-row">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-row">
+                  <label for="telefono">Teléfono</label>
+                  <input type="tel" id="telefono" name="telefono" />
+                </div>
+
+                <div class="form-row">
+                  <label for="mensaje">Mensaje</label>
+                  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Enviar mensaje</button>
+              </form> -->
+
+              <form id="contact-form" class="contact-form">
                 <div class="form-row">
                   <label for="nombre">Nombre</label>
                   <input type="text" id="nombre" name="nombre" required />
@@ -611,6 +683,8 @@
 
                 <button type="submit" class="btn">Enviar mensaje</button>
               </form>
+
+
             </div>
 
             <!-- DERECHA: MAPA -->
@@ -623,9 +697,9 @@
                 referrerpolicy="no-referrer-when-downgrade">
               </iframe>
               <div class="cta__map-info">
-                <strong>Oficina BlackBird Capital</strong>
+                <!-- <strong>Oficina BlackBird Capital</strong>
                 <p>Santiago, Chile</p>
-                <!-- acá después puedes poner la dirección exacta -->
+                acá después puedes poner la dirección exacta -->
               </div>
             </div>
 
@@ -649,17 +723,24 @@
               height="60"
               loading="lazy"
             />
-            <p>Asset Management & Finance Solutions</p>
+            <p>Asset Management. Finance Solutions</p>
           </div>
           
           <nav class="footer__nav">
-            <div class="footer__nav-column">
+            <!-- <div class="footer__nav-column">
               <h3>Fondos</h3>
               <ul>
                 <li><a href="/fondos/money-market">Money Market</a></li>
                 <li><a href="/fondos/shortterm">Deuda CP</a></li>
                 <li><a href="/fondos/midterm">Deuda MP</a></li>
                 <li><a href="/fondos/realestate">Real Estate</a></li>
+              </ul>
+            </div> -->
+            <div class="footer__nav-column">
+              <h3>Fondos</h3>
+              <ul>
+                <li><a href="#funds">Money Market</a></li>
+                <li><a href="#funds">Real Estate</a></li>
               </ul>
             </div>
             <div class="footer__nav-column">
@@ -671,13 +752,22 @@
                 <li><a href="#fiscal">Real Estate</a></li>
               </ul>
             </div>
-            <div class="footer__nav-column">
+            <!-- <div class="footer__nav-column">
               <h3>Recursos</h3>
               <ul>
                 <li><a href="/blog">Blog & Insights</a></li>
                 <li><a href="/research">Research</a></li>
                 <li><a href="/calculadoras">Calculadoras</a></li>
                 <li><a href="/faq">FAQ</a></li>
+              </ul>
+            </div> -->
+            <div class="footer__nav-column">
+              <h3>Recursos</h3>
+              <ul>
+                <li><a href="#blog">Blog & Insights</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#calculadoras">Calculadoras</a></li>
+                <li><a href="#faq">FAQ</a></li>
               </ul>
             </div>
           </nav>
@@ -696,11 +786,17 @@
             © 2025 BlackBird Capital. Todos los derechos reservados. 
             <!-- | RUT: 76.XXX.XXX-X -->
           </p>
-          <nav class="footer__legal" aria-label="Enlaces legales">
+          <!-- <nav class="footer__legal" aria-label="Enlaces legales">
             <a href="/privacidad">Privacidad</a>
             <a href="/terminos">Términos</a>
             <a href="/compliance">Compliance</a>
             <a href="/sitemap">Mapa del sitio</a>
+          </nav> -->
+          <nav class="footer__legal" aria-label="Enlaces legales">
+            <a href="#privacidad">Privacidad</a>
+            <a href="#tyc">Términos</a>
+            <a href="#compliance">Compliance</a>
+            <a href="#sitemap">Mapa del sitio</a>
           </nav>
           <div class="footer__certifications">
             <img
@@ -723,5 +819,42 @@
         </div>
       </div>
     </footer>
+
+    <div id="toast" class="toast">
+      <span id="toast-message"></span>
+    </div>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector("#contact-form");
+        if (!form) return;
+
+        const ENDPOINT = "https://script.google.com/a/macros/blackbirdcapital.cl/s/AKfycbwMft4_OGsYbQiMWHp-JwBh58Ez2842qjevELAUJ5kDco4p6FuoXj2UWH8CjzUivsfEEQ/exec";
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault(); // <-- esto evita el POST a 127.0.0.1 que te daba ERROR 405
+
+          const formData = new FormData(form);
+
+          try {
+            const res = await fetch(ENDPOINT, {
+              method: "POST",
+              body: formData,
+            });
+
+            if (!res.ok) throw new Error("HTTP " + res.status);
+
+            showToast("Gracias, hemos recibido tu mensaje. Te contactaremos pronto.");
+            form.reset();
+          } catch (err) {
+            console.error(err);
+            alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
+          }
+        });
+      });
+    </script>
+
+
   </body>
 </html>
