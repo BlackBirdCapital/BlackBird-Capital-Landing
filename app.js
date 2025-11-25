@@ -205,7 +205,7 @@
       dotsSelector,
       cardSelector,
       stateKey,
-      centerMode = true
+      centerMode = false
     } = config;
     
     const track = document.getElementById(trackId);
