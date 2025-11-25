@@ -280,12 +280,25 @@
       const gap = parseFloat(getComputedStyle(track).gap) || 32;
       const containerWidth = track.parentElement?.clientWidth || 0;
       
+      // // Calcular tarjetas visibles
+      // let visible = 1;
+      // if (!centerMode) {
+      //   visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+      // }
+
       // Calcular tarjetas visibles
       let visible = 1;
       if (!centerMode) {
-        visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+        // Para el carrusel de FONDOS en mobile/tablet,
+        // forzamos siempre 1 tarjeta visible
+        if (trackId === 'funds-track' && window.innerWidth < 1024) {
+          visible = 1;
+        } else {
+          visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
+        }
       }
-      
+
+
       // Índice máximo
       const maxIndex = centerMode 
         ? Math.max(0, cards.length - 1)
