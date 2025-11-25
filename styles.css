@@ -846,10 +846,17 @@ section {
   font-size: 1.25rem;
 }
 
-.carousel-btn:hover:not(:disabled) {
+/* .carousel-btn:hover:not(:disabled) {
   background: var(--color-terracota);
   transform: scale(1.1);
+} */
+
+/* Igual que el carrusel del equipo */
+.carousel-btn:hover:not(:disabled) {
+  background: rgba(54, 61, 73, 0.8); /* Gris sólido, igual al equipo */
+  transform: scale(1.1);
 }
+
 
 .carousel-btn:disabled {
   opacity: 0.3;
