@@ -230,20 +230,40 @@
     
     const dots = dotsContainer?.querySelectorAll('button');
     
-    // --- NUEVO: modo estático cuando hay pocos ítems (por ejemplo < 4 fondos) ---
-    const minSlidesForCarousel = centerMode ? 1 : 4; // para fondos: mínimo 4
-    const isStaticLayout = !centerMode && cards.length < minSlidesForCarousel;
+    // // --- NUEVO: modo estático cuando hay pocos ítems (por ejemplo < 4 fondos) ---
+    // const minSlidesForCarousel = centerMode ? 1 : 4; // para fondos: mínimo 4
+    // const isStaticLayout = !centerMode && cards.length < minSlidesForCarousel;
+
+    // if (isStaticLayout) {
+    //   // centramos las cards y apagamos cualquier transform
+    //   track.style.justifyContent = 'center';
+    //   track.style.transform = 'none';
+
+    //   // ocultamos controles
+    //   if (prevBtn) prevBtn.style.display = 'none';
+    //   if (nextBtn) nextBtn.style.display = 'none';
+    //   if (dotsContainer) dotsContainer.style.display = 'none';
+    // }
+    
+    // --- Modo estático solo en desktop cuando hay pocos ítems ---
+    // Si es un carrusel normal (fondos), solo es estático en desktop y solo si hay menos de 4 tarjetas.
+    const DESKTOP_WIDTH = 1024;
+    const minSlidesForCarousel = centerMode ? 1 : (window.innerWidth >= DESKTOP_WIDTH ? 4 : 1);
+
+    const isStaticLayout =
+      !centerMode &&
+      cards.length < minSlidesForCarousel &&
+      window.innerWidth >= DESKTOP_WIDTH;
 
     if (isStaticLayout) {
-      // centramos las cards y apagamos cualquier transform
       track.style.justifyContent = 'center';
       track.style.transform = 'none';
 
-      // ocultamos controles
       if (prevBtn) prevBtn.style.display = 'none';
       if (nextBtn) nextBtn.style.display = 'none';
       if (dotsContainer) dotsContainer.style.display = 'none';
     }
+
     
     // Calcular métricas del carrusel
     const getMetrics = () => {
