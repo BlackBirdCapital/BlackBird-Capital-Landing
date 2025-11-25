@@ -972,7 +972,7 @@ const isStaticLayout = false;
       dotsSelector: '.funds__controls .carousel-dots',
       cardSelector: '.fund-card',
       stateKey: 'currentFundIndex',
-      centerMode: true
+      centerMode: false
     });
     
     // Inicializar carrusel del equipo
