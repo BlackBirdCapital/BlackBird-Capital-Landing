@@ -205,7 +205,7 @@
       dotsSelector,
       cardSelector,
       stateKey,
-      centerMode = false
+      centerMode = true
     } = config;
     
     const track = document.getElementById(trackId);
@@ -247,22 +247,27 @@
     
     // --- Modo estático solo en desktop cuando hay pocos ítems ---
     // Si es un carrusel normal (fondos), solo es estático en desktop y solo si hay menos de 4 tarjetas.
-    const DESKTOP_WIDTH = 1024;
-    const minSlidesForCarousel = centerMode ? 1 : (window.innerWidth >= DESKTOP_WIDTH ? 4 : 1);
 
-    const isStaticLayout =
-      !centerMode &&
-      cards.length < minSlidesForCarousel &&
-      window.innerWidth >= DESKTOP_WIDTH;
+    // const DESKTOP_WIDTH = 1024;
+    // const minSlidesForCarousel = centerMode ? 1 : (window.innerWidth >= DESKTOP_WIDTH ? 4 : 1);
 
-    if (isStaticLayout) {
-      track.style.justifyContent = 'center';
-      track.style.transform = 'none';
+    // const isStaticLayout =
+    //   !centerMode &&
+    //   cards.length < minSlidesForCarousel &&
+    //   window.innerWidth >= DESKTOP_WIDTH;
 
-      if (prevBtn) prevBtn.style.display = 'none';
-      if (nextBtn) nextBtn.style.display = 'none';
-      if (dotsContainer) dotsContainer.style.display = 'none';
-    }
+    // if (isStaticLayout) {
+    //   track.style.justifyContent = 'center';
+    //   track.style.transform = 'none';
+
+    //   if (prevBtn) prevBtn.style.display = 'none';
+    //   if (nextBtn) nextBtn.style.display = 'none';
+    //   if (dotsContainer) dotsContainer.style.display = 'none';
+    // }
+
+// Eliminado modo estático — siempre carrusel real
+const isStaticLayout = false;
+
 
     
     // Calcular métricas del carrusel
@@ -967,7 +972,7 @@
       dotsSelector: '.funds__controls .carousel-dots',
       cardSelector: '.fund-card',
       stateKey: 'currentFundIndex',
-      centerMode: false
+      centerMode: true
     });
     
     // Inicializar carrusel del equipo
