@@ -2058,3 +2058,10 @@ section {
   pointer-events: auto;
   transform: translateY(0);
 }
+
+/* Oculta las flechas y los dots del carrusel de fondos en DESKTOP */
+@media (min-width: 1024px) {
+  .funds__controls {
+    display: none !important;
+  }
+}
