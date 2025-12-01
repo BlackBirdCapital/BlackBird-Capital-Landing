@@ -727,7 +727,19 @@ const isStaticLayout = false;
             <li>Anteriormente <strong>CFO</strong> en Houm Group Inc.</li>
           </ul>
         `
-      }
+      },
+      ccm: {
+  name: 'Clemente Chappuzeau M',
+  role: 'Socio & Portfolio Manager',
+  image: 'assets/imagenes/foto CCM Web.jpg',
+  content: `
+    <ul>
+      <li><strong>Socio & Portfolio Manager</strong> – BlackBird Capital S.A.</li>
+      <li>4+ años de experiencia en finanzas corporativas e inversiones</li>
+      <li><strong>Pontificia Universidad Católica de Chile</strong> – Ingeniero Civil Industrial</li>
+    </ul>
+  `
+}
     };
     
     // Función para abrir el modal
