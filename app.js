@@ -13,7 +13,7 @@
   const state = {
     menuOpen: false,
     currentFundIndex: 0,
-    currentTeamIndex: 0,
+    currentTeamIndex: 1, // 👈 arrancar en la tarjeta del medio (índice 1)
     prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     modalOpen: false
   };
@@ -163,39 +163,76 @@
   // ==========================================================================
   // 4. SMOOTH SCROLL MEJORADO
   // ==========================================================================
-  const initSmoothScroll = () => {
-    if (state.prefersReducedMotion) return;
+  // const initSmoothScroll = () => {
+  //   if (state.prefersReducedMotion) return;
     
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href^="#"]');
-      if (!link) return;
+  //   document.addEventListener('click', (e) => {
+  //     const link = e.target.closest('a[href^="#"]');
+  //     if (!link) return;
       
-      const targetId = link.getAttribute('href');
-      if (targetId === '#') return;
+  //     const targetId = link.getAttribute('href');
+  //     if (targetId === '#') return;
       
-      const target = document.querySelector(targetId);
-      if (!target) return;
+  //     const target = document.querySelector(targetId);
+  //     if (!target) return;
       
-      e.preventDefault();
+  //     e.preventDefault();
       
-      const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-      const targetPosition = target.offsetTop - headerHeight - 20;
+  //     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+  //     const targetPosition = target.offsetTop - headerHeight - 20;
       
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
+  //     window.scrollTo({
+  //       top: targetPosition,
+  //       behavior: 'smooth'
+  //     });
+      
+  //     // Actualizar URL sin hacer scroll
+  //     history.replaceState(null, '', targetId);
+  //   });
+  // };
+
+  // ==========================================================================
+  // 4. SMOOTH SCROLL SIEMPRE ACTIVO (NAV + CUALQUIER LINK CON #)
+  // ==========================================================================
+  const initSmoothScroll = () => {
+    const header = document.querySelector('.header');
+
+    const getHeaderHeight = () => (header ? header.offsetHeight : 0);
+
+    // Todos los links internos con hash, excepto el puro "#"
+    const links = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href'); // ej: "#expertise"
+        const target = document.querySelector(targetId);
+        if (!target) return; // si no existe, dejamos que haga lo que quiera
+
+        e.preventDefault();
+
+        const headerHeight = getHeaderHeight();
+
+        const targetPosition =
+          target.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          20; // pequeño margen
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+
+        // Actualiza la URL sin nuevo salto
+        history.replaceState(null, '', targetId);
       });
-      
-      // Actualizar URL sin hacer scroll
-      history.replaceState(null, '', targetId);
     });
   };
 
+
+
   // ==========================================================================
   // 5. CARRUSEL UNIVERSAL MEJORADO
-  // ==========================================================================
-
-    // 5. CARRUSEL UNIVERSAL MEJORADO
   // ==========================================================================
   const initCarousel = (config) => {
     const { 
@@ -216,59 +253,34 @@
     
     const cards = track.querySelectorAll(cardSelector);
     const dotsContainer = document.querySelector(dotsSelector);
+
+    // Si no hay tarjetas, nada que hacer
+    if (!cards.length) return;
+
+    // Asegurar que el índice inicial está dentro de rango
+    if (
+      typeof state[stateKey] !== 'number' ||
+      state[stateKey] < 0 ||
+      state[stateKey] >= cards.length
+    ) {
+      state[stateKey] = 0;
+    }
     
     // Crear dots si no existen
     if (dotsContainer && !dotsContainer.children.length) {
       cards.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.setAttribute('aria-label', `Ir a elemento ${index + 1}`);
-        if (index === 0) dot.classList.add('active');
+        if (index === state[stateKey]) dot.classList.add('active'); // usar índice inicial real
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
       });
     }
     
     const dots = dotsContainer?.querySelectorAll('button');
-    
-    // // --- NUEVO: modo estático cuando hay pocos ítems (por ejemplo < 4 fondos) ---
-    // const minSlidesForCarousel = centerMode ? 1 : 4; // para fondos: mínimo 4
-    // const isStaticLayout = !centerMode && cards.length < minSlidesForCarousel;
 
-    // if (isStaticLayout) {
-    //   // centramos las cards y apagamos cualquier transform
-    //   track.style.justifyContent = 'center';
-    //   track.style.transform = 'none';
-
-    //   // ocultamos controles
-    //   if (prevBtn) prevBtn.style.display = 'none';
-    //   if (nextBtn) nextBtn.style.display = 'none';
-    //   if (dotsContainer) dotsContainer.style.display = 'none';
-    // }
-    
-    // --- Modo estático solo en desktop cuando hay pocos ítems ---
-    // Si es un carrusel normal (fondos), solo es estático en desktop y solo si hay menos de 4 tarjetas.
-
-    // const DESKTOP_WIDTH = 1024;
-    // const minSlidesForCarousel = centerMode ? 1 : (window.innerWidth >= DESKTOP_WIDTH ? 4 : 1);
-
-    // const isStaticLayout =
-    //   !centerMode &&
-    //   cards.length < minSlidesForCarousel &&
-    //   window.innerWidth >= DESKTOP_WIDTH;
-
-    // if (isStaticLayout) {
-    //   track.style.justifyContent = 'center';
-    //   track.style.transform = 'none';
-
-    //   if (prevBtn) prevBtn.style.display = 'none';
-    //   if (nextBtn) nextBtn.style.display = 'none';
-    //   if (dotsContainer) dotsContainer.style.display = 'none';
-    // }
-
-// Eliminado modo estático — siempre carrusel real
-const isStaticLayout = false;
-
-
+    // Eliminado modo estático — siempre carrusel real
+    const isStaticLayout = false;
     
     // Calcular métricas del carrusel
     const getMetrics = () => {
@@ -276,7 +288,7 @@ const isStaticLayout = false;
         return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
       }
 
-      const activeIndex = state[stateKey] || 0;
+      const activeIndex = (typeof state[stateKey] === 'number' ? state[stateKey] : 0);
       const sampleCard = cards[activeIndex] || cards[0];
       
       if (!sampleCard) return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
@@ -285,24 +297,16 @@ const isStaticLayout = false;
       const gap = parseFloat(getComputedStyle(track).gap) || 32;
       const containerWidth = track.parentElement?.clientWidth || 0;
       
-      // // Calcular tarjetas visibles
-      // let visible = 1;
-      // if (!centerMode) {
-      //   visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
-      // }
-
       // Calcular tarjetas visibles
       let visible = 1;
       if (!centerMode) {
-        // Para el carrusel de FONDOS en mobile/tablet,
-        // forzamos siempre 1 tarjeta visible
+        // Para el carrusel de FONDOS en mobile/tablet, forzamos 1 tarjeta visible
         if (trackId === 'funds-track' && window.innerWidth < 1024) {
           visible = 1;
         } else {
           visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
         }
       }
-
 
       // Índice máximo
       const maxIndex = centerMode 
@@ -474,217 +478,6 @@ const isStaticLayout = false;
       updateCarousel();
     }
   };
-  
-
-  // const initCarousel = (config) => {
-  //   const { 
-  //     trackId, 
-  //     prevBtnId, 
-  //     nextBtnId, 
-  //     dotsSelector,
-  //     cardSelector,
-  //     stateKey,
-  //     centerMode = false
-  //   } = config;
-    
-  //   const track = document.getElementById(trackId);
-  //   const prevBtn = document.getElementById(prevBtnId);
-  //   const nextBtn = document.getElementById(nextBtnId);
-    
-  //   if (!track) return;
-    
-  //   const cards = track.querySelectorAll(cardSelector);
-  //   const dotsContainer = document.querySelector(dotsSelector);
-    
-  //   // Crear dots si no existen
-  //   if (dotsContainer && !dotsContainer.children.length) {
-  //     cards.forEach((_, index) => {
-  //       const dot = document.createElement('button');
-  //       dot.setAttribute('aria-label', `Ir a elemento ${index + 1}`);
-  //       if (index === 0) dot.classList.add('active');
-  //       dot.addEventListener('click', () => goToSlide(index));
-  //       dotsContainer.appendChild(dot);
-  //     });
-  //   }
-    
-  //   const dots = dotsContainer?.querySelectorAll('button');
-    
-  //   // Calcular métricas del carrusel
-  //   const getMetrics = () => {
-  //     const activeIndex = state[stateKey] || 0;
-  //     const sampleCard = cards[activeIndex] || cards[0];
-      
-  //     if (!sampleCard) return { cardWidth: 0, gap: 0, visible: 1, maxIndex: 0, containerWidth: 0 };
-      
-  //     const cardWidth = sampleCard.offsetWidth;
-  //     const gap = parseFloat(getComputedStyle(track).gap) || 32;
-  //     const containerWidth = track.parentElement?.clientWidth || 0;
-      
-  //     // Calcular tarjetas visibles
-  //     let visible = 1;
-  //     if (!centerMode) {
-  //       visible = Math.max(1, Math.floor((containerWidth + gap) / (cardWidth + gap)));
-  //     }
-      
-  //     // Índice máximo
-  //     const maxIndex = centerMode 
-  //       ? Math.max(0, cards.length - 1)
-  //       : Math.max(0, cards.length - visible);
-      
-  //     return { cardWidth, gap, visible, maxIndex, containerWidth };
-  //   };
-    
-  //   // Actualizar el carrusel
-  //   const updateCarousel = () => {
-  //     const metrics = getMetrics();
-  //     state[stateKey] = Math.max(0, Math.min(state[stateKey], metrics.maxIndex));
-      
-  //     if (centerMode) {
-  //       // Centrar la tarjeta activa
-  //       const centerOffset = (metrics.containerWidth - metrics.cardWidth) / 2;
-  //       const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap) + centerOffset;
-  //       track.style.transform = `translateX(${translateX}px)`;
-        
-  //       // Actualizar clase activa
-  //       cards.forEach((card, i) => {
-  //         card.classList.toggle('active', i === state[stateKey]);
-  //       });
-  //     } else {
-  //       // Carrusel normal
-  //       const translateX = -state[stateKey] * (metrics.cardWidth + metrics.gap);
-  //       track.style.transform = `translateX(${translateX}px)`;
-  //     }
-      
-  //     // Actualizar dots
-  //     dots?.forEach((dot, i) => {
-  //       dot.classList.toggle('active', i === state[stateKey]);
-  //     });
-      
-  //     // Actualizar botones
-  //     if (prevBtn) prevBtn.disabled = state[stateKey] === 0;
-  //     if (nextBtn) nextBtn.disabled = state[stateKey] >= metrics.maxIndex;
-  //   };
-    
-  //   // Ir a una tarjeta específica
-  //   const goToSlide = (index) => {
-  //     const { maxIndex } = getMetrics();
-  //     state[stateKey] = Math.max(0, Math.min(index, maxIndex));
-  //     updateCarousel();
-  //   };
-    
-  //   // Event listeners para los botones
-  //   prevBtn?.addEventListener('click', () => {
-  //     if (state[stateKey] > 0) {
-  //       state[stateKey]--;
-  //       updateCarousel();
-  //     }
-  //   });
-    
-  //   nextBtn?.addEventListener('click', () => {
-  //     const { maxIndex } = getMetrics();
-  //     if (state[stateKey] < maxIndex) {
-  //       state[stateKey]++;
-  //       updateCarousel();
-  //     }
-  //   });
-    
-  //   // Soporte táctil mejorado
-  //   let startX = 0;
-  //   let currentX = 0;
-  //   let isDragging = false;
-    
-  //   const handleTouchStart = (e) => {
-  //     startX = e.touches[0].clientX;
-  //     isDragging = true;
-  //     track.style.cursor = 'grabbing';
-  //   };
-    
-  //   const handleTouchMove = (e) => {
-  //     if (!isDragging) return;
-  //     currentX = e.touches[0].clientX;
-  //   };
-    
-  //   const handleTouchEnd = () => {
-  //     if (!isDragging) return;
-      
-  //     const diff = startX - currentX;
-  //     const threshold = 50;
-      
-  //     const { maxIndex } = getMetrics();
-  //     if (Math.abs(diff) > threshold) {
-  //       if (diff > 0 && state[stateKey] < maxIndex) {
-  //         state[stateKey]++;
-  //       } else if (diff < 0 && state[stateKey] > 0) {
-  //         state[stateKey]--;
-  //       }
-  //       updateCarousel();
-  //     }
-      
-  //     isDragging = false;
-  //     track.style.cursor = '';
-  //   };
-    
-  //   // Eventos táctiles
-  //   track.addEventListener('touchstart', handleTouchStart, { passive: true });
-  //   track.addEventListener('touchmove', handleTouchMove, { passive: true });
-  //   track.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
-  //   // Soporte para mouse (drag)
-  //   track.addEventListener('mousedown', (e) => {
-  //     startX = e.clientX;
-  //     isDragging = true;
-  //     track.style.cursor = 'grabbing';
-  //     e.preventDefault();
-  //   });
-    
-  //   track.addEventListener('mousemove', (e) => {
-  //     if (!isDragging) return;
-  //     currentX = e.clientX;
-  //   });
-    
-  //   track.addEventListener('mouseup', () => {
-  //     if (!isDragging) return;
-      
-  //     const diff = startX - currentX;
-  //     const threshold = 50;
-      
-  //     const { maxIndex } = getMetrics();
-  //     if (Math.abs(diff) > threshold) {
-  //       if (diff > 0 && state[stateKey] < maxIndex) {
-  //         state[stateKey]++;
-  //       } else if (diff < 0 && state[stateKey] > 0) {
-  //         state[stateKey]--;
-  //       }
-  //       updateCarousel();
-  //     }
-      
-  //     isDragging = false;
-  //     track.style.cursor = '';
-  //   });
-    
-  //   track.addEventListener('mouseleave', () => {
-  //     isDragging = false;
-  //     track.style.cursor = '';
-  //   });
-    
-  //   // Click en tarjetas para modo centro
-  //   if (centerMode) {
-  //     cards.forEach((card, index) => {
-  //       card.addEventListener('click', () => {
-  //         if (state[stateKey] !== index) {
-  //           goToSlide(index);
-  //         }
-  //       });
-  //     });
-  //   }
-    
-  //   // Manejar resize
-  //   const handleResize = debounce(updateCarousel, 150);
-  //   window.addEventListener('resize', handleResize, { passive: true });
-    
-  //   // Inicializar
-  //   updateCarousel();
-  // };
 
   // ==========================================================================
   // 6. MODAL DEL EQUIPO - CORREGIDO Y SIMPLIFICADO
@@ -729,17 +522,17 @@ const isStaticLayout = false;
         `
       },
       ccm: {
-  name: 'Clemente Chappuzeau M',
-  role: 'Socio & Portfolio Manager',
-  image: 'assets/imagenes/foto CCM Web.jpg',
-  content: `
-    <ul>
-      <li><strong>Socio & Portfolio Manager</strong> – BlackBird Capital S.A.</li>
-      <li>4+ años de experiencia en finanzas corporativas e inversiones</li>
-      <li><strong>Pontificia Universidad Católica de Chile</strong> – Ingeniero Civil Industrial</li>
-    </ul>
-  `
-}
+        name: 'Clemente Chappuzeau M',
+        role: 'Socio & Portfolio Manager',
+        image: 'assets/imagenes/foto CCM Web.jpg',
+        content: `
+          <ul>
+            <li><strong>Socio & Portfolio Manager</strong> – BlackBird Capital S.A.</li>
+            <li>4+ años de experiencia en finanzas corporativas e inversiones</li>
+            <li><strong>Pontificia Universidad Católica de Chile</strong> – Ingeniero Civil Industrial</li>
+          </ul>
+        `
+      }
     };
     
     // Función para abrir el modal
@@ -797,70 +590,6 @@ const isStaticLayout = false;
       }
     });
   };
-
-  // ==========================================================================
-  // 7. CONTADOR ANIMADO (PARA ESTADÍSTICAS - COMENTADO)
-  // ==========================================================================
-  /*
-  const initStats = () => {
-    if (state.prefersReducedMotion) return;
-    
-    const statItems = document.querySelectorAll('.stat-item h3[data-target]');
-    if (!statItems.length) return;
-    
-    const animateValue = (element, target, options = {}) => {
-      const {
-        duration = 1500,
-        decimal = false,
-        suffix = ''
-      } = options;
-      
-      let startTime = null;
-      const startValue = 0;
-      
-      const step = (currentTime) => {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = startValue + (target - startValue) * eased;
-        
-        let display;
-        if (decimal) {
-          display = current.toFixed(1);
-        } else {
-          display = Math.floor(current).toString();
-        }
-        
-        element.textContent = display + suffix;
-        
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      };
-      
-      requestAnimationFrame(step);
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const element = entry.target;
-          const target = parseFloat(element.getAttribute('data-target'));
-          const decimal = element.getAttribute('data-decimal') === 'true';
-          const suffix = element.getAttribute('data-suffix') || '';
-          
-          animateValue(element, target, { decimal, suffix });
-          observer.unobserve(element);
-        }
-      });
-    }, {
-      threshold: 0.5,
-      rootMargin: '0px 0px -100px 0px'
-    });
-    
-    statItems.forEach(item => observer.observe(item));
-  };
-  */
 
   // ==========================================================================
   // 8. ACCORDION FAQ
@@ -976,7 +705,7 @@ const isStaticLayout = false;
     initHeader();
     initSmoothScroll();
     
-    // Inicializar carrusel de fondos
+    // Carrusel de fondos
     initCarousel({
       trackId: 'funds-track',
       prevBtnId: 'prevBtn',
@@ -987,7 +716,7 @@ const isStaticLayout = false;
       centerMode: false
     });
     
-    // Inicializar carrusel del equipo
+    // Carrusel del equipo (centerMode + índice inicial = 1)
     initCarousel({
       trackId: 'teamTrack',
       prevBtnId: 'teamPrevBtn',
@@ -998,11 +727,10 @@ const isStaticLayout = false;
       centerMode: true
     });
     
-    // Inicializar modal del equipo
+    // Modal del equipo
     initTeamModal();
     
-    // Inicializar elementos interactivos
-    // initStats(); // Comentado temporalmente
+    // Otros elementos interactivos
     initAccordion();
     initNewsletter();
     initLazyLoading();
