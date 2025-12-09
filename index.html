@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta
       name="description"
       content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales. Asset Management & Finance Solutions."
@@ -11,7 +12,10 @@
       name="keywords"
       content="inversión, fondos, gestión de activos, BlackBird Capital, finance, asset management"
     />
+
     <title>BlackBird Capital - Asset Management. Finance Solutions</title>
+
+    <!-- Favicon -->
     <link
       rel="icon"
       href="assets/iso3.svg"
@@ -29,22 +33,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "BlackBird Capital",
-  "url": "https://blackbirdcapital.cl/",
-  "logo": "https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png",
-  "sameAs": [
-    "https://www.linkedin.com/company/blackbird-capital-cl/"
-  ]
-}
-</script>
+    <!-- Datos estructurados: Organización + logo oficial -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BlackBird Capital",
+      "url": "https://blackbirdcapital.cl/",
+      "logo": "https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/blackbird-capital-cl/"
+      ]
+    }
+    </script>
 
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://blackbirdcapital.cl/" />
+    <meta property="og:title" content="BlackBird Capital - Asset Management. Finance Solutions" />
+    <meta
+      property="og:description"
+      content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
+    />
+    <meta
+      property="og:image"
+      content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png"
+    />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
 
-    <!-- <img src="assets/imagenes/logo-blackbird.png" alt="BlackBird Capital"> -->
-
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BlackBird Capital - Asset Management. Finance Solutions" />
+    <meta
+      name="twitter:description"
+      content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
+    />
+    <meta
+      name="twitter:image"
+      content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png"
+    />
 
     <!-- Critical CSS inline para evitar render blocking -->
     <style>
@@ -84,6 +112,7 @@
     <!-- Defer scripts no críticos -->
     <script src="app.js" defer></script>
   </head>
+
   <body>
     <!-- Header Principal -->
     <header class="header" role="banner">
@@ -92,7 +121,7 @@
           Estamos trabajando en la remodelación del sitio. ¡Pronto volveremos con una experiencia renovada!
         </div>
       </div>
-      
+
       <div class="header__container">
         <a href="/" class="header__logo" aria-label="BlackBird Capital - Inicio">
           <img
@@ -135,48 +164,19 @@
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <!-- <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__container">
-          <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
-
-
-          
-          <div class="hero__logo" role="img" aria-label="BlackBird Capital">
-            <img
-              src="/assets/logo-blanco-bajada.svg"
-              alt="BlackBird Capital"
-              loading="eager"
-              width="300"
-              height="120"
-            />
-          </div>
-          <div class="hero__cta-group">
-            <a href="#expertise" class="btn btn--primary">Comenzar ahora</a>
-            <a href="#nosotros" class="btn btn--ghost">Conocer más</a>
-          </div>
-        </div>
-      </section> -->
-
+      <!-- Hero -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__container">
-
-          <!-- H1 para accesibilidad -->
           <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
 
-          <!-- STATEMENT -->
           <div class="hero__text">
             <h2 class="hero__headline">Somos especialistas en Gestión de Activos</h2>
             <p class="hero__subtitle">
-              <!-- Buscamos e invertimos en oportunidades con convicción, bajo los más altos
-              estándares de análisis, responsabilidad e integridad de nuestro equipo. -->
               Nos enfocamos en oportunidades que cumplen con estándares exigentes de análisis y consistencia, siempre bajo una cultura de responsabilidad e integridad.
             </p>
           </div>
-
         </div>
       </section>
-
 
       <!-- Servicios -->
       <section class="expertise" id="expertise" aria-labelledby="services-title">
@@ -194,9 +194,8 @@
               </p>
               <a href="#patrimonio" class="card__link"></a>
             </article>
-            
+
             <article class="card">
-              <!-- <span class="card__badge">Popular</span> -->
               <div class="card__icon">
                 <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
@@ -206,9 +205,8 @@
               </p>
               <a href="#fondos" class="card__link"></a>
             </article>
-            
+
             <article class="card">
-              <!-- <span class="card__badge">Nuevo</span> -->
               <div class="card__icon">
                 <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
@@ -220,7 +218,7 @@
         </div>
       </section>
 
-      <!-- Fondos de Inversión -->
+      <!-- Fondos -->
       <section class="funds" id="fondos" aria-labelledby="funds-title">
         <div class="container">
           <div class="disclaimer-banner">
@@ -238,7 +236,6 @@
           <div class="funds__carousel">
             <div class="funds__track-wrapper">
               <div class="funds__track" id="funds-track">
-                <!-- Fund Card 1 - Activo -->
                 <article class="fund-card">
                   <div class="fund-card__header">
                     <span class="fund-card__category">Money Market</span>
@@ -259,7 +256,6 @@
                     excedentes de caja.
                   </p>
                   <div class="fund-card__footer">
-                    <!-- <a href="/fondos/cashflow" class="fund-card__link">Ver detalles →</a> -->
                     <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
                     <div class="risk-level" data-level="1">
                       <span></span><span></span><span></span><span></span><span></span>
@@ -267,7 +263,6 @@
                   </div>
                 </article>
 
-                <!-- Fund Card 2 - En estructuración -->
                 <article class="fund-card fund-card--upcoming">
                   <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
@@ -295,7 +290,6 @@
                   </div>
                 </article>
 
-                <!-- Fund Card 3 - En estructuración -->
                 <article class="fund-card fund-card--upcoming">
                   <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
@@ -322,60 +316,6 @@
                     </div>
                   </div>
                 </article>
-
-                <!-- Fund Card 3 - En estructuración -->
-                <!-- <article class="fund-card fund-card--upcoming">
-                  <div class="fund-card__status">En estructuración</div>
-                  <div class="fund-card__header">
-                    <span class="fund-card__category">Renta Fija CP</span>
-                    <h3>BlackBird Shorrterm Debt</h3>
-                  </div>
-                  <div class="fund-card__metrics">
-                    <div class="metric">
-                      <span class="metric__value">10.5%*</span>
-                      <span class="metric__label">Retorno Objetivo</span>
-                    </div>
-                    <div class="metric">
-                      <span class="metric__value">90d - 1 año</span>
-                      <span class="metric__label">Duratión</span>
-                    </div>
-                  </div>
-                  <p>
-                    Portafolio diversificado de bonos corporativos y soberanos.
-                  </p>
-                  <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-                    <div class="risk-level" data-level="3">
-                      <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </article> -->
-
-                <!-- Fund Card 4 - En estructuración -->
-                <!-- <article class="fund-card fund-card--upcoming">
-                  <div class="fund-card__status">En estructuración</div>
-                  <div class="fund-card__header">
-                    <span class="fund-card__category">Renta Fija MP</span>
-                    <h3>BlackBird Mid Term Debt</h3>
-                  </div>
-                  <div class="fund-card__metrics">
-                    <div class="metric">
-                      <span class="metric__value">13%+*</span>
-                      <span class="metric__label">TIR Objetivo</span>
-                    </div>
-                    <div class="metric">
-                      <span class="metric__value">1-3 años</span>
-                      <span class="metric__label">Duration</span>
-                    </div>
-                  </div>
-                  <p> Portafolio diversificado de bonos corporativos y soberanos.</p>
-                  <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-                    <div class="risk-level" data-level="4">
-                      <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </article> -->
               </div>
             </div>
 
@@ -423,7 +363,7 @@
               <h3>Integridad</h3>
               <p>
                 Operamos con los más altos estándares éticos, priorizando
-               los intereses de nuestros clientes.
+                los intereses de nuestros clientes.
               </p>
             </article>
           </div>
@@ -499,14 +439,11 @@
                   <p class="team-member__bio">
                     4+ años de experiencia en finanzas corporativas e
                     inversiones.<br />
-                    <!-- Anteriormente CFO & Investment Manager en Grupo Bancard, CFO
-                    en Houm Group Inc. -->
                   </p>
                   <button class="btn btn--ghost btn--small team-member__details-btn" data-member="ccm">
                     Ver más detalles
                   </button>
                 </article>
-
               </div>
             </div>
 
@@ -519,7 +456,7 @@
         </div>
       </section>
 
-      <!-- Modal para detalles del equipo - ESTRUCTURA SIMPLIFICADA -->
+      <!-- Modal Equipo -->
       <div class="team-modal" id="teamModal">
         <div class="team-modal__overlay"></div>
         <div class="team-modal__content">
@@ -535,103 +472,15 @@
         </div>
       </div>
 
-      <!-- FAQ -->
-      <!-- <section class="faq" aria-labelledby="faq-title">
-        <div class="container">
-          <h2 id="faq-title" class="section-title">Preguntas Frecuentes</h2>
-          <div class="accordion">
-            <div class="accordion__item">
-              <button class="accordion__trigger" aria-expanded="false">
-                <span>¿Cuál es el monto mínimo de inversión?</span>
-                <span class="accordion__icon"></span>
-              </button>
-              <div class="accordion__content" hidden>
-                <p>
-                  Nuestros servicios están diseñados para diferentes perfiles.
-                  Contáctenos para conocer las opciones disponibles.
-                </p>
-              </div>
-            </div>
-            <div class="accordion__item">
-              <button class="accordion__trigger" aria-expanded="false">
-                <span>¿Cómo se estructura la comisión?</span>
-                <span class="accordion__icon"></span>
-              </button>
-              <div class="accordion__content" hidden>
-                <p>
-                  Nuestra estructura de comisiones es transparente y
-                  competitiva, basada en el tipo de servicio y volumen.
-                </p>
-              </div>
-            </div>
-            <div class="accordion__item">
-              <button class="accordion__trigger" aria-expanded="false">
-                <span>¿Ofrecen asesoría internacional?</span>
-                <span class="accordion__icon"></span>
-              </button>
-              <div class="accordion__content" hidden>
-                <p>
-                  Sí, contamos con especialistas en mercados internacionales y
-                  alianzas en 8 países.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- CTA Final -->
-      <!-- <section class="cta" id="contacto" aria-labelledby="cta-title">
-        <div class="container">
-          <div class="cta__content">
-            <div class="cta__text">
-              <h2 id="cta-title">
-                ¿Listo para hacer <span>crecer</span> su patrimonio?
-              </h2>
-              <p>
-                Únase a más de 500 inversionistas que confían en BlackBird Capital.
-              </p>
-              <ul class="cta__benefits">
-                <li>✓ Asesoría personalizada sin costo inicial</li>
-                <li>✓ Análisis completo de su portafolio</li>
-                <li>✓ Propuesta en 48 horas</li>
-                <li>✓ Acceso a oportunidades exclusivas</li>
-              </ul>
-            </div>
-            <div class="cta__form">
-              <h3>Solicite su consulta gratuita</h3>
-              <div class="cta__actions">
-                <a href="https://URL_AQUI" class="btn" target="_blank" rel="noopener noreferrer">
-  Agendar una reunión</a>
-                <a href="/assets/brochure.pdf" class="btn btn--secondary" download>
-                  Descargar brochure
-                </a>
-              </div>
-              <div class="cta__contact">
-                <p>+56 2 2345 6789</p>
-                <p>invest@blackbirdcapital.cl</p>
-                <p>Santiago, Chile</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
       <!-- Contacto -->
       <section class="cta" id="contacto" aria-labelledby="cta-title">
         <div class="container">
           <div class="cta__content">
-            
-            <!-- IZQUIERDA: FORMULARIO -->
             <div class="cta__form">
               <h2 id="cta-title">Contáctanos</h2>
-              <!-- <p>
-                Déjanos tus datos y un breve mensaje. Te responderemos a la brevedad.
-              </p> -->
 
               <script>
                 (function () {
-
                   const form = document.querySelector(".contact-form");
                   if (!form) return;
 
@@ -658,48 +507,22 @@
                       alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
                     }
                   });
-
                 })();
               </script>
-              
+
               <script>
-              function showToast(message) {
-                const toast = document.getElementById("toast");
-                const text = document.getElementById("toast-message");
+                function showToast(message) {
+                  const toast = document.getElementById("toast");
+                  const text = document.getElementById("toast-message");
 
-                text.textContent = message;
-                toast.classList.add("show");
+                  text.textContent = message;
+                  toast.classList.add("show");
 
-                setTimeout(() => {
-                  toast.classList.remove("show");
-                }, 3500);
-              }
+                  setTimeout(() => {
+                    toast.classList.remove("show");
+                  }, 3500);
+                }
               </script>
-
-              
-              <!-- <form class="contact-form" action="#" method="post">
-                <div class="form-row">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" required />
-                </div>
-
-                <div class="form-row">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-
-                <div class="form-row">
-                  <label for="telefono">Teléfono</label>
-                  <input type="tel" id="telefono" name="telefono" />
-                </div>
-
-                <div class="form-row">
-                  <label for="mensaje">Mensaje</label>
-                  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-                </div>
-
-                <button type="submit" class="btn">Enviar mensaje</button>
-              </form> -->
 
               <form id="contact-form" class="contact-form">
                 <div class="form-row">
@@ -724,11 +547,8 @@
 
                 <button type="submit" class="btn">Enviar mensaje</button>
               </form>
-
-
             </div>
 
-            <!-- DERECHA: MAPA -->
             <div class="cta__map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.354124377034!2d-70.5997534873809!3d-33.414010795538324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf3f8c4d05c3%3A0x81070efd99ab2b7!2sIsidora%20Goyenechea%203162%2C%207550083%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1763159093607!5m2!1ses!2scl"
@@ -738,17 +558,11 @@
                 referrerpolicy="no-referrer-when-downgrade">
               </iframe>
               <div class="cta__map-info">
-                <!-- <strong>Oficina BlackBird Capital</strong>
-                <p>Santiago, Chile</p>
-                acá después puedes poner la dirección exacta -->
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
-
     </main>
 
     <!-- Footer -->
@@ -766,17 +580,8 @@
             />
             <p>Asset Management. Finance Solutions</p>
           </div>
-          
+
           <nav class="footer__nav">
-            <!-- <div class="footer__nav-column">
-              <h3>Fondos</h3>
-              <ul>
-                <li><a href="/fondos/money-market">Money Market</a></li>
-                <li><a href="/fondos/shortterm">Deuda CP</a></li>
-                <li><a href="/fondos/midterm">Deuda MP</a></li>
-                <li><a href="/fondos/realestate">Real Estate</a></li>
-              </ul>
-            </div> -->
             <div class="footer__nav-column">
               <h3>Fondos</h3>
               <ul>
@@ -793,15 +598,6 @@
                 <li><a href="#fiscal">Real Estate</a></li>
               </ul>
             </div>
-            <!-- <div class="footer__nav-column">
-              <h3>Recursos</h3>
-              <ul>
-                <li><a href="/blog">Blog & Insights</a></li>
-                <li><a href="/research">Research</a></li>
-                <li><a href="/calculadoras">Calculadoras</a></li>
-                <li><a href="/faq">FAQ</a></li>
-              </ul>
-            </div> -->
             <div class="footer__nav-column">
               <h3>Recursos</h3>
               <ul>
@@ -812,7 +608,7 @@
               </ul>
             </div>
           </nav>
-          
+
           <div class="footer__newsletter">
             <h3>Newsletter</h3>
             <form class="newsletter__form">
@@ -821,18 +617,11 @@
             </form>
           </div>
         </div>
-        
+
         <div class="footer__bottom">
           <p class="footer__copyright">
-            © 2025 BlackBird Capital. Todos los derechos reservados. 
-            <!-- | RUT: 76.XXX.XXX-X -->
+            © 2025 BlackBird Capital. Todos los derechos reservados.
           </p>
-          <!-- <nav class="footer__legal" aria-label="Enlaces legales">
-            <a href="/privacidad">Privacidad</a>
-            <a href="/terminos">Términos</a>
-            <a href="/compliance">Compliance</a>
-            <a href="/sitemap">Mapa del sitio</a>
-          </nav> -->
           <nav class="footer__legal" aria-label="Enlaces legales">
             <a href="#privacidad">Privacidad</a>
             <a href="#tyc">Términos</a>
@@ -865,7 +654,6 @@
       <span id="toast-message"></span>
     </div>
 
-
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector("#contact-form");
@@ -874,7 +662,7 @@
         const ENDPOINT = "https://script.google.com/macros/s/AKfycbwsBFsvK-uOl5Z2lsugmcb0e-ikDGKi499mMWubuSjle8WL__iSRlKWII-bIObMP8TJEw/exec";
 
         form.addEventListener("submit", async (e) => {
-          e.preventDefault(); // <-- esto evita el POST a 127.0.0.1 que te daba ERROR 405
+          e.preventDefault();
 
           const formData = new FormData(form);
 
@@ -895,7 +683,5 @@
         });
       });
     </script>
-
-
   </body>
 </html>
