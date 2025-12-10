@@ -13,7 +13,7 @@
   const state = {
     menuOpen: false,
     currentFundIndex: 0,
-    currentTeamIndex: 1, // 👈 arrancar en la tarjeta del medio (índice 1)
+    currentTeamIndex: 0, // ahora el índice real se toma desde la tarjeta .active
     prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     modalOpen: false
   };
@@ -161,37 +161,6 @@
   };
 
   // ==========================================================================
-  // 4. SMOOTH SCROLL MEJORADO
-  // ==========================================================================
-  // const initSmoothScroll = () => {
-  //   if (state.prefersReducedMotion) return;
-    
-  //   document.addEventListener('click', (e) => {
-  //     const link = e.target.closest('a[href^="#"]');
-  //     if (!link) return;
-      
-  //     const targetId = link.getAttribute('href');
-  //     if (targetId === '#') return;
-      
-  //     const target = document.querySelector(targetId);
-  //     if (!target) return;
-      
-  //     e.preventDefault();
-      
-  //     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-  //     const targetPosition = target.offsetTop - headerHeight - 20;
-      
-  //     window.scrollTo({
-  //       top: targetPosition,
-  //       behavior: 'smooth'
-  //     });
-      
-  //     // Actualizar URL sin hacer scroll
-  //     history.replaceState(null, '', targetId);
-  //   });
-  // };
-
-  // ==========================================================================
   // 4. SMOOTH SCROLL SIEMPRE ACTIVO (NAV + CUALQUIER LINK CON #)
   // ==========================================================================
   const initSmoothScroll = () => {
@@ -229,8 +198,6 @@
     });
   };
 
-
-
   // ==========================================================================
   // 5. CARRUSEL UNIVERSAL MEJORADO
   // ==========================================================================
@@ -257,6 +224,15 @@
     // Si no hay tarjetas, nada que hacer
     if (!cards.length) return;
 
+    // 🔹 NUEVO: determinar índice inicial según la tarjeta que tenga .active en el HTML
+    let initialIndex = 0;
+    cards.forEach((card, index) => {
+      if (card.classList.contains('active')) {
+        initialIndex = index;
+      }
+    });
+    state[stateKey] = initialIndex;
+
     // Asegurar que el índice inicial está dentro de rango
     if (
       typeof state[stateKey] !== 'number' ||
@@ -279,7 +255,7 @@
     
     const dots = dotsContainer?.querySelectorAll('button');
 
-    // Eliminado modo estático — siempre carrusel real
+    // Siempre carrusel real
     const isStaticLayout = false;
     
     // Calcular métricas del carrusel
@@ -716,7 +692,7 @@
       centerMode: false
     });
     
-    // Carrusel del equipo (centerMode + índice inicial = 1)
+    // Carrusel del equipo (centerMode; índice inicial lo toma de .active)
     initCarousel({
       trackId: 'teamTrack',
       prevBtnId: 'teamPrevBtn',
