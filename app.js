@@ -500,7 +500,7 @@
       ccm: {
         name: 'Clemente Chappuzeau M',
         role: 'Socio & Portfolio Manager',
-        image: 'assets/imagenes/foto CCM Web.jpg',
+        image: 'assets/imagenes/Foto CCM Web.jpg',
         content: `
           <ul>
             <li><strong>Socio & Portfolio Manager</strong> – BlackBird Capital S.A.</li>
