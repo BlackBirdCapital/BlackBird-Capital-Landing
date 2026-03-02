@@ -497,6 +497,22 @@
           </ul>
         `
       },
+      
+      adlh: {
+        name: 'Álvaro de los Hoyos M.',
+        role: 'Socio',
+        image: 'assets/imagenes/Foto ADLH Web.jpg',
+        content: `
+          <ul>
+            <li><strong>Socio</strong> – BlackBird Capital S.A.</li>
+            <li>16+ años de experiencia en finanzas corporativas, valorizaciones y M&A</li>
+            <li><strong>Pontificia Universidad Católica de Chile</strong> – Ingeniero Civil Industrial</li>
+            <li><strong>Pontificia Universidad Católica de Chile</strong> – MBA</li>
+            <li>Anteriormente <strong>Genere de Finanzas Corporativas</strong> en Econsult</li>
+          </ul>
+        `
+      },
+      
       ccm: {
         name: 'Clemente Chappuzeau M',
         role: 'Socio & Portfolio Manager',
