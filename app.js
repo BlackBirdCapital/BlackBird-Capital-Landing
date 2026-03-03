@@ -499,7 +499,7 @@
       },
       
       adlh: {
-        name: 'Álvaro de los Hoyos M.',
+        name: 'Alvaro de los Hoyos M.',
         role: 'Socio',
         image: 'assets/imagenes/Foto ADLH Web.jpg',
         content: `
