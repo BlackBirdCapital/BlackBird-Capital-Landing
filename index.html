@@ -29,28 +29,29 @@
       media="(prefers-color-scheme: dark)"
     />
 
-    <!-- Preconnect para recursos externos -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Datos estructurados: Organización + logo oficial -->
+    <!-- Datos estructurados -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "BlackBird Capital",
-      "url": "https://blackbirdcapital.cl/",
-      "logo": "https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png",
-      "sameAs": [
-        "https://www.linkedin.com/company/blackbird-capital-cl/"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BlackBird Capital",
+        "url": "https://blackbirdcapital.cl/",
+        "logo": "https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png",
+        "sameAs": ["https://www.linkedin.com/company/blackbird-capital-cl/"]
+      }
     </script>
 
-    <!-- Open Graph / Social -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://blackbirdcapital.cl/" />
-    <meta property="og:title" content="BlackBird Capital - Asset Management. Finance Solutions" />
+    <meta
+      property="og:title"
+      content="BlackBird Capital - Asset Management. Finance Solutions"
+    />
     <meta
       property="og:description"
       content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
@@ -62,9 +63,12 @@
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BlackBird Capital - Asset Management. Finance Solutions" />
+    <meta
+      name="twitter:title"
+      content="BlackBird Capital - Asset Management. Finance Solutions"
+    />
     <meta
       name="twitter:description"
       content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
@@ -74,7 +78,7 @@
       content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png"
     />
 
-    <!-- Critical CSS inline para evitar render blocking -->
+    <!-- Critical CSS mínimo -->
     <style>
       :root {
         --color-negro-noche: #000000;
@@ -100,21 +104,21 @@
       }
     </style>
 
-    <!-- Preload recursos críticos -->
+    <!-- Preload -->
     <link rel="preload" href="styles.css" as="style" />
     <link rel="preload" href="app.js" as="script" />
     <link rel="preload" href="/assets/logo-blanco-bajada.svg" as="image" />
     <link rel="preload" href="/assets/imagenes/fondo_hero.jpg" as="image" />
 
-    <!-- Cargar CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Defer scripts no críticos -->
+    <!-- JS -->
     <script src="app.js" defer></script>
   </head>
 
   <body>
-    <!-- Header Principal -->
+    <!-- Header -->
     <header class="header" role="banner">
       <div class="header__announcement">
         <div class="header__announcement-content">
@@ -170,7 +174,7 @@
           <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
 
           <div class="hero__text">
-            <h2 class="hero__headline">Somos especialistas en Gestión de Activos</h2>
+            <h2 class="hero__headline">Somos especialistas en gestión de activos</h2>
             <p class="hero__subtitle">
               Nos enfocamos en oportunidades que cumplen con estándares exigentes de análisis y consistencia, siempre bajo una cultura de responsabilidad e integridad.
             </p>
@@ -178,10 +182,11 @@
         </div>
       </section>
 
-      <!-- Servicios -->
+      <!-- Expertise -->
       <section class="expertise" id="expertise" aria-labelledby="services-title">
         <div class="container">
           <h2 id="services-title" class="section-title">Nuestra Experiencia</h2>
+
           <div class="services__grid">
             <article class="card">
               <div class="card__icon">
@@ -192,7 +197,7 @@
                 Protegemos y potenciamos su patrimonio con estrategias a medida.
                 Siempre co-invertiremos.
               </p>
-              <a href="#patrimonio" class="card__link"></a>
+              <a href="#contacto" class="card__link"></a>
             </article>
 
             <article class="card">
@@ -200,9 +205,7 @@
                 <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Fondos de Inversión</h3>
-              <p>
-                Portafolios diversificados con gestión activa y transparente.
-              </p>
+              <p>Portafolios diversificados con gestión activa y transparente.</p>
               <a href="#fondos" class="card__link"></a>
             </article>
 
@@ -212,7 +215,7 @@
               </div>
               <h3>Asesorías</h3>
               <p>Acompañamos procesos de inversión y estructuración financiera.</p>
-              <a href="#fiscal" class="card__link"></a>
+              <a href="#contacto" class="card__link"></a>
             </article>
           </div>
         </div>
@@ -223,27 +226,26 @@
         <div class="container">
           <div class="disclaimer-banner">
             <p>
-              <strong>Nota:</strong> Los valores mostrados son referenciales.
-              Sitio web en remodelación.
+              <strong>Nota:</strong> Los valores mostrados son referenciales. Sitio web en remodelación.
             </p>
           </div>
 
           <h2 id="funds-title" class="section-title">Nuestros Fondos de Inversión</h2>
-          <p class="section-subtitle">
-            Soluciones diseñadas para diferentes perfiles de riesgo
-          </p>
+          <p class="section-subtitle">Soluciones diseñadas para diferentes perfiles de riesgo</p>
 
           <div class="funds__carousel">
             <div class="funds__track-wrapper">
               <div class="funds__track" id="funds-track">
+                <!-- Fondo 1 -->
                 <article class="fund-card">
                   <div class="fund-card__header">
                     <span class="fund-card__category">Money Market</span>
                     <h3>Cash Solutions</h3>
                   </div>
+
                   <div class="fund-card__metrics">
                     <div class="metric">
-                      <span class="metric__value">8.89%</span>
+                      <span class="metric__value">4.55%</span>
                       <span class="metric__label">Retorno Anual</span>
                     </div>
                     <div class="metric">
@@ -251,24 +253,31 @@
                       <span class="metric__label">Duration</span>
                     </div>
                   </div>
+
                   <p>
-                    Fondo de alta liquidez diseñado para optimizar el manejo de
-                    excedentes de caja.
+                    Fondo de alta liquidez diseñado para optimizar el manejo de excedentes de caja.
                   </p>
+
                   <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-                    <div class="risk-level" data-level="1">
-                      <span></span><span></span><span></span><span></span><span></span>
+                    <span class="fund-card__link fund-card__link--disabled">Operando desde Nov-25</span>
+
+                    <div class="risk">
+                      <span class="risk__label">Perfil de riesgo</span>
+                      <div class="risk-level" data-level="1" aria-label="Perfil de riesgo: 1 de 5">
+                        <span></span><span></span><span></span><span></span><span></span>
+                      </div>
                     </div>
                   </div>
                 </article>
 
+                <!-- Fondo 2 -->
                 <article class="fund-card fund-card--upcoming">
                   <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
                     <span class="fund-card__category">Inmobiliario</span>
                     <h3>Oportunidades Inmobiliarias I</h3>
                   </div>
+
                   <div class="fund-card__metrics">
                     <div class="metric">
                       <span class="metric__value">12%*</span>
@@ -279,23 +288,31 @@
                       <span class="metric__label">Duración</span>
                     </div>
                   </div>
+
                   <p>
                     Fondo inmobiliario que genera valor mediante la recuperación y estabilización de activos.
                   </p>
+
                   <div class="fund-card__footer">
                     <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-                    <div class="risk-level" data-level="2">
-                      <span></span><span></span><span></span><span></span><span></span>
+
+                    <div class="risk">
+                      <span class="risk__label">Perfil de riesgo</span>
+                      <div class="risk-level" data-level="2" aria-label="Perfil de riesgo: 2 de 5">
+                        <span></span><span></span><span></span><span></span><span></span>
+                      </div>
                     </div>
                   </div>
                 </article>
 
+                <!-- Fondo 3 -->
                 <article class="fund-card fund-card--upcoming">
                   <div class="fund-card__status">En estructuración</div>
                   <div class="fund-card__header">
                     <span class="fund-card__category">Inmobiliario</span>
                     <h3>Renta Habitacional I</h3>
                   </div>
+
                   <div class="fund-card__metrics">
                     <div class="metric">
                       <span class="metric__value">12%*</span>
@@ -306,13 +323,19 @@
                       <span class="metric__label">Duración</span>
                     </div>
                   </div>
+
                   <p>
                     Fondo habitacional que busca ingresos estables a través de activos multifamily.
                   </p>
+
                   <div class="fund-card__footer">
                     <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-                    <div class="risk-level" data-level="2">
-                      <span></span><span></span><span></span><span></span><span></span>
+
+                    <div class="risk">
+                      <span class="risk__label">Perfil de riesgo</span>
+                      <div class="risk-level" data-level="2" aria-label="Perfil de riesgo: 2 de 5">
+                        <span></span><span></span><span></span><span></span><span></span>
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -339,10 +362,7 @@
                 <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Excelencia</h3>
-              <p>
-                Combinamos experiencia global con conocimiento local para
-                ofrecer soluciones a la medida.
-              </p>
+              <p>Combinamos experiencia global con conocimiento local para ofrecer soluciones a la medida.</p>
             </article>
 
             <article class="value-card">
@@ -350,10 +370,7 @@
                 <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Confianza</h3>
-              <p>
-                Relaciones de largo plazo basadas en la confianza y
-                el compromiso.
-              </p>
+              <p>Relaciones de largo plazo basadas en la confianza y el compromiso.</p>
             </article>
 
             <article class="value-card">
@@ -361,10 +378,7 @@
                 <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
               </div>
               <h3>Integridad</h3>
-              <p>
-                Operamos con los más altos estándares éticos, priorizando
-                los intereses de nuestros clientes.
-              </p>
+              <p>Actuamos con rigor ético y transparencia, cuidando siempre los intereses de quienes confían en nosotros.</p>
             </article>
           </div>
         </div>
@@ -374,56 +388,12 @@
       <section class="team" id="equipo" aria-labelledby="team-title">
         <div class="container">
           <h2 id="team-title" class="section-title">Nuestro Equipo</h2>
-          <p class="section-subtitle">
-            Líderes con extensa experiencia
-          </p>
+          <p class="section-subtitle">Líderes con extensa experiencia</p>
+
           <div class="team__carousel">
             <div class="team__track-wrapper">
               <div class="team__track" id="teamTrack">
-                <!-- <article class="team-member active">
-                  <figure class="team-member__image">
-                    <img
-                      src="assets/imagenes/Foto JRG Web.jpg"
-                      alt="Jorge Ramírez G."
-                      loading="lazy"
-                      width="140"
-                      height="140"
-                    />
-                  </figure>
-                  <h3>Jorge Ramírez G.</h3>
-                  <p class="team-member__role">Socio & Presidente</p>
-                  <p class="team-member__bio">
-                    40+ años de experiencia en capital privado, finanzas
-                    corporativas y derivados financieros.
-                  </p>
-                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrg">
-                    Ver más detalles
-                  </button>
-                </article> -->
-
-                <article class="team-member active">
-                  <figure class="team-member__image">
-                    <img
-                      src="assets/imagenes/Foto JRP Web.jpg"
-                      alt="Jorge Ramírez P."
-                      loading="lazy"
-                      width="140"
-                      height="140"
-                    />
-                  </figure>
-                  <h3>Jorge Ramírez P.</h3>
-                  <p class="team-member__role">Socio & CEO</p>
-                  <p class="team-member__bio">
-                    16+ años de experiencia en finanzas corporativas e
-                    inversiones.<br />
-                    Anteriormente CFO & Investment Manager en Grupo Bancard, CFO
-                    en Houm Group Inc.
-                  </p>
-                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrp">
-                    Ver más detalles
-                  </button>
-                </article>
-
+                <!-- 1) Álvaro -->
                 <article class="team-member">
                   <figure class="team-member__image">
                     <img
@@ -437,15 +407,35 @@
                   <h3>Alvaro de los Hoyos M.</h3>
                   <p class="team-member__role">Socio</p>
                   <p class="team-member__bio">
-                    16+ años de experiencia en finanzas corporativas, valorización de compañías y M&A.<br />
-                    Anteriormente Gerente de Finanzas Corporativas en Econsult.
+                    16+ años de experiencia en finanzas corporativas, valorización de compañías y M&A.
                   </p>
                   <button class="btn btn--ghost btn--small team-member__details-btn" data-member="adlh">
                     Ver más detalles
                   </button>
                 </article>
 
+                <!-- 2) Jorge (CENTRO) -->
+                <article class="team-member active">
+                  <figure class="team-member__image">
+                    <img
+                      src="assets/imagenes/Foto JRP Web.jpg"
+                      alt="Jorge Ramírez P."
+                      loading="lazy"
+                      width="140"
+                      height="140"
+                    />
+                  </figure>
+                  <h3>Jorge Ramírez P.</h3>
+                  <p class="team-member__role">Socio & CEO</p>
+                  <p class="team-member__bio">
+                    16+ años de experiencia en finanzas corporativas e inversiones.
+                  </p>
+                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrp">
+                    Ver más detalles
+                  </button>
+                </article>
 
+                <!-- 3) Clemente -->
                 <article class="team-member">
                   <figure class="team-member__image">
                     <img
@@ -459,8 +449,7 @@
                   <h3>Clemente Chappuzeau M.</h3>
                   <p class="team-member__role">Socio & Portfolio Manager</p>
                   <p class="team-member__bio">
-                    4+ años de experiencia en finanzas corporativas e
-                    inversiones.<br />
+                    4+ años de experiencia en finanzas corporativas e inversiones.
                   </p>
                   <button class="btn btn--ghost btn--small team-member__details-btn" data-member="ccm">
                     Ver más detalles
@@ -478,19 +467,19 @@
         </div>
       </section>
 
-      <!-- Modal Equipo -->
+      <!-- Modal equipo -->
       <div class="team-modal" id="teamModal">
         <div class="team-modal__overlay"></div>
         <div class="team-modal__content">
           <button class="team-modal__close" aria-label="Cerrar">×</button>
+
           <div class="team-modal__header">
             <img id="modalImage" src="" alt="" class="team-modal__image" />
             <h3 id="modalTitle"></h3>
             <p id="modalRole"></p>
           </div>
-          <div class="team-modal__body" id="modalBody">
-            <!-- Contenido dinámico -->
-          </div>
+
+          <div class="team-modal__body" id="modalBody"></div>
         </div>
       </div>
 
@@ -500,51 +489,6 @@
           <div class="cta__content">
             <div class="cta__form">
               <h2 id="cta-title">Contáctanos</h2>
-
-              <script>
-                (function () {
-                  const form = document.querySelector(".contact-form");
-                  if (!form) return;
-
-                  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwsBFsvK-uOl5Z2lsugmcb0e-ikDGKi499mMWubuSjle8WL__iSRlKWII-bIObMP8TJEw/exec";
-
-                  form.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-
-                    const formData = new FormData(form);
-
-                    try {
-                      const res = await fetch(ENDPOINT, {
-                        method: "POST",
-                        body: formData
-                      });
-
-                      if (!res.ok) throw new Error("Fetch error");
-
-                      showToast("Gracias, hemos recibido tu mensaje. Te contactaremos pronto.");
-                      form.reset();
-
-                    } catch (error) {
-                      console.error(error);
-                      alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
-                    }
-                  });
-                })();
-              </script>
-
-              <script>
-                function showToast(message) {
-                  const toast = document.getElementById("toast");
-                  const text = document.getElementById("toast-message");
-
-                  text.textContent = message;
-                  toast.classList.add("show");
-
-                  setTimeout(() => {
-                    toast.classList.remove("show");
-                  }, 3500);
-                }
-              </script>
 
               <form id="contact-form" class="contact-form">
                 <div class="form-row">
@@ -574,13 +518,12 @@
             <div class="cta__map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.354124377034!2d-70.5997534873809!3d-33.414010795538324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf3f8c4d05c3%3A0x81070efd99ab2b7!2sIsidora%20Goyenechea%203162%2C%207550083%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1763159093607!5m2!1ses!2scl"
-                style="border:0;"
+                style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-              <div class="cta__map-info">
-              </div>
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div class="cta__map-info"></div>
             </div>
           </div>
         </div>
@@ -607,26 +550,25 @@
             <div class="footer__nav-column">
               <h3>Fondos</h3>
               <ul>
-                <li><a href="#funds">Money Market</a></li>
-                <li><a href="#funds">Real Estate</a></li>
+                <li><a href="#fondos">Money Market</a></li>
+                <li><a href="#fondos">Real Estate</a></li>
               </ul>
             </div>
             <div class="footer__nav-column">
               <h3>Servicios</h3>
               <ul>
-                <li><a href="#patrimonio">Gestión de Activos</a></li>
-                <li><a href="#asesoria">Fondos de Inversión</a></li>
-                <li><a href="#capital">Private Equity</a></li>
-                <li><a href="#fiscal">Real Estate</a></li>
+                <li><a href="#expertise">Gestión de Activos</a></li>
+                <li><a href="#fondos">Fondos de Inversión</a></li>
+                <li><a href="#contacto">Asesorías</a></li>
               </ul>
             </div>
             <div class="footer__nav-column">
               <h3>Recursos</h3>
               <ul>
-                <li><a href="#blog">Blog & Insights</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#calculadoras">Calculadoras</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contacto">Blog & Insights</a></li>
+                <li><a href="#contacto">Research</a></li>
+                <li><a href="#contacto">Calculadoras</a></li>
+                <li><a href="#contacto">FAQ</a></li>
               </ul>
             </div>
           </nav>
@@ -644,12 +586,14 @@
           <p class="footer__copyright">
             © 2025 BlackBird Capital. Todos los derechos reservados.
           </p>
+
           <nav class="footer__legal" aria-label="Enlaces legales">
             <a href="#privacidad">Privacidad</a>
             <a href="#tyc">Términos</a>
             <a href="#compliance">Compliance</a>
             <a href="#sitemap">Mapa del sitio</a>
           </nav>
+
           <div class="footer__certifications">
             <img
               src="/assets/cert-cmf.svg"
@@ -672,16 +616,30 @@
       </div>
     </footer>
 
-    <div id="toast" class="toast">
+    <!-- Toast -->
+    <div id="toast" class="toast" aria-live="polite">
       <span id="toast-message"></span>
     </div>
 
+    <!-- Contact form handler -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.querySelector("#contact-form");
+      (function () {
+        const form = document.getElementById("contact-form");
         if (!form) return;
 
-        const ENDPOINT = "https://script.google.com/macros/s/AKfycbwsBFsvK-uOl5Z2lsugmcb0e-ikDGKi499mMWubuSjle8WL__iSRlKWII-bIObMP8TJEw/exec";
+        const ENDPOINT =
+          "https://script.google.com/macros/s/AKfycbwsBFsvK-uOl5Z2lsugmcb0e-ikDGKi499mMWubuSjle8WL__iSRlKWII-bIObMP8TJEw/exec";
+
+        const showToast = (message) => {
+          const toast = document.getElementById("toast");
+          const text = document.getElementById("toast-message");
+          if (!toast || !text) return;
+
+          text.textContent = message;
+          toast.classList.add("show");
+
+          setTimeout(() => toast.classList.remove("show"), 3500);
+        };
 
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
@@ -689,11 +647,7 @@
           const formData = new FormData(form);
 
           try {
-            const res = await fetch(ENDPOINT, {
-              method: "POST",
-              body: formData,
-            });
-
+            const res = await fetch(ENDPOINT, { method: "POST", body: formData });
             if (!res.ok) throw new Error("HTTP " + res.status);
 
             showToast("Gracias, hemos recibido tu mensaje. Te contactaremos pronto.");
@@ -703,7 +657,7 @@
             alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
           }
         });
-      });
+      })();
     </script>
   </body>
 </html>
