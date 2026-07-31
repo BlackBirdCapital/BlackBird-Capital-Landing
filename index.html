@@ -1,40 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta
-      name="description"
-      content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales. Asset Management & Finance Solutions."
-    />
-    <meta
-      name="keywords"
-      content="inversión, fondos, gestión de activos, BlackBird Capital, finance, asset management"
-    />
-
-    <title>BlackBird Capital - Asset Management. Finance Solutions</title>
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="assets/iso3.svg"
-      type="image/svg+xml"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="icon"
-      href="assets/iso.svg"
-      type="image/svg+xml"
-      media="(prefers-color-scheme: dark)"
-    />
-
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Datos estructurados -->
-    <script type="application/ld+json">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="BlackBird Capital desarrolla estrategias de inversión especializadas y asesora a empresas, accionistas e inversionistas en valorizaciones, M&amp;A y estructuración financiera." name="description"/>
+<meta content="inversión, fondos, gestión de activos, BlackBird Capital, finance, asset management" name="keywords"/>
+<title>BlackBird Capital | Asset Management y Advisory</title>
+<!-- Favicon -->
+<link href="assets/iso3.svg" media="(prefers-color-scheme: light)" rel="icon" type="image/svg+xml"/>
+<link href="assets/iso.svg" media="(prefers-color-scheme: dark)" rel="icon" type="image/svg+xml"/>
+<!-- Preconnect -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Datos estructurados -->
+<script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -44,42 +24,21 @@
         "sameAs": ["https://www.linkedin.com/company/blackbird-capital-cl/"]
       }
     </script>
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blackbirdcapital.cl/" />
-    <meta
-      property="og:title"
-      content="BlackBird Capital - Asset Management. Finance Solutions"
-    />
-    <meta
-      property="og:description"
-      content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
-    />
-    <meta
-      property="og:image"
-      content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png"
-    />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="BlackBird Capital - Asset Management. Finance Solutions"
-    />
-    <meta
-      name="twitter:description"
-      content="BlackBird Capital - Gestión de activos y fondos de inversión con estrategias institucionales."
-    />
-    <meta
-      name="twitter:image"
-      content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png"
-    />
-
-    <!-- Critical CSS mínimo -->
-    <style>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://blackbirdcapital.cl/" property="og:url"/>
+<meta content="BlackBird Capital | Asset Management y Advisory" property="og:title"/>
+<meta content="BlackBird Capital desarrolla estrategias de inversión especializadas y asesora en valorizaciones, M&amp;A y estructuración financiera." property="og:description"/>
+<meta content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png" property="og:image"/>
+<meta content="512" property="og:image:width"/>
+<meta content="512" property="og:image:height"/>
+<!-- Twitter -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="BlackBird Capital | Asset Management y Advisory" name="twitter:title"/>
+<meta content="BlackBird Capital desarrolla estrategias de inversión especializadas y asesora en valorizaciones, M&amp;A y estructuración financiera." name="twitter:description"/>
+<meta content="https://blackbirdcapital.cl/assets/imagenes/logo-blackbird.png" name="twitter:image"/>
+<!-- Critical CSS mínimo -->
+<style>
       :root {
         --color-negro-noche: #000000;
         --color-azul-tormenta: #161c28;
@@ -92,7 +51,7 @@
         margin: 0;
         background: var(--color-negro-noche);
         color: var(--color-blanco-pulcro);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Lato", Arial, sans-serif;
       }
       .header {
         position: fixed;
@@ -103,183 +62,120 @@
         background: rgba(0, 0, 0, 0.8);
       }
     </style>
-
-    <!-- Preload -->
-    <link rel="preload" href="styles.css" as="style" />
-    <link rel="preload" href="app.js" as="script" />
-    <link rel="preload" href="/assets/logo-blanco-bajada.svg" as="image" />
-    <link rel="preload" href="/assets/imagenes/fondo_hero.jpg" as="image" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- JS -->
-    <script src="app.js" defer></script>
-  </head>
-
-  <body>
-    <!-- Header -->
-    <header class="header" role="banner">
-      <div class="header__announcement">
-        <div class="header__announcement-content">
+<!-- Preload -->
+<link as="style" href="styles.css" rel="preload"/>
+<link as="script" href="app.js" rel="preload"/>
+<link as="image" href="./assets/logo-blanco-bajada.svg" rel="preload"/>
+<link as="image" href="./assets/imagenes/fondo_hero.jpg" rel="preload"/>
+<!-- CSS -->
+<link href="styles.css" rel="stylesheet"/>
+<!-- JS -->
+<script defer="" src="app.js"></script>
+</head>
+<body>
+<!-- Header -->
+<header class="header" role="banner">
+<div class="header__announcement">
+<!-- <div class="header__announcement-content">
           Estamos trabajando en la remodelación del sitio. ¡Pronto volveremos con una experiencia renovada!
-        </div>
-      </div>
-
-      <div class="header__container">
-        <a href="/" class="header__logo" aria-label="BlackBird Capital - Inicio">
-          <img
-            src="./assets/logo-blanco-bajada.svg"
-            alt="BlackBird Capital"
-            class="logo"
-            width="150"
-            height="60"
-          />
-        </a>
-
-        <nav class="nav" role="navigation" aria-label="Navegación principal">
-          <button
-            class="nav__toggle"
-            aria-expanded="false"
-            aria-controls="nav-wrapper"
-            aria-label="Menú"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <div class="nav__wrapper" id="nav-wrapper">
-            <ul class="nav__menu">
-              <li><a href="#expertise" class="nav__link">Expertise</a></li>
-              <li><a href="#fondos" class="nav__link">Fondos</a></li>
-              <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
-              <li><a href="#equipo" class="nav__link">Equipo</a></li>
-              <li><a href="#contacto" class="nav__link">Contacto</a></li>
-            </ul>
-
-            <div class="header__cta">
-              <a href="/portal" class="btn btn--ghost">Portal Cliente</a>
-              <a href="#contacto" class="btn btn--primary">Contacto</a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__container">
-          <h1 id="hero-title" class="sr-only">BlackBird Capital</h1>
-
-          <div class="hero__text">
-            <h2 class="hero__headline">Somos especialistas en gestión de activos</h2>
-            <p class="hero__subtitle">
-              Nos enfocamos en oportunidades que cumplen con estándares exigentes de análisis y consistencia, siempre bajo una cultura de responsabilidad e integridad.
+        </div> -->
+</div>
+<div class="header__container">
+<a aria-label="BlackBird Capital - Inicio" class="header__logo" href="#inicio">
+<img alt="BlackBird Capital" class="logo" height="60" src="./assets/logo-blanco-bajada.svg" width="150"/>
+</a>
+<nav aria-label="Navegación principal" class="nav" role="navigation">
+<button aria-controls="nav-wrapper" aria-expanded="false" aria-label="Menú" class="nav__toggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav__wrapper" id="nav-wrapper">
+<ul class="nav__menu">
+<li><a class="nav__link" href="#expertise">Expertise</a></li>
+<li><a class="nav__link" href="#fondos">Asset Management</a></li>
+<li><a class="nav__link" href="#advisory">Advisory</a></li>
+<li><a class="nav__link" href="#experiencia">Experiencia</a></li>
+<li><a class="nav__link" href="#equipo">Equipo</a></li>
+</ul>
+<div class="header__cta">
+<a class="btn btn--primary header__contact-btn" href="#contacto">Contacto</a>
+<a class="btn btn--ghost header__portal-btn" href="/portal">Portal Cliente</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<!-- Hero -->
+<section aria-labelledby="hero-title" class="hero" id="inicio">
+<div class="hero__container">
+<div class="hero__text">
+<h1 class="hero__headline" id="hero-title">Asset Management y Advisory Independiente</h1>
+<p class="hero__subtitle">Estructuramos y gestionamos estrategias de inversión especializadas y asesoramos a empresas, accionistas e inversionistas en decisiones financieras relevantes.</p>
+</div>
+</div>
+</section>
+<!-- Expertise -->
+<section aria-labelledby="services-title" class="expertise" id="expertise">
+<div class="container">
+<h2 class="section-title" id="services-title">Expertise</h2>
+<div class="services__grid services__grid--two">
+<article class="card business-card">
+<div aria-hidden="true" class="business-card__number">01</div>
+<h3>Asset Management</h3>
+<p>Estructuramos y gestionamos estrategias de inversión especializadas, con tesis claras, gestión activa y control de riesgos.</p>
+<ul class="business-card__list"><li>Estrategias de inversión</li><li>Fondos de inversión privados</li><li>Gestión activa de portafolios</li></ul>
+<a class="btn btn--ghost btn--small" href="#fondos">Conocer Asset Management</a>
+</article>
+<article class="card business-card">
+<div aria-hidden="true" class="business-card__number">02</div>
+<h3>Advisory</h3>
+<p>Asesoramos a empresas, accionistas e inversionistas en valorizaciones independientes, transacciones y alternativas de financiamiento.</p>
+<ul class="business-card__list"><li>Valorizaciones independientes</li><li>M&amp;A y transacciones entre accionistas</li><li>Estructuración financiera</li></ul>
+<a class="btn btn--ghost btn--small" href="#advisory">Conocer Advisory</a>
+</article>
+</div>
+</div>
+</section>
+<!-- Fondos -->
+<section aria-labelledby="funds-title" class="funds" id="fondos">
+<div class="container">
+<div class="disclaimer-banner">
+<p>
+<strong>Nota:</strong> La información contenida en este sitio no constituye una oferta pública de valores.
             </p>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- Expertise -->
-      <section class="expertise" id="expertise" aria-labelledby="services-title">
-        <div class="container">
-          <h2 id="services-title" class="section-title">Nuestra Experiencia</h2>
-
-          <div class="services__grid">
-            <article class="card">
-              <div class="card__icon">
-                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Gestión de Activos</h3>
-              <p>
-                Protegemos y potenciamos su patrimonio con estrategias a medida.
-                Siempre co-invertiremos.
-              </p>
-              <a href="#contacto" class="card__link"></a>
-            </article>
-
-            <article class="card">
-              <div class="card__icon">
-                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Estrategias de Inversión</h3>
-              <p>Portafolios diversificados con gestión activa y transparente.</p>
-              <a href="#fondos" class="card__link"></a>
-            </article>
-
-            <article class="card">
-              <div class="card__icon">
-                <img src="/assets/iso.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Asesorías y Valorizaciones</h3>
-              <p>Acompañamos procesos de valorización, inversión y estructuración financiera.</p>
-              <a href="#contacto" class="card__link"></a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Fondos -->
-      <section class="funds" id="fondos" aria-labelledby="funds-title">
-        <div class="container">
-          <div class="disclaimer-banner">
-            <p>
-              <strong>Nota:</strong> La información contenida en este sitio no constituye una oferta pública de valores.
-            </p>
-          </div>
-
-          <h2 id="funds-title" class="section-title">Nuestras Estrategias de Inversión</h2>
-          <p class="section-subtitle">Soluciones diseñadas para diferentes perfiles de riesgo</p>
-
-          <div class="funds__carousel">
-            <div class="funds__track-wrapper">
-              <div class="funds__track" id="funds-track">
-                <!-- Fondo 1 -->
-                <article class="fund-card">
-                  <div class="fund-card__header">
-                    <span class="fund-card__category">Money Market</span>
-                    <h3>Cash Solutions</h3>
-                  </div>
-
-                  <!-- <div class="fund-card__metrics">
-                    <div class="metric">
-                      <span class="metric__value">4.55%</span>
-                      <span class="metric__label">Retorno Anual</span>
-                    </div>
-                    <div class="metric">
-                      <span class="metric__value">&lt; 90d</span>
-                      <span class="metric__label">Duration</span>
-                    </div>
-                  </div> -->
-
-                  <p>
-                    Estrategia de alta liquidez diseñada para optimizar el manejo de excedentes de caja.
-                  </p>
-
-                  <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Operando desde Nov-25</span>
-
-                    <div class="risk">
-                      <span class="risk__label">Perfil de riesgo</span>
-                      <div class="risk-level" data-level="1" aria-label="Perfil de riesgo: 1 de 5">
-                        <span></span><span></span><span></span><span></span><span></span>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <!-- Fondo 2 -->
-                <article class="fund-card fund-card--upcoming">
-                  <div class="fund-card__status">En estructuración</div>
-                  <div class="fund-card__header">
-                    <span class="fund-card__category">Inmobiliario</span>
-                    <h3>Oportunidades Inmobiliarias I</h3>
-                  </div>
-
-                  <!-- <div class="fund-card__metrics">
+</div>
+<h2 class="section-title" id="funds-title">Nuestras estrategias de inversión</h2>
+<!-- <p class="section-subtitle">Soluciones diseñadas para diferentes perfiles de riesgo</p> -->
+<div class="funds__carousel">
+<div class="funds__track-wrapper">
+<div class="funds__track" id="funds-track">
+<!-- Estrategia 1 -->
+<article class="fund-card">
+<div class="fund-card__status">Operativo</div>
+<div class="fund-card__header">
+<span class="fund-card__category">Inmobiliario</span>
+<h3>SPV 1</h3>
+</div>
+<p>Vehículo que adquiere activos en distress, para su posterior estabilización y venta.</p>
+<div class="fund-card__footer">
+<span class="fund-card__link fund-card__link--disabled fund-card__link--active-status">En operación</span>
+<div class="risk">
+<span class="risk__label">Perfil de riesgo</span>
+<div aria-label="Perfil de riesgo: 2 de 5" class="risk-level" data-level="2">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+</div>
+</article>
+<article class="fund-card fund-card--upcoming">
+<div class="fund-card__status">En estructuración</div>
+<div class="fund-card__header">
+<span class="fund-card__category">Inmobiliario</span>
+<h3>FIP Oportunidades Inmobiliarias I</h3>
+</div>
+<!-- <div class="fund-card__metrics">
                     <div class="metric">
                       <span class="metric__value">12%*</span>
                       <span class="metric__label">Retorno Objetivo</span>
@@ -289,32 +185,26 @@
                       <span class="metric__label">Duración</span>
                     </div>
                   </div> -->
-
-                  <p>
+<p>
                     Estrategia que genera valor mediante la recuperación y estabilización de activos.
                   </p>
-
-                  <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
-
-                    <div class="risk">
-                      <span class="risk__label">Perfil de riesgo</span>
-                      <div class="risk-level" data-level="2" aria-label="Perfil de riesgo: 2 de 5">
-                        <span></span><span></span><span></span><span></span><span></span>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <!-- Fondo 3 -->
-                <article class="fund-card fund-card--upcoming">
-                  <div class="fund-card__status">En estructuración</div>
-                  <div class="fund-card__header">
-                    <span class="fund-card__category">Inmobiliario</span>
-                    <h3>Oportunidades Inmobiliarias II</h3>
-                  </div>
-
-                  <!-- <div class="fund-card__metrics">
+<div class="fund-card__footer">
+<span class="fund-card__link fund-card__link--disabled">Próximamente</span>
+<div class="risk">
+<span class="risk__label">Perfil de riesgo</span>
+<div aria-label="Perfil de riesgo: 2 de 5" class="risk-level" data-level="2">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+</div>
+</article>
+<article class="fund-card fund-card--upcoming">
+<div class="fund-card__status">En estructuración</div>
+<div class="fund-card__header">
+<span class="fund-card__category">Inmobiliario</span>
+<h3>FIP Oportunidades Inmobiliarias II</h3>
+</div>
+<!-- <div class="fund-card__metrics">
                     <div class="metric">
                       <span class="metric__value">12%*</span>
                       <span class="metric__label">Retorno Objetivo</span>
@@ -324,306 +214,375 @@
                       <span class="metric__label">Duración</span>
                     </div>
                   </div> -->
-
-                  <p>
+<p>
                     Estrategia habitacional que busca ingresos estables a través de activos multifamily.
                   </p>
+<div class="fund-card__footer">
+<span class="fund-card__link fund-card__link--disabled">Próximamente</span>
+<div class="risk">
+<span class="risk__label">Perfil de riesgo</span>
+<div aria-label="Perfil de riesgo: 2 de 5" class="risk-level" data-level="2">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<div class="funds__controls">
+<button aria-label="Anterior" class="carousel-btn" id="prevBtn">←</button>
+<div class="carousel-dots"></div>
+<button aria-label="Siguiente" class="carousel-btn" id="nextBtn">→</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Advisory -->
+<section aria-labelledby="advisory-title" class="advisory" id="advisory">
+<div class="container">
+<h2 class="section-title" id="advisory-title">Advisory independiente para decisiones financieras relevantes</h2>
+<!-- <p class="section-subtitle">Apoyamos a empresas, accionistas, directorios e inversionistas con análisis riguroso, participación senior y recomendaciones claras.</p> -->
+<div class="advisory__grid">
+<article class="advisory-card"><h3>Valorizaciones independientes</h3><p>Valorizamos empresas, participaciones accionarias, unidades de negocio, activos y proyectos para apoyar negociaciones, transacciones y decisiones de directorio.</p></article>
+<article class="advisory-card"><h3>M&amp;A y transacciones entre accionistas</h3><p>Asesoramos en compras, ventas, incorporación o salida de socios, análisis de ofertas, modelación de escenarios y negociación.</p></article>
+<article class="advisory-card"><h3>Estructuración financiera</h3><p>Evaluamos alternativas de deuda y capital, estructuras de financiamiento y escenarios para transacciones, crecimiento o reorganización de pasivos.</p></article>
+</div>
+</div>
+</section>
+<!-- Experiencia seleccionada -->
+<section aria-labelledby="experience-title" class="experience" id="experiencia">
+<div class="container">
+<div class="experience__heading"><h2 class="section-title" id="experience-title">Experiencia</h2>
+  <!-- <p class="section-subtitle">Experiencia de nuestros socios en transacciones, valorizaciones y asesorías financieras para compañías e inversionistas de distintas industrias.</p> -->
+  <button aria-controls="experience-content" aria-expanded="false" aria-label="Mostrar experiencia seleccionada" class="experience__toggle" type="button"><span class="experience__toggle-text">Mostrar experiencia</span><span aria-hidden="true" class="experience__toggle-icon">▴</span></button></div>
+<div class="experience__content" id="experience-content" hidden>
+<div aria-label="Filtrar experiencia" class="experience__filters" role="group">
+<button aria-pressed="true" class="experience__filter is-active" data-filter="all" type="button">Todas</button>
+<button class="experience__filter" data-filter="ma" type="button">M&amp;A</button>
+<button class="experience__filter" data-filter="advisory" type="button">Advisory y valorizaciones</button>
+<button class="experience__filter" data-filter="funds" type="button">Fondos</button>
+</div>
+<div class="experience__grid">
 
-                  <div class="fund-card__footer">
-                    <span class="fund-card__link fund-card__link--disabled">Próximamente</span>
 
-                    <div class="risk">
-                      <span class="risk__label">Perfil de riesgo</span>
-                      <div class="risk-level" data-level="2" aria-label="Perfil de riesgo: 2 de 5">
-                        <span></span><span></span><span></span><span></span><span></span>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
 
-            <div class="funds__controls">
-              <button class="carousel-btn" id="prevBtn" aria-label="Anterior">←</button>
-              <div class="carousel-dots"></div>
-              <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">→</button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Nosotros -->
-      <section class="about" id="nosotros" aria-labelledby="about-title">
-        <div class="container">
-          <h2 id="about-title" class="section-title">Lo que nos mueve</h2>
 
-          <div class="values__grid">
-            <article class="value-card">
-              <div class="value-card__icon">
-                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Excelencia</h3>
-              <p>Combinamos experiencia global con conocimiento local para ofrecer soluciones a la medida.</p>
-            </article>
 
-            <article class="value-card">
-              <div class="value-card__icon">
-                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Confianza</h3>
-              <p>Relaciones de largo plazo basadas en la confianza y el compromiso.</p>
-            </article>
 
-            <article class="value-card">
-              <div class="value-card__icon">
-                <img src="/assets/iso2.svg" alt="" width="48" height="48" loading="lazy" />
-              </div>
-              <h3>Integridad</h3>
-              <p>Actuamos con rigor ético y transparencia, cuidando siempre los intereses de quienes confían en nosotros.</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <!-- Equipo -->
-      <section class="team" id="equipo" aria-labelledby="team-title">
-        <div class="container">
-          <h2 id="team-title" class="section-title">Nuestro Equipo</h2>
-          <p class="section-subtitle">Líderes con extensa experiencia</p>
 
-          <div class="team__carousel">
-            <div class="team__track-wrapper">
-              <div class="team__track" id="teamTrack">
-                <!-- 1) Álvaro -->
-                <article class="team-member">
-                  <figure class="team-member__image">
-                    <img
-                      src="assets/imagenes/Foto ADLH Web.jpg"
-                      alt="Álvaro de los Hoyos M."
-                      loading="lazy"
-                      width="140"
-                      height="140"
-                    />
-                  </figure>
-                  <h3>Alvaro de los Hoyos M.</h3>
-                  <p class="team-member__role">Socio</p>
-                  <p class="team-member__bio">
-                    16+ años de experiencia en finanzas corporativas, valorización de compañías y M&A.
+
+
+<article class="experience-card" data-category="ma">
+<div class="experience-card__logos"><img alt="Derco" loading="lazy" src="./assets/experience/derco.png"/></div>
+<p class="experience-card__type">Asesor sell side</p>
+<strong>US$ 1.500 millones</strong><span>2022</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos experience-card__logos--pair">
+<img alt="SK" loading="lazy" src="./assets/experience/sk.png"/>
+<span aria-hidden="true">+</span>
+<img alt="Astara Latam" loading="lazy" src="./assets/experience/astara.png"/>
+</div>
+<p class="experience-card__type">Asesor sell side en la venta del 40% de Astara Latam</p>
+<strong>€ 180 millones</strong><span>2024</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos experience-card__logos--pair">
+<img alt="Molymet" loading="lazy" src="./assets/experience/molymet.png"/>
+<span aria-hidden="true">+</span>
+<img alt="Rhenium Alloys" loading="lazy" src="./assets/experience/rhenium.jpeg"/>
+</div>
+<p class="experience-card__type">Asesor buy side en la adquisición de Rhenium Alloys</p>
+<strong>US$ 40 millones</strong><span>2025</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos experience-card__logos--pair"><img alt="SAAM" loading="lazy" src="./assets/experience/saam.png"/><span aria-hidden="true">+</span><img alt="Intertug" loading="lazy" src="./assets/experience/intertug.png"/></div>
+<p class="experience-card__type">Partícipe en la adquisición de Intertug</p>
+<strong>US$ 40 millones</strong><span>2025</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos experience-card__logos--pair">
+<img alt="Cámara de Comercio de Santiago" loading="lazy" src="./assets/experience/ccs.png"/>
+<span aria-hidden="true">+</span>
+<img alt="Artikos" loading="lazy" src="./assets/experience/artikos.png"/>
+</div>
+<p class="experience-card__type">Asesor buy side en la adquisición de Artikos</p>
+<strong>US$ 19 millones</strong><span>2025</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos experience-card__logos--pair"><img alt="Houm" loading="lazy" src="./assets/experience/houm.png"/><span aria-hidden="true">+</span><img alt="Wiggot" loading="lazy" src="./assets/experience/wiggot.png"/></div>
+<p class="experience-card__type">Liderazgo en la ejecución de la adquisición de Wiggot</p>
+<strong>Monto confidencial</strong><span>2022</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos"><img alt="Arval / Relsa" loading="lazy" src="./assets/experience/arval-relsa.png"/></div>
+<p class="experience-card__type">Asesor sell side en la venta del 50%</p>
+<strong>Monto confidencial</strong><span>2022</span>
+</article><article class="experience-card" data-category="ma">
+<div class="experience-card__logos"><img alt="Goldenfrost" loading="lazy" src="./assets/experience/goldenfrost.png"/></div>
+<p class="experience-card__type">Asesor sell side</p>
+<strong>Monto confidencial</strong><span>2022</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Bodegas San Francisco" loading="lazy" src="./assets/experience/bsf.jpeg"/></div>
+<p class="experience-card__type">Valorización Independiente</p>
+<span>2025</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Hites" loading="lazy" src="./assets/experience/hites.png"/></div>
+<p class="experience-card__type">Asesoría en aumento de capital</p>
+<strong>CLP 20.000 millones</strong><span>2025</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Cruzados" loading="lazy" src="./assets/experience/cruzados.png"/></div>
+<p class="experience-card__type">Asesoría en aumentos de capital</p>
+<strong>CLP 17.000 millones</strong><span>2025 y 2022</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Multi X" loading="lazy" src="./assets/experience/multix.png"/></div>
+<p class="experience-card__type">Evaluador independiente en la venta del 26% de Salmones Multiexport</p>
+<strong>US$ 300 millones</strong><span>2022</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Grupo Patio" loading="lazy" src="./assets/experience/grupo-patio.png"/></div>
+<p class="experience-card__type">Valorización Independiente</p>
+<span>2023</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Corona" loading="lazy" src="./assets/experience/corona.png"/></div>
+<p class="experience-card__type">Valorización Independiente</p>
+<span>2024</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Ultranav" loading="lazy" src="./assets/experience/ultranav.png"/></div>
+<p class="experience-card__type">Valorización de filiales</p>
+<span>2023</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Hortifrut" loading="lazy" src="./assets/experience/hortifrut.png"/></div>
+<p class="experience-card__type">Valorización de filiales</p>
+<span>2023</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos"><img alt="Minera HMC" loading="lazy" src="./assets/experience/hmc.png"/></div>
+<p class="experience-card__type">Fairness opinion</p>
+<span>2021</span>
+</article><article class="experience-card" data-category="advisory">
+<div class="experience-card__logos experience-card__logos--pair"><img alt="SMU" loading="lazy" src="./assets/experience/smu.png"/><span aria-hidden="true">+</span><img alt="Unired" loading="lazy" src="./assets/experience/unired.png"/></div>
+<p class="experience-card__type">Valorización de filial</p>
+<span>2021</span>
+</article><article class="experience-card experience-card--wide" data-category="funds">
+<div class="experience-card__logos experience-card__logos--funds">
+<img alt="LarrainVial" loading="lazy" src="./assets/experience/larrainvial.png"/>
+<img alt="BTG Pactual" loading="lazy" src="./assets/experience/btg.png"/>
+<img alt="Credicorp Capital" loading="lazy" src="./assets/experience/credicorp.jpeg"/>
+</div>
+<p class="experience-card__type">Valorización de fondos y activos inmobiliarios</p>
+<p class="experience-card__detail">Oficinas, centros comerciales, bodegas, estacionamientos, terrenos y renta residencial.</p>
+<span>2017–2025</span>
+</article></div>
+<!-- <p class="experience__note">Algunas de las operaciones presentadas fueron lideradas por socios de BlackBird Capital durante su trayectoria en instituciones anteriores.</p> -->
+</div>
+</div>
+</section>
+<!-- Lo que nos mueve -->
+<section aria-labelledby="about-title" class="about" id="nosotros">
+<div class="container">
+<h2 class="section-title" id="about-title">Lo que nos mueve</h2>
+<div class="values__grid">
+<article class="value-card">
+<div class="value-card__icon">
+<img alt="" height="48" loading="lazy" src="./assets/iso2.svg" width="48"/>
+</div>
+<h3>Excelencia</h3>
+<p>Combinamos experiencia global con conocimiento local para ofrecer soluciones a la medida.</p>
+</article>
+<article class="value-card">
+<div class="value-card__icon">
+<img alt="" height="48" loading="lazy" src="./assets/iso2.svg" width="48"/>
+</div>
+<h3>Confianza</h3>
+<p>Relaciones de largo plazo basadas en la confianza y el compromiso.</p>
+</article>
+<article class="value-card">
+<div class="value-card__icon">
+<img alt="" height="48" loading="lazy" src="./assets/iso2.svg" width="48"/>
+</div>
+<h3>Integridad</h3>
+<p>Actuamos con rigor ético y transparencia, cuidando siempre los intereses de quienes confían en nosotros.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Equipo -->
+<section aria-labelledby="team-title" class="team" id="equipo">
+<div class="container">
+<h2 class="section-title" id="team-title">Nuestro Equipo</h2>
+<p class="section-subtitle">Líderes con extensa experiencia</p>
+<div class="team__carousel">
+<div class="team__track-wrapper">
+<div class="team__track" id="teamTrack">
+<!-- 1) Álvaro -->
+<article class="team-member">
+<figure class="team-member__image">
+<img alt="Álvaro de los Hoyos M." height="140" loading="lazy" src="assets/imagenes/Foto ADLH Web.jpg" width="140"/>
+</figure>
+<h3>Alvaro de los Hoyos M.</h3>
+<p class="team-member__role">Socio</p>
+<p class="team-member__bio">
+                    16+ años de experiencia en finanzas corporativas, valorización de compañías y M&amp;A.
                   </p>
-                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="adlh">
+<button class="btn btn--ghost btn--small team-member__details-btn" data-member="adlh">
                     Ver más detalles
                   </button>
-                </article>
-
-                <!-- 2) Jorge (CENTRO) -->
-                <article class="team-member active">
-                  <figure class="team-member__image">
-                    <img
-                      src="assets/imagenes/Foto JRP Web.jpg"
-                      alt="Jorge Ramírez P."
-                      loading="lazy"
-                      width="140"
-                      height="140"
-                    />
-                  </figure>
-                  <h3>Jorge Ramírez P.</h3>
-                  <p class="team-member__role">Socio & CEO</p>
-                  <p class="team-member__bio">
+<div aria-label="Contacto de Álvaro de los Hoyos" class="team-member__links">
+<a aria-label="Enviar correo a Álvaro de los Hoyos" class="team-member__contact-link" href="mailto:adlh@blackbirdcapital.cl" title="Email"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 5.5h18v13H3z" fill="none" stroke="currentColor" stroke-width="1.8"></path><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></a>
+<a aria-label="LinkedIn de Álvaro de los Hoyos" class="team-member__contact-link" href="https://cl.linkedin.com/in/alvaro-de-los-hoyos-moreno-00178967" rel="noopener noreferrer" target="_blank" title="LinkedIn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6.5 8.2H3.4V21h3.1V8.2ZM5 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 3ZM20.6 13.7c0-3.8-2-5.8-4.8-5.8-2.2 0-3.2 1.2-3.8 2v-1.7H9V21h3.1v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21h3.1l.9-7.3Z" fill="currentColor"></path></svg></a>
+</div>
+</article>
+<!-- 2) Jorge (CENTRO) -->
+<article class="team-member active">
+<figure class="team-member__image">
+<img alt="Jorge Ramírez P." height="140" loading="lazy" src="assets/imagenes/Foto JRP Web.jpg" width="140"/>
+</figure>
+<h3>Jorge Ramírez P.</h3>
+<p class="team-member__role">Socio &amp; CEO</p>
+<p class="team-member__bio">
                     16+ años de experiencia en finanzas corporativas e inversiones.
                   </p>
-                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrp">
+<button class="btn btn--ghost btn--small team-member__details-btn" data-member="jrp">
                     Ver más detalles
                   </button>
-                </article>
-
-                <!-- 3) Clemente -->
-                <article class="team-member">
-                  <figure class="team-member__image">
-                    <img
-                      src="assets/imagenes/Foto CCM Web.jpg"
-                      alt="Clemente Chappuzeau M."
-                      loading="lazy"
-                      width="140"
-                      height="140"
-                    />
-                  </figure>
-                  <h3>Clemente Chappuzeau M.</h3>
-                  <p class="team-member__role">Socio & Portfolio Manager</p>
-                  <p class="team-member__bio">
+<div aria-label="Contacto de Jorge Ramírez" class="team-member__links">
+<a aria-label="Enviar correo a Jorge Ramírez" class="team-member__contact-link" href="mailto:jrp@blackbirdcapital.cl" title="Email"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 5.5h18v13H3z" fill="none" stroke="currentColor" stroke-width="1.8"></path><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></a>
+<a aria-label="LinkedIn de Jorge Ramírez" class="team-member__contact-link" href="https://cl.linkedin.com/in/jorge-ramirez-pinto-74709b27" rel="noopener noreferrer" target="_blank" title="LinkedIn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6.5 8.2H3.4V21h3.1V8.2ZM5 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 3ZM20.6 13.7c0-3.8-2-5.8-4.8-5.8-2.2 0-3.2 1.2-3.8 2v-1.7H9V21h3.1v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21h3.1l.9-7.3Z" fill="currentColor"></path></svg></a>
+</div>
+</article>
+<!-- 3) Clemente -->
+<article class="team-member">
+<figure class="team-member__image">
+<img alt="Clemente Chappuzeau M." height="140" loading="lazy" src="assets/imagenes/Foto CCM Web.jpg" width="140"/>
+</figure>
+<h3>Clemente Chappuzeau M.</h3>
+<p class="team-member__role">Socio &amp; Portfolio Manager</p>
+<p class="team-member__bio">
                     4+ años de experiencia en finanzas corporativas e inversiones.
                   </p>
-                  <button class="btn btn--ghost btn--small team-member__details-btn" data-member="ccm">
+<button class="btn btn--ghost btn--small team-member__details-btn" data-member="ccm">
                     Ver más detalles
                   </button>
-                </article>
-              </div>
-            </div>
-
-            <div class="team__controls">
-              <button class="carousel-btn" id="teamPrevBtn" aria-label="Anterior">←</button>
-              <div class="carousel-dots"></div>
-              <button class="carousel-btn" id="teamNextBtn" aria-label="Siguiente">→</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Modal equipo -->
-      <div class="team-modal" id="teamModal">
-        <div class="team-modal__overlay"></div>
-        <div class="team-modal__content">
-          <button class="team-modal__close" aria-label="Cerrar">×</button>
-
-          <div class="team-modal__header">
-            <img id="modalImage" src="" alt="" class="team-modal__image" />
-            <h3 id="modalTitle"></h3>
-            <p id="modalRole"></p>
-          </div>
-
-          <div class="team-modal__body" id="modalBody"></div>
-        </div>
-      </div>
-
-      <!-- Contacto -->
-      <section class="cta" id="contacto" aria-labelledby="cta-title">
-        <div class="container">
-          <div class="cta__content">
-            <div class="cta__form">
-              <h2 id="cta-title">Contáctanos</h2>
-
-              <form id="contact-form" class="contact-form">
-                <div class="form-row">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" required />
-                </div>
-
-                <div class="form-row">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-
-                <div class="form-row">
-                  <label for="telefono">Teléfono</label>
-                  <input type="tel" id="telefono" name="telefono" />
-                </div>
-
-                <div class="form-row">
-                  <label for="mensaje">Mensaje</label>
-                  <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-                </div>
-
-                <button type="submit" class="btn">Enviar mensaje</button>
-              </form>
-            </div>
-
-            <div class="cta__map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.354124377034!2d-70.5997534873809!3d-33.414010795538324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf3f8c4d05c3%3A0x81070efd99ab2b7!2sIsidora%20Goyenechea%203162%2C%207550083%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1763159093607!5m2!1ses!2scl"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-              <div class="cta__map-info"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__main">
-          <div class="footer__brand">
-            <img
-              src="/assets/logo-blanco.svg"
-              alt="BlackBird Capital"
-              class="logo"
-              width="150"
-              height="60"
-              loading="lazy"
-            />
-            <p>Asset Management. Finance Solutions</p>
-          </div>
-
-          <nav class="footer__nav">
-            <div class="footer__nav-column">
-              <h3>Fondos</h3>
-              <ul>
-                <li><a href="#fondos">Money Market</a></li>
-                <li><a href="#fondos">Real Estate</a></li>
-              </ul>
-            </div>
-            <div class="footer__nav-column">
-              <h3>Servicios</h3>
-              <ul>
-                <li><a href="#expertise">Gestión de Activos</a></li>
-                <li><a href="#fondos">Fondos de Inversión</a></li>
-                <li><a href="#contacto">Asesorías</a></li>
-              </ul>
-            </div>
-            <div class="footer__nav-column">
-              <h3>Recursos</h3>
-              <ul>
-                <li><a href="#contacto">Blog & Insights</a></li>
-                <li><a href="#contacto">Research</a></li>
-                <li><a href="#contacto">Calculadoras</a></li>
-                <li><a href="#contacto">FAQ</a></li>
-              </ul>
-            </div>
-          </nav>
-
-          <div class="footer__newsletter">
-            <h3>Newsletter</h3>
-            <form class="newsletter__form">
-              <input type="email" placeholder="Su email" required />
-              <button type="submit">Suscribirse</button>
-            </form>
-          </div>
-        </div>
-
-        <div class="footer__bottom">
-          <p class="footer__copyright">
-            © 2025 BlackBird Capital. Todos los derechos reservados.
+<div aria-label="Contacto de Clemente Chappuzeau" class="team-member__links">
+<a aria-label="Enviar correo a Clemente Chappuzeau" class="team-member__contact-link" href="mailto:ccm@blackbirdcapital.cl" title="Email"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 5.5h18v13H3z" fill="none" stroke="currentColor" stroke-width="1.8"></path><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></a>
+<a aria-label="LinkedIn de Clemente Chappuzeau" class="team-member__contact-link" href="https://cl.linkedin.com/in/cchappuzeau" rel="noopener noreferrer" target="_blank" title="LinkedIn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6.5 8.2H3.4V21h3.1V8.2ZM5 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 3ZM20.6 13.7c0-3.8-2-5.8-4.8-5.8-2.2 0-3.2 1.2-3.8 2v-1.7H9V21h3.1v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21h3.1l.9-7.3Z" fill="currentColor"></path></svg></a>
+</div>
+</article>
+</div>
+</div>
+<div class="team__controls">
+<button aria-label="Anterior" class="carousel-btn" id="teamPrevBtn">←</button>
+<div class="carousel-dots"></div>
+<button aria-label="Siguiente" class="carousel-btn" id="teamNextBtn">→</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Modal equipo -->
+<div class="team-modal" id="teamModal">
+<div class="team-modal__overlay"></div>
+<div class="team-modal__content">
+<button aria-label="Cerrar" class="team-modal__close">×</button>
+<div class="team-modal__header">
+<img alt="" class="team-modal__image" id="modalImage" src=""/>
+<h3 id="modalTitle"></h3>
+<p id="modalRole"></p>
+<div aria-label="Contacto del socio" class="team-modal__links" id="modalLinks"></div>
+</div>
+<div class="team-modal__body" id="modalBody"></div>
+</div>
+</div>
+<!-- Contacto -->
+<section aria-labelledby="cta-title" class="cta" id="contacto">
+<div class="container">
+<div class="cta__content">
+<div class="cta__form">
+<h2 id="cta-title">Conversemos</h2>
+<form class="contact-form" id="contact-form">
+<div class="form-row">
+<label for="nombre">Nombre</label>
+<input id="nombre" name="nombre" required="" type="text"/>
+</div>
+<div class="form-row">
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+</div>
+<div class="form-row">
+<label for="telefono">Teléfono</label>
+<input id="telefono" name="telefono" type="tel"/>
+</div>
+<div class="form-row">
+<label for="mensaje">Cuéntenos brevemente qué decisión o proceso está evaluando</label>
+<textarea id="mensaje" name="mensaje" required="" rows="4"></textarea>
+</div>
+<button class="btn" type="submit">Enviar mensaje</button>
+</form>
+</div>
+<div class="cta__map">
+<iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.354124377034!2d-70.5997534873809!3d-33.414010795538324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf3f8c4d05c3%3A0x81070efd99ab2b7!2sIsidora%20Goyenechea%203162%2C%207550083%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1763159093607!5m2!1ses!2scl" style="border: 0"></iframe>
+<div class="cta__map-info"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer__main">
+<div class="footer__brand">
+<img alt="BlackBird Capital" class="logo" height="60" loading="lazy" src="./assets/logo-blanco.svg" width="150"/>
+<p>Asset Management y Advisory Independiente</p>
+</div>
+<nav class="footer__nav">
+<div class="footer__nav-column">
+<h3>Estrategias</h3>
+<ul>
+<li><a href="#fondos">Real Estate</a></li>
+</ul>
+</div>
+<div class="footer__nav-column">
+<h3>Expertise</h3>
+<ul>
+<li><a href="#fondos">Asset Management</a></li>
+<li><a href="#advisory">Advisory</a></li>
+</ul>
+</div>
+<div class="footer__nav-column">
+<h3>Institucional</h3>
+<ul>
+<li><a href="#experiencia">Experiencia</a></li>
+<li><a href="#equipo">Equipo</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</div>
+</nav>
+<div class="footer__newsletter">
+<h3>Newsletter</h3>
+<form class="newsletter__form">
+<input placeholder="Su email" required="" type="email"/>
+<button type="submit">Suscribirse</button>
+</form>
+</div>
+</div>
+<div class="footer__bottom">
+<p class="footer__copyright">
+            © 2026 BlackBird Capital. Todos los derechos reservados.
           </p>
-
-          <nav class="footer__legal" aria-label="Enlaces legales">
-            <a href="#privacidad">Privacidad</a>
-            <a href="#tyc">Términos</a>
-            <a href="#compliance">Compliance</a>
-            <a href="#sitemap">Mapa del sitio</a>
-          </nav>
-
-          <div class="footer__certifications">
-            <img
-              src="/assets/cert-cmf.svg"
-              alt="Regulado por CMF"
-              class="certification-badge"
-              width="80"
-              height="50"
-              loading="lazy"
-            />
-            <img
-              src="/assets/cert-uaf.png"
-              alt="UAF"
-              class="certification-badge"
-              width="80"
-              height="50"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Toast -->
-    <div id="toast" class="toast" aria-live="polite">
-      <span id="toast-message"></span>
-    </div>
-
-    <!-- Contact form handler -->
-    <script>
+<nav aria-label="Enlaces legales" class="footer__legal">
+<a href="#contacto">Información legal</a>
+<a href="#contacto">Privacidad</a>
+<a href="#contacto">Contacto</a>
+</nav>
+<div class="footer__certifications">
+<img alt="Regulado por CMF" class="certification-badge" height="50" loading="lazy" src="./assets/cert-cmf.svg" width="80"/>
+<img alt="UAF" class="certification-badge" height="50" loading="lazy" src="./assets/cert-uaf.png" width="80"/>
+</div>
+</div>
+</div>
+</footer>
+<button aria-label="Volver al inicio" class="back-to-top" title="Volver al inicio" type="button"><span aria-hidden="true" class="back-to-top__icon"></span></button>
+<!-- Toast -->
+<div aria-live="polite" class="toast" id="toast">
+<span id="toast-message"></span>
+</div>
+<!-- Contact form handler -->
+<script>
       (function () {
         const form = document.getElementById("contact-form");
         if (!form) return;
@@ -660,5 +619,5 @@
         });
       })();
     </script>
-  </body>
+</body>
 </html>

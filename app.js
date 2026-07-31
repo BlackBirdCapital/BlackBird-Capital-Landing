@@ -468,6 +468,7 @@
     const modalRole = document.getElementById('modalRole');
     const modalBody = document.getElementById('modalBody');
     const modalImage = document.getElementById('modalImage');
+    const modalLinks = document.getElementById('modalLinks');
     
     // Datos completos del equipo con imágenes
     const teamData = {
@@ -484,6 +485,8 @@
       },
       jrp: {
         name: 'Jorge Ramírez P.',
+        email: 'jrp@blackbirdcapital.cl',
+        linkedin: 'https://cl.linkedin.com/in/jorge-ramirez-pinto-74709b27',
         role: 'Socio & CEO',
         image: 'assets/imagenes/Foto JRP Web.jpg',
         content: `
@@ -500,6 +503,8 @@
       
       adlh: {
         name: 'Alvaro de los Hoyos M.',
+        email: 'adlh@blackbirdcapital.cl',
+        linkedin: 'https://cl.linkedin.com/in/alvaro-de-los-hoyos-moreno-00178967',
         role: 'Socio',
         image: 'assets/imagenes/Foto ADLH Web.jpg',
         content: `
@@ -515,6 +520,8 @@
       
       ccm: {
         name: 'Clemente Chappuzeau M',
+        email: 'ccm@blackbirdcapital.cl',
+        linkedin: 'https://cl.linkedin.com/in/cchappuzeau',
         role: 'Socio & Portfolio Manager',
         image: 'assets/imagenes/Foto CCM Web.jpg',
         content: `
@@ -541,6 +548,16 @@
       if (modalImage) {
         modalImage.src = data.image;
         modalImage.alt = data.name;
+      }
+
+      if (modalLinks) {
+        modalLinks.innerHTML = `
+          <a href="mailto:${data.email}" class="team-member__contact-link" aria-label="Enviar correo a ${data.name}" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="${data.linkedin}" class="team-member__contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${data.name}" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.2H3.4V21h3.1V8.2ZM5 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 3ZM20.6 13.7c0-3.8-2-5.8-4.8-5.8-2.2 0-3.2 1.2-3.8 2v-1.7H9V21h3.1v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21h3.1l.9-7.3Z" fill="currentColor"/></svg>
+          </a>`;
       }
       
       // Mostrar modal
@@ -682,6 +699,56 @@
   };
 
   // ==========================================================================
+  // EXPERIENCIA SELECCIONADA
+  // ==========================================================================
+  const initExperienceFilters = () => {
+    const filters = document.querySelectorAll('.experience__filter');
+    const cards = document.querySelectorAll('.experience-card');
+    if (!filters.length || !cards.length) return;
+
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter || 'all';
+        filters.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+        cards.forEach((card) => {
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+        });
+      });
+    });
+  };
+
+
+  const initExperienceToggle = () => {
+    const button = document.querySelector('.experience__toggle');
+    const content = document.getElementById('experience-content');
+    const label = button?.querySelector('.experience__toggle-text');
+    const icon = button?.querySelector('.experience__toggle-icon');
+    if (!button || !content) return;
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      const nextExpanded = !expanded;
+      button.setAttribute('aria-expanded', String(nextExpanded));
+      button.setAttribute('aria-label', nextExpanded ? 'Ocultar experiencia seleccionada' : 'Mostrar experiencia seleccionada');
+      if (label) label.textContent = nextExpanded ? 'Ocultar experiencia' : 'Mostrar experiencia';
+      if (icon) icon.textContent = nextExpanded ? '▴' : '▾';
+      content.hidden = !nextExpanded;
+    });
+  };
+
+  const initBackToTop = () => {
+    const button = document.querySelector('.back-to-top');
+    if (!button) return;
+    const update = () => button.classList.toggle('is-visible', window.scrollY > 500);
+    window.addEventListener('scroll', update, { passive: true });
+    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    update();
+  };
+
+  // ==========================================================================
   // 11. INICIALIZACIÓN PRINCIPAL
   // ==========================================================================
   const init = () => {
@@ -721,6 +788,9 @@
     
     // Modal del equipo
     initTeamModal();
+    initExperienceFilters();
+    initExperienceToggle();
+    initBackToTop();
     
     // Otros elementos interactivos
     initAccordion();
@@ -747,4 +817,5 @@
     version: '2.0.0'
   };
   
+
 })();

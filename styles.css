@@ -1,3 +1,44 @@
+/* Local brand fonts */
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Duplet";
+  src: url("./assets/fonts/Duplet-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("./assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("./assets/fonts/Lato-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("./assets/fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ==========================================================================
    BlackBird Capital - Estilos
    ========================================================================== */
@@ -32,8 +73,8 @@
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
   --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
 
-  --font-primary: "Duplet", Georgia, serif;
-  --font-body: "Lato", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: "Duplet", Arial, sans-serif;
+  --font-body: "Lato", Arial, sans-serif;
 
   --container-max: 1280px;
   --container-padding: var(--space-4);
@@ -70,7 +111,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 84vh;
 }
 
 /* Fondo global */
@@ -392,12 +433,13 @@ ul {
    8. HERO
    ========================================================================== */
 .hero {
-  min-height: 100vh;
+  min-height: 84vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 120px;
+  padding-bottom: 2.5rem;
   position: relative;
   isolation: isolate;
 }
@@ -456,6 +498,11 @@ ul {
 /* ==========================================================================
    9. SECCIONES
    ========================================================================== */
+
+.expertise {
+  padding-top: var(--space-6);
+}
+
 section {
   padding: var(--space-8) 0;
   position: relative;
@@ -703,7 +750,10 @@ section {
 
 .fund-card h3 {
   font-family: var(--font-primary);
-  font-size: 1.5rem;
+  font-size: 1.12rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
   margin-bottom: var(--space-3);
 }
 
@@ -1165,8 +1215,8 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
-  align-items: start;
-  max-width: 1000px;
+  align-items: stretch;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -1227,7 +1277,7 @@ section {
 }
 
 .cta__map {
-  min-height: 330px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -1236,6 +1286,8 @@ section {
 .cta__map iframe {
   width: 100%;
   height: 100%;
+  min-height: 100%;
+  flex: 1;
   border-radius: var(--radius-xl);
   border: 0;
 }
@@ -1664,5 +1716,669 @@ section {
 @media (min-width: 1024px) {
   .funds__controls {
     display: none !important;
+  }
+}
+/* Ajustes v2: posicionamiento Asset Management + Advisory */
+.hero__actions { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; }
+.services__grid--two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.business-card { display:flex; flex-direction:column; align-items:flex-start; }
+.business-card__list { margin:1rem 0 1.5rem; padding-left:1.25rem; color:var(--color-gris-claro); line-height:1.7; }
+.business-card .btn { margin-top:auto; position:relative; z-index:2; }
+.advisory { padding:7rem 0; background:var(--color-azul-tormenta); }
+.advisory__grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; margin-top:3rem; }
+.advisory-card { border:1px solid rgba(255,255,255,.14); padding:2rem; background:rgba(255,255,255,.035); border-radius:var(--radius-lg); display:flex; flex-direction:column; }
+.advisory-card h3 { margin-top:0; margin-bottom:0.75rem; color:var(--color-blanco-pulcro); min-height:2.6em; display:flex; align-items:flex-start; }
+.advisory-card p { color:var(--color-gris-claro); line-height:1.65; }
+.advisory__senior { margin-top:2rem; padding:2.25rem; border-left:3px solid var(--color-terracota); background:rgba(0,0,0,.2); }
+.advisory__senior p { max-width:850px; color:var(--color-gris-claro); }
+@media (max-width: 800px) { .services__grid--two, .advisory__grid { grid-template-columns:1fr; } .hero__actions { flex-direction:column; align-items:flex-start; } }
+
+/* Enlaces directos en tarjetas del equipo */
+.team-member__links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.9rem;
+}
+
+.team-member__contact-link {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-terracotta, #ca7131);
+  text-decoration: none;
+  border: 1px solid rgba(202, 113, 49, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.team-member__contact-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.team-member__contact-link:hover,
+.team-member__contact-link:focus-visible {
+  color: var(--color-blanco-pulcro);
+  background: var(--color-terracotta, #ca7131);
+  border-color: var(--color-terracotta, #ca7131);
+  transform: translateY(-2px);
+}
+
+/* Interacciones del carrusel de socios: mostrar controles y contacto solo al interactuar */
+@media (hover: hover) and (pointer: fine) {
+  .team__controls {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .team__carousel:hover .team__controls,
+  .team__carousel:focus-within .team__controls {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .team-member__links {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  /* Los accesos pertenecen siempre a la tarjeta activa/central del carrusel. */
+  .team__carousel:hover .team-member.active .team-member__links,
+  .team__carousel:focus-within .team-member.active .team-member__links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* En dispositivos táctiles no existe hover: mantener accesibles controles y enlaces. */
+@media (hover: none), (pointer: coarse) {
+  .team__controls {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .team-member__links {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .team-member.active .team-member__links {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+
+/* Ajustes v7: CTA del header y hero sin botones redundantes */
+.header__contact-btn {
+  white-space: nowrap;
+}
+
+.header__portal-btn {
+  flex: 0 0 auto;
+  width: auto !important;
+  min-width: 8.75rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1023px) {
+  .header__portal-btn {
+    align-self: flex-start;
+    width: auto !important;
+    min-width: 8.75rem;
+  }
+}
+
+/* Business line numbering: replaces duplicated/broken image icons */
+.business-card__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-terracota);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  border-bottom: 2px solid var(--color-terracota);
+}
+
+
+/* v10: contacto visible también en la ficha ampliada del socio */
+.team-modal__links {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.team-modal__links .team-member__contact-link {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Estrategias: tres tarjetas completas y alineadas en escritorio */
+@media (min-width: 1024px) {
+  .funds__track-wrapper {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .funds__track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+    width: 100%;
+    transform: none !important;
+    padding: var(--space-4) 0;
+  }
+
+  .fund-card {
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    padding: var(--space-5);
+  }
+
+  .fund-card h3 {
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    white-space: nowrap;
+  }
+}
+
+/* Ajustes v13: mapa y alineacion de Advisory */
+@media (min-width: 801px) {
+  .cta__map iframe { min-height: 100%; }
+}
+@media (max-width: 800px) {
+  .cta__map { min-height: 360px; }
+  .cta__map iframe { min-height: 360px; }
+  .advisory-card h3 { min-height: auto; }
+}
+
+/* Expertise: restore visible bullets after the global list reset */
+.business-card__list {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1.35rem;
+}
+
+.business-card__list li {
+  display: list-item;
+  padding-left: 0.15rem;
+}
+
+.business-card__list li::marker {
+  color: var(--color-terracota);
+  font-size: 0.9em;
+}
+
+/* Experiencia seleccionada */
+.experience {
+  padding: var(--section-padding, 6rem) 0;
+  background: linear-gradient(180deg, var(--color-negro-noche), #111722);
+}
+
+.experience__filters {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 2.5rem;
+}
+
+.experience__filter {
+  border: 1px solid rgba(255,255,255,.22);
+  background: transparent;
+  color: var(--color-gris-claro);
+  padding: .65rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.experience__filter:hover,
+.experience__filter:focus-visible,
+.experience__filter.is-active {
+  background: var(--color-terracota);
+  border-color: var(--color-terracota);
+  color: #fff;
+}
+
+.experience__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.experience-card {
+  min-height: 240px;
+  padding: 1rem;
+  border: 1px solid rgba(198,131,70,.72);
+  border-radius: var(--radius-lg);
+  background: #f7f5f1;
+  color: #171c26;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-terracota);
+  box-shadow: 0 14px 30px rgba(0,0,0,.22);
+}
+
+.experience-card[hidden] { display: none; }
+.experience-card--wide { grid-column: span 2; }
+
+.experience-card__logos {
+  min-height: 78px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-card__logos img {
+  max-width: 150px;
+  max-height: 62px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.experience-card__logos--pair img {
+  max-width: 82px;
+  max-height: 48px;
+}
+
+.experience-card__logos--pair span {
+  color: var(--color-terracota);
+  font-weight: 700;
+}
+
+.experience-card__logos--funds {
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.experience-card__logos--funds img {
+  max-width: 118px;
+  max-height: 42px;
+}
+
+.experience-card__type {
+  margin: 0 0 auto;
+  line-height: 1.4;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.experience-card__detail {
+  margin: .8rem 0 auto;
+  color: #4a5360;
+  line-height: 1.45;
+}
+
+.experience-card strong {
+  display: block;
+  margin-top: 0.8rem;
+  color: #171c26;
+  font-size: 0.95rem;
+}
+
+.experience-card > span {
+  margin-top: .25rem;
+  color: #6c737d;
+  font-size: 0.85rem;
+}
+
+.experience__note {
+  max-width: 980px;
+  margin: 1.5rem auto 0;
+  color: rgba(255,255,255,.62);
+  font-size: .86rem;
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .experience__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 850px) {
+  .experience__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .experience__grid { grid-template-columns: 1fr; }
+  .experience-card--wide { grid-column: auto; }
+  .experience-card { min-height: 230px; }
+  .experience-card__logos--funds { gap: .9rem; }
+}
+
+
+/* Experience disclosure */
+.experience__heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1.5rem;
+}
+.experience__heading .section-title,
+.experience__heading .section-subtitle { text-align: left; }
+.experience__heading .section-title::after { margin-left: 0; }
+.experience__toggle {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(198, 131, 70, .7);
+  border-radius: 50%;
+  background: rgba(22, 28, 40, .72);
+  color: var(--color-terracota);
+  font: inherit;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.experience__toggle:hover,
+.experience__toggle:focus-visible { background: rgba(198, 131, 70, .12); border-color: var(--color-terracota); }
+.experience__toggle[aria-expanded="false"] { transform: rotate(180deg); }
+.experience__content[hidden] { display: none; }
+.experience-card__wordmark {
+  color: var(--color-azul-tormenta);
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .055em;
+  text-align: center;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 950;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(198, 131, 70, .75);
+  background: rgba(0, 0, 0, .84);
+  color: var(--color-terracota);
+  font: inherit;
+  font-size: 1.35rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .25s ease, visibility .25s ease, transform .25s ease, background .25s ease;
+  box-shadow: var(--shadow-md);
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover,
+.back-to-top:focus-visible { background: var(--color-terracota); color: var(--color-negro-noche); }
+@media (max-width: 640px) {
+  .experience__heading { grid-template-columns: 1fr auto; gap: .75rem; }
+  .experience__toggle { width: 40px; height: 40px; }
+  .back-to-top { right: .9rem; bottom: .9rem; }
+}
+
+
+/* v20 adjustments */
+.experience__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience__heading .section-title,
+.experience__heading .section-subtitle {
+  text-align: center;
+}
+
+.experience__heading .section-title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.experience__toggle {
+  width: auto;
+  height: auto;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.experience__toggle-text {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.experience__toggle-icon {
+  font-size: 0.95rem;
+  transition: transform .25s ease;
+}
+
+.experience__toggle[aria-expanded="false"] {
+  transform: none;
+}
+
+.experience__toggle[aria-expanded="false"] .experience__toggle-icon {
+  transform: rotate(180deg);
+}
+
+.experience-card__inline-wordmark {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-azul-tormenta);
+}
+
+.experience-card__logos--pair .experience-card__inline-wordmark {
+  font-size: 1rem;
+}
+
+.experience-card__logos img {
+  background: transparent;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: 76vh;
+  }
+  .expertise {
+    padding-top: var(--space-5);
+  }
+  .experience__toggle {
+    padding: 0.65rem 0.9rem;
+  }
+}
+
+/* v21 refinements */
+.hero {
+  min-height: 72vh;
+  padding-bottom: 1.25rem;
+}
+
+.expertise {
+  padding-top: 1rem;
+}
+
+.fund-card__status {
+  letter-spacing: 0.04em;
+}
+
+.fund-card:not(.fund-card--upcoming) .fund-card__status {
+  background: rgba(198, 131, 70, 0.16);
+  border-color: rgba(198, 131, 70, 0.72);
+  color: var(--color-terracota);
+}
+
+.fund-card__link--active-status {
+  color: var(--color-terracota);
+  opacity: 1;
+}
+
+/* Back to top: minimal, square and discreet */
+.back-to-top {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.58);
+  color: var(--color-terracota);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: rgba(198, 131, 70, 0.14);
+  color: var(--color-terracota);
+  outline: 1px solid rgba(198, 131, 70, 0.6);
+}
+
+.back-to-top__icon {
+  width: 11px;
+  height: 11px;
+  display: block;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(45deg) translate(2px, 2px);
+  margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: 68vh;
+    padding-bottom: 1rem;
+  }
+
+  .expertise {
+    padding-top: 0.75rem;
+  }
+}
+
+
+/* Ajuste responsivo para títulos largos en estrategias */
+@media (max-width: 1180px) and (min-width: 1024px) {
+  .fund-card {
+    padding: 1.25rem;
+  }
+
+  .fund-card h3 {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .funds__track {
+    display: flex;
+  }
+
+  .fund-card {
+    flex: 0 0 min(400px, calc(100vw - 4rem));
+  }
+
+  .fund-card h3 {
+    white-space: normal;
+    font-size: 1.2rem;
+  }
+}
+
+/* ========================================================================== 
+   AJUSTE FINAL: FUND CARDS MÁS LEGIBLES EN ESCRITORIO
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .funds__track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    justify-content: initial;
+  }
+
+  .fund-card {
+    min-width: 0;
+    max-width: none;
+    padding: 1.4rem 1.2rem;
+  }
+
+  .fund-card h3 {
+    font-size: clamp(1.08rem, 1.25vw, 1.3rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+
+  .fund-card p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .fund-card__category {
+    font-size: 0.78rem;
+  }
+
+  .fund-card__status {
+    font-size: 0.72rem;
+  }
+
+  .fund-card__link {
+    font-size: 0.9rem;
+  }
+
+  .risk__label {
+    font-size: 0.72rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1120px) {
+  .fund-card {
+    padding: 1.3rem 1rem;
+  }
+
+  .fund-card h3 {
+    font-size: 1.02rem;
+  }
+
+  .fund-card p {
+    font-size: 0.9rem;
   }
 }
